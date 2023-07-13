@@ -12,6 +12,20 @@ public class ModeloMedico {
         this.medico = new Medico();
     }
     
+    public void setDatosMedico(String dni, String nombre, String apellidos, String telefono){
+        medico.setDNI(dni);
+        medico.setNombreMedico(nombre);
+        medico.setApellidoMedico(apellidos);
+        medico.setTelefonoMedico(telefono);
+    }
+    
+    public void setDatosUsuario(String usuario, String clave){
+        medico.getUsuario().setUsuario(usuario);
+        medico.getUsuario().setClave(clave);
+        medico.getUsuario().setEstado(true);
+        medico.getUsuario().setRol("Medico");
+    }
+    
     public Medico buscarMedico(String nombre, String apellido){
         MedicoDAO medicoDao = new MedicoDAO();
         for (int i = 0; i < medicoDao.cantidadMedico(); i++) {
@@ -24,7 +38,8 @@ public class ModeloMedico {
     }
     
     public void registrar(){
-        
+        MedicoDAO medicoDao = new MedicoDAO();
+        medicoDao.create(medico);
     }
     
     public void editar(){
