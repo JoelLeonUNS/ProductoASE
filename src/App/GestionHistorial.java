@@ -40,6 +40,9 @@ public class GestionHistorial {
         HistoriasPorDefecto.poblar();
     }
 
+    
+    
+    
     private static int menuLogin() {
         System.out.println("\t\n\n::: BIENVENIDO :::");
         System.out.println("1. Iniciar Sesion");
