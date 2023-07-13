@@ -7,22 +7,22 @@ import pacientes.Paciente;
 public abstract class HistoriaClinicaManager {
     static Scanner input = new Scanner (System.in); 
     
-    public HistoriaClinica buscar(String DNI) {
-        try {
-            System.out.println(BD.consultarHistoria(DNI));
-        } catch (Exception e) {
-        }
-        return BD.consultarHistoria(DNI);      
-    }
-    
-    public HistoriaClinica registrar() {
-        HistoriaClinica historiaClinica = new HistoriaClinica();
-        historiaClinica.setPaciente(crearPaciente());
-        setDatos(historiaClinica);
-        //ver que no haya repetido
-        BD.insertarHistoriaClinica(historiaClinica);
-        return historiaClinica;
-    }
+//    public HistoriaClinica buscar(String DNI) {
+//        try {
+//            System.out.println(BD.consultarHistoria(DNI));
+//        } catch (Exception e) {
+//        }
+//        return BD.consultarHistoria(DNI);      
+//    }
+//    
+//    public HistoriaClinica registrar() {
+//        HistoriaClinica historiaClinica = new HistoriaClinica();
+//        historiaClinica.setPaciente(crearPaciente());
+//        setDatos(historiaClinica);
+//        //ver que no haya repetido
+//        BD.insertarHistoriaClinica(historiaClinica);
+//        return historiaClinica;
+//    }
     
     public abstract Paciente crearPaciente();
     
