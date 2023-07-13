@@ -8,12 +8,12 @@ package vista;
  *
  * @author PC1
  */
-public class PanelHistorialMedico extends javax.swing.JPanel {
+public class PanelHistorialMedicoTrabaj extends javax.swing.JPanel {
 
     /**
-     * Creates new form PanelHistorialMedico
+     * Creates new form PanelHistoriaClinicaTrabaj
      */
-    public PanelHistorialMedico() {
+    public PanelHistorialMedicoTrabaj() {
         initComponents();
     }
 
@@ -99,8 +99,12 @@ public class PanelHistorialMedico extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton4 = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
+        jCheckBox27 = new javax.swing.JCheckBox();
+        jCheckBox28 = new javax.swing.JCheckBox();
 
-        setPreferredSize(new java.awt.Dimension(1280, 620));
+        setMinimumSize(new java.awt.Dimension(1280, 620));
+        setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -150,7 +154,7 @@ public class PanelHistorialMedico extends javax.swing.JPanel {
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 20, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Condición: Estudiante");
+        jLabel2.setText("Condición: Trabajador");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -171,7 +175,7 @@ public class PanelHistorialMedico extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Estado Civil");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 160, -1, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(615, 160, -1, -1));
 
         jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField4.setPreferredSize(new java.awt.Dimension(300, 30));
@@ -274,20 +278,20 @@ public class PanelHistorialMedico extends javax.swing.JPanel {
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 105, -1, -1));
 
         jTextField11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField11.setPreferredSize(new java.awt.Dimension(270, 30));
+        jTextField11.setPreferredSize(new java.awt.Dimension(195, 30));
         jPanel2.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 180, -1, -1));
 
         jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltero", "Casado", "Viudo", "Divorciado" }));
-        jComboBox2.setPreferredSize(new java.awt.Dimension(130, 30));
-        jPanel2.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 180, -1, -1));
+        jComboBox2.setPreferredSize(new java.awt.Dimension(120, 30));
+        jPanel2.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(615, 180, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel14.setText("Nombre");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 255, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel15.setText("E.A.P.");
+        jLabel15.setText("Área de trabajo");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 160, -1, -1));
 
         jCheckBox11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -408,6 +412,18 @@ public class PanelHistorialMedico extends javax.swing.JPanel {
         jButton4.setPreferredSize(new java.awt.Dimension(130, 30));
         jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 440, -1, -1));
 
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel22.setText("Docente");
+        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, -1, -1));
+
+        jCheckBox27.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jCheckBox27.setText("No");
+        jPanel2.add(jCheckBox27, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 185, -1, -1));
+
+        jCheckBox28.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jCheckBox28.setText("Si");
+        jPanel2.add(jCheckBox28, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 185, -1, -1));
+
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 95, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -436,6 +452,8 @@ public class PanelHistorialMedico extends javax.swing.JPanel {
     private javax.swing.JCheckBox jCheckBox24;
     private javax.swing.JCheckBox jCheckBox25;
     private javax.swing.JCheckBox jCheckBox26;
+    private javax.swing.JCheckBox jCheckBox27;
+    private javax.swing.JCheckBox jCheckBox28;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox5;
@@ -460,6 +478,7 @@ public class PanelHistorialMedico extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
