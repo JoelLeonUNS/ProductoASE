@@ -8,6 +8,6 @@ package modelo;
  *
  * @author USUARIO
  */
-public class ModeloLogin {
+public class ModeloUsuario {
     
 }

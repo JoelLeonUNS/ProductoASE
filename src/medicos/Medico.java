@@ -2,41 +2,21 @@ package medicos;
 
 public class Medico {
 
-    private String usuario;
-    private String clave;
     private String apellidoMedico;
     private String nombreMedico;
     private String telefonoMedico;
     private String DNI;
-    private boolean estado;
+    private Usuario usuario;
 
     public Medico() {
     }
 
-    public Medico(String usuario, String clave, String apellidoMedico, String nombreMedico, String telefonoMedico, String DNI, boolean estado) {
-        this.usuario = usuario;
-        this.clave = clave;
+    public Medico(String apellidoMedico, String nombreMedico, String telefonoMedico, String DNI, Usuario usuario) {
         this.apellidoMedico = apellidoMedico;
         this.nombreMedico = nombreMedico;
         this.telefonoMedico = telefonoMedico;
         this.DNI = DNI;
-        this.estado = estado;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
         this.usuario = usuario;
-    }
-
-    public String getClave() {
-        return clave;
-    }
-
-    public void setClave(String clave) {
-        this.clave = clave;
     }
 
     public String getApellidoMedico() {
@@ -71,12 +51,12 @@ public class Medico {
         this.DNI = DNI;
     }
 
-    public boolean isEstado() {
-        return estado;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
     
 }
