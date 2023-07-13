@@ -28,7 +28,7 @@ public class ModeloMedico {
     
     public Medico buscarMedico(String nombre, String apellido){
         MedicoDAO medicoDao = new MedicoDAO();
-        for (int i = 0; i < medicoDao.cantidadMedico(); i++) {
+        for (int i = 0; i < medicoDao.count(); i++) {
             if (medicoDao.read(i).getNombreMedico().equals(nombre)&&(medicoDao.read(i).getApellidoMedico().equals(apellido))) {
                 idMedico = i;
                 break;

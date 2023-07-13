@@ -30,10 +30,12 @@ public class GestionHistorial {
 //    private static final ConsultaManager consultaManager = new ConsultaManager();
 //    private static ExamenManager examenManager;
 //
-//    public static void main(String[] args) {
-//        cargarValoresPorDefecto();
-//        mostrarLogin();
-//    }
+   public static void main(String[] args) {
+        //cargarValoresPorDefecto();
+        //mostrarLogin();
+        boolean datoValido = false;
+        System.out.println(datoValido);
+    }
 //
 //    private static void cargarValoresPorDefecto() {
 //        MedicosPorDefecto.poblar();

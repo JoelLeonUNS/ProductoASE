@@ -32,7 +32,7 @@ public class MedicoDAO {
         }
     }
     
-    public int cantidadMedico() {
+    public int count() { // antes decía cantidadMedicos
         return BD.getMedicos().size();
     }
 }
