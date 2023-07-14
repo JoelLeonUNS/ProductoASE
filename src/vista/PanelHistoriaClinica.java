@@ -11,7 +11,7 @@ import presentador.PresentadorGeneral;
 
 public class PanelHistoriaClinica extends javax.swing.JPanel  implements ActionListener{
     
-    private PresentadorGeneral pGeneral;
+    private final PresentadorGeneral pGeneral;
     private PanelHistoriaEstudiante pHistoriaEstudiante;
     private PanelHistoriaTrabajador pHistoriaTrabajador;
     
@@ -66,18 +66,10 @@ public class PanelHistoriaClinica extends javax.swing.JPanel  implements ActionL
             });
         }
     }
-    
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
-            case "Nueva Historia" -> {
-                if (cmbBx_nuevaHistoria.getSelectedIndex() == 1) {
-                    pGeneral.getpHistoriaClinica().cambiarTipoHistoriaClinica(pnl_baseHistoriaClinica, pHistoriaEstudiante);
-                } else if (cmbBx_nuevaHistoria.getSelectedIndex() == 2) {
-                    pGeneral.getpHistoriaClinica().cambiarTipoHistoriaClinica(pnl_baseHistoriaClinica, pHistoriaTrabajador);
-                }
-            }
             case "Buscar" -> {
                 if(isBusquedaDNI()){
                     modelTablaBuscarHistoria.setRowCount(0);
@@ -85,6 +77,19 @@ public class PanelHistoriaClinica extends javax.swing.JPanel  implements ActionL
                 }else{
                     mostrarTablaBuscarHistoria(pGeneral.getpHistoriaClinica().buscarHistoriaClinicaCoincidente(getInputText(txtFld_valorBuscado)));
                 }
+            }
+            case "Nueva Historia" -> {
+                if (cmbBx_nuevaHistoria.getSelectedIndex() == 1) {
+                    pGeneral.getpHistoriaClinica().cambiarTipoHistoriaClinica(pnl_baseHistoriaClinica, pHistoriaEstudiante);
+                } else if (cmbBx_nuevaHistoria.getSelectedIndex() == 2) {
+                    pGeneral.getpHistoriaClinica().cambiarTipoHistoriaClinica(pnl_baseHistoriaClinica, pHistoriaTrabajador);
+                }
+            }
+            case "Editar Historia" -> {
+                
+            }
+            case "Guardar" -> {
+                
             }
         }
     }
@@ -131,7 +136,7 @@ public class PanelHistoriaClinica extends javax.swing.JPanel  implements ActionL
         add(cmbBx_nuevaHistoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 30, -1, -1));
 
         bttn_editarHistoria.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bttn_editarHistoria.setText("Editar historia");
+        bttn_editarHistoria.setText("Editar Historia");
         bttn_editarHistoria.setPreferredSize(new java.awt.Dimension(163, 35));
         add(bttn_editarHistoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(737, 30, 163, -1));
 

@@ -10,6 +10,7 @@ import modelo.ModeloUsuario;
 import pacientes.Alumno;
 import pacientes.Familiar;
 import presentador.PresentadorGeneral;
+import valoresPorDefecto.ConsultasPorDefecto;
 import valoresPorDefecto.MedicosPorDefecto;
 import vista.VistaLogin;
 
@@ -28,6 +29,8 @@ public class GestionHistorial {
 //
     public static void main(String[] args) {
         MedicosPorDefecto.poblar();
+        ConsultasPorDefecto.poblar();
+        
         HistoriaClinicaDAO hcDAO = new HistoriaClinicaDAO();
         HistoriaClinica historia = new HistoriaClinica(4, new Alumno("Sistemas", "98563274", "Luka", "Modric", "M", "14/06/2000", "Lima", "Chimbote", "Ancash", "Trapecio", 976805287, "Soltero", new Familiar("Karim", "Hermano", "Los Héroes", "976802405", "")), "");
         hcDAO.create(historia);
