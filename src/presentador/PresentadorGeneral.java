@@ -10,12 +10,14 @@ public class PresentadorGeneral {
     private PresentadorAdministrarCuentas pAdministrarCuentas;
     private PresentadorMedico pMedico;
     private PresentadorLogin pLogin;
+    private PresentadorExamen pExamen;
     private static PresentadorGeneral pGeneral;
 
     public PresentadorGeneral() {
         pAdministrarCuentas = new PresentadorAdministrarCuentas();
         pLogin = new PresentadorLogin();
         pMedico = new PresentadorMedico();
+        pExamen = new PresentadorExamen();
     }
     
     public static PresentadorGeneral getInstancia() {
@@ -64,5 +66,14 @@ public class PresentadorGeneral {
     public void setpMedico(PresentadorMedico pMediCo) {
         this.pMedico = pMediCo;
     }
+
+    public PresentadorExamen getpExamen() {
+        return pExamen;
+    }
+
+    public void setpExamen(PresentadorExamen pExamen) {
+        this.pExamen = pExamen;
+    }
+    
     
 }
