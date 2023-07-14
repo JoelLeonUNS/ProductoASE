@@ -16,7 +16,7 @@ public class PresentadorMedico {
     }
     
     public void vincularPanel(JPanel base, JPanel siguiente) {
-        siguiente.setSize(1220,     620);
+        siguiente.setSize(1280, 620);
         siguiente.setLocation(0, 0);
         base.removeAll();
         base.add(siguiente, BorderLayout.CENTER);

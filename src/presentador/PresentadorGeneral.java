@@ -10,25 +10,34 @@ public class PresentadorGeneral {
     private PresentadorAdministrarCuentas pAdministrarCuentas;
     private PresentadorMedico pMedico;
     private PresentadorLogin pLogin;
-    
+    private static PresentadorGeneral pGeneral;
 
     public PresentadorGeneral() {
         pAdministrarCuentas = new PresentadorAdministrarCuentas();
         pLogin = new PresentadorLogin();
+        pMedico = new PresentadorMedico();
+    }
+    
+    public static PresentadorGeneral getInstancia() {
+        if (pGeneral == null) {
+            return pGeneral = new PresentadorGeneral();
+        } else {
+            return pGeneral;
+        }
     }
     
     public void mostrarVistaMedico() {
-        VistaMedico vistaMedico = new VistaMedico(new PresentadorGeneral());
+        VistaMedico vistaMedico = new VistaMedico(PresentadorGeneral.getInstancia());
         vistaMedico.iniciar();
     }
     
     public void mostrarVistaAdmin() {
-        VistaAdmin vistaAdmin = new VistaAdmin(new PresentadorGeneral());
+        VistaAdmin vistaAdmin = new VistaAdmin(PresentadorGeneral.getInstancia());
         vistaAdmin.iniciar();
     }
     
     public void mostrarVistaLogin() {
-        VistaLogin vistaLogin = new VistaLogin(new PresentadorGeneral());
+        VistaLogin vistaLogin = new VistaLogin(PresentadorGeneral.getInstancia());
         vistaLogin.iniciar();
     }
     

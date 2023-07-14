@@ -43,6 +43,11 @@ public class VistaMedico extends javax.swing.JFrame implements ActionListener {
             case "INFORMES" -> {
                 pGeneral.getpMedico().vincularPanel(pnl_medico, pInforme);
             }
+            case "CERRAR SESIÓN" -> {
+                pGeneral.getpLogin().cerrarSesion();
+                this.dispose();
+                pGeneral.mostrarVistaLogin();
+            }
         }
     }
     
@@ -63,11 +68,11 @@ public class VistaMedico extends javax.swing.JFrame implements ActionListener {
         lbl_nombreApellido = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bttn_cerrarSesion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bttn_cerrarSesion.setText("Cerrar Sesión");
+        bttn_cerrarSesion.setActionCommand("CERRAR SESIÓN");
         bttn_cerrarSesion.setBorderPainted(false);
         bttn_cerrarSesion.setContentAreaFilled(false);
         bttn_cerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -76,8 +81,19 @@ public class VistaMedico extends javax.swing.JFrame implements ActionListener {
 
         pnl_medico.setBackground(new java.awt.Color(204, 204, 204));
         pnl_medico.setPreferredSize(new java.awt.Dimension(1280, 620));
-        pnl_medico.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(pnl_medico, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 1220, -1));
+
+        javax.swing.GroupLayout pnl_medicoLayout = new javax.swing.GroupLayout(pnl_medico);
+        pnl_medico.setLayout(pnl_medicoLayout);
+        pnl_medicoLayout.setHorizontalGroup(
+            pnl_medicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1280, Short.MAX_VALUE)
+        );
+        pnl_medicoLayout.setVerticalGroup(
+            pnl_medicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 620, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(pnl_medico, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1280, 620));
 
         bttn_historiasClinicas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bttn_historiasClinicas.setText("Historias Clínicas");

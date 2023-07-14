@@ -22,9 +22,9 @@ public class GestionHistorial {
 //    private static ExamenManager examenManager;
 //
     public static void main(String[] args) {
-        PresentadorGeneral pg = new PresentadorGeneral();
-        pg.setModeloPresentadorLogin(new ModeloUsuario());
-        VistaLogin vLogin = new VistaLogin(pg);
+        
+        PresentadorGeneral.getInstancia().setModeloPresentadorLogin(new ModeloUsuario());
+        VistaLogin vLogin = new VistaLogin(PresentadorGeneral.getInstancia());
         
         UsuarioDAO uDAO = new UsuarioDAO();
         MedicoDAO mDAO = new MedicoDAO();

@@ -12,13 +12,13 @@ public class VistaLogin extends javax.swing.JFrame implements ActionListener {
     public VistaLogin(PresentadorGeneral pGeneral) {
         this.pGeneral = pGeneral;
         initComponents();
+        this.bttn_iniciarSesion.addActionListener(this);
         lookAndFeel();
     }
 
     public void iniciar() {
         pack();
         setCampos();
-        this.bttn_iniciarSesion.addActionListener(this);
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);// visualiza la ventana
