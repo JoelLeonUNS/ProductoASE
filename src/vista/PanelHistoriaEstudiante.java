@@ -92,6 +92,7 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel {
         jTextArea1 = new javax.swing.JTextArea();
         jButton4 = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(755, 495));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

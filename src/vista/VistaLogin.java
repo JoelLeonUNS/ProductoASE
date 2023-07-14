@@ -5,52 +5,69 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import presentador.PresentadorGeneral;
 
-public class VistaLogin extends javax.swing.JFrame implements ActionListener{
-    
+public class VistaLogin extends javax.swing.JFrame implements ActionListener {
+
     private PresentadorGeneral pGeneral;
-    
+
     public VistaLogin() {
         initComponents();
         lookAndFeel();
     }
-    
+
+    public void iniciar() {
+        pack();
+        setCampos();
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setVisible(true);// visualiza la ventana
+    }
+
     public void setPresentador(PresentadorGeneral pGeneral) {
         this.pGeneral = pGeneral;
         this.bttn_iniciarSesion.addActionListener(this);
     }
-    
+
+    public void setCampos() {
+        txtFld_usuario.setText(pGeneral.getpLogin().getUsuarioRecordado());
+        psswrdFld_clave.setText(pGeneral.getpLogin().getClaveRecordada());
+        pGeneral.getpLogin().resetNumeroIntentos(); // nro intentos = 0
+    }
+
     public String getUsuario() {
         return txtFld_usuario.getText();
     }
-    
+
     public String getClave() {
         return String.copyValueOf(psswrdFld_clave.getPassword());
     }
-    
+
     public void mensaje(String salida) {
         JOptionPane.showMessageDialog(null, salida);
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-        chckBox_recordarSesion.isSelected();
-        
         pGeneral.getpLogin().setDatosUsuario(this.getUsuario(), this.getClave());
-            pGeneral.getpLogin().iniciarSesion();
-            mensaje(pGeneral.getpLogin().showMensaje());
-            if (pGeneral.getpLogin().isAcceso()) {
-                this.dispose();
-                if (pGeneral.getpLogin().isRecordado()) {
+        pGeneral.getpLogin().iniciarSesion();
+        mensaje(pGeneral.getpLogin().showMensaje());
+        if (pGeneral.getpLogin().isAcceso()) {
+            this.dispose();
+            if (pGeneral.getpLogin().isRecordado()) {
+                pGeneral.getpLogin().recordarSesion(); // lo recuerda de nuevo
+            } else {
+                if (chckBox_recordarSesion.isSelected()) {
                     pGeneral.getpLogin().recordarSesion();
-                    //pGeneral.getpLogin().mostrarPanelUsuario("FORM");
                 } else {
-                    //pGeneral.getpLogin().mostrarRecodar("FORM");
+                    pGeneral.getpLogin().noRecordarSesion();
                 }
             }
-            if (pGeneral.getpLogin().isBloqueado()) {
-                bttn_iniciarSesion.setEnabled(false);
+            if (!pGeneral.getpLogin().isHabilitado()) {
+                mensaje("Lo siento, su cuenta se\nencuentra inhabilitada.");
             }
+        }
+        if (pGeneral.getpLogin().isBloqueado()) {
+            bttn_iniciarSesion.setEnabled(false);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -121,7 +138,7 @@ public class VistaLogin extends javax.swing.JFrame implements ActionListener{
 
         getContentPane().add(pnl_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 130, 450, 540));
 
-        lbl_foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/unidadMedica.jpg"))); // NOI18N
+        lbl_foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/unidadMedica.jpg"))); // NOI18N
         getContentPane().add(lbl_foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 700, 540));
 
         pack();
@@ -154,5 +171,4 @@ public class VistaLogin extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JTextField txtFld_usuario;
     // End of variables declaration//GEN-END:variables
 
-    
 }

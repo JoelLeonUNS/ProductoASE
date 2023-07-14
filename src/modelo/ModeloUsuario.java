@@ -41,12 +41,16 @@ public class ModeloUsuario {
         this.recuerdoSesion = recuerdoSesion;
     }
     
-    public void reiniciarNumeroIntentos() {
+    public void resetNumeroIntentos() {
         numeroIntentos = 0;
     }
 
     public boolean isDatosValido() {
         return datosValido;
+    }
+    
+    public boolean isHabilitado() {
+        return getUsuarioBD().isEstado();
     }
 
     public void iniciarSesion() {
@@ -61,7 +65,7 @@ public class ModeloUsuario {
                 datosValido = false;
             }
         }
-            if (!datosValido) numeroIntentos++;
+        if (!datosValido) numeroIntentos++;
     }
     
     public void recordarSesion() {

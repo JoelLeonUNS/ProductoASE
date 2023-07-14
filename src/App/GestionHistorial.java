@@ -1,21 +1,10 @@
 package App;
 
-import consultas.ConsultaManager;
-import consultas.ConsultaMedica;
-import examenes.Examen;
-import historias.HistoriaClinica;
-import historias.HistoriaClinicaManager;
-import historias.HistoriaClinicaManagerAlumno;
-import historias.HistoriaClinicaManagerTrabajador;
-import examenes.ExamenManager;
-import examenesClinico.ExamenClinicoManager;
-import examenesFisico.ExamenFisicoManager;
-import examenesMedico.ExamenMedicoManager;
-import java.util.Scanner;
-import medicos.Medico;
-import medicos.MedicoManager;
-import valoresPorDefecto.HistoriasPorDefecto;
-import valoresPorDefecto.MedicosPorDefecto;
+import BaseDeDatos.UsuarioDAO;
+import medicos.Usuario;
+import modelo.ModeloUsuario;
+import presentador.PresentadorGeneral;
+import vista.VistaLogin;
 
 public class GestionHistorial {
 
@@ -30,11 +19,20 @@ public class GestionHistorial {
 //    private static final ConsultaManager consultaManager = new ConsultaManager();
 //    private static ExamenManager examenManager;
 //
-   public static void main(String[] args) {
-        //cargarValoresPorDefecto();
-        //mostrarLogin();
-        boolean datoValido = false;
-        System.out.println(datoValido);
+    public static void main(String[] args) {
+        PresentadorGeneral pg = new PresentadorGeneral();
+        pg.setModeloPresentadorLogin(new ModeloUsuario());
+        VistaLogin vLogin = new VistaLogin();
+        vLogin.setPresentador(pg);
+        
+        UsuarioDAO uDAO = new UsuarioDAO();
+        uDAO.create(new Usuario("Joel", "2werA1", false, "User"));
+        uDAO.create(new Usuario("Angie", "3werA2", true, "User"));
+        uDAO.create(new Usuario("Abner", "4werA3", true, "Admin"));
+        uDAO.create(new Usuario("Alex", "5werA4", true, "Admin"));
+        
+        vLogin.iniciar();
+
     }
 //
 //    private static void cargarValoresPorDefecto() {

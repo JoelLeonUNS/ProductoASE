@@ -20,19 +20,13 @@ public class PresentadorLogin {
     }
 
     public String getUsuarioRecordado() {
-        if (mUsuario.getRecuerdoSesion() != null) {
-            return mUsuario.getRecuerdoSesion().split(";")[0];
-        } else {
-            return "";
-        }
+        if (mUsuario.getRecuerdoSesion() != null) return mUsuario.getRecuerdoSesion().split(";")[0];
+        else return "";
     }
 
     public String getClaveRecordada() {
-        if (mUsuario.getRecuerdoSesion() != null) {
-            return mUsuario.getRecuerdoSesion().split(";")[1];
-        } else {
-            return "";
-        }
+        if (mUsuario.getRecuerdoSesion() != null) return mUsuario.getRecuerdoSesion().split(";")[1];
+        else return "";
     }
     
     public Usuario getUsuarioBD() {
@@ -63,12 +57,16 @@ public class PresentadorLogin {
         }
     }
     
-    public void reiniciarNumeroIntentos() {
-        mUsuario.reiniciarNumeroIntentos();
+    public void resetNumeroIntentos() {
+        mUsuario.resetNumeroIntentos();
     }
 
     public boolean isAcceso() {
         return mUsuario.isDatosValido() && mUsuario.getNumeroIntentos() < 3;
+    }
+    
+    public boolean isHabilitado() {
+        return mUsuario.isHabilitado();
     }
 
     public boolean isBloqueado() {

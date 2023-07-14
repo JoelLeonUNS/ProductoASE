@@ -7,7 +7,7 @@ public class UsuarioDAO {
     
     public void create(Usuario usuario) {
         BD.getUsuarios().put(BD.IdUsuario(), usuario);
-        System.out.println("Usuario creado: " + usuario.getUsuario()+ " | " + usuario.getRol());
+        System.out.println("Usuario creado: " + usuario.getUsuario() + " | " + usuario.getRol()+ " | " + usuario.getClave());
     }
     
     public Usuario read(int id) {
@@ -17,7 +17,7 @@ public class UsuarioDAO {
     public void update(Usuario usuario, int id) {
         if (BD.getUsuarios().containsKey(id)) {
             BD.getUsuarios().put(id, usuario);
-            System.out.println("Usuario actualizado: " + usuario.getUsuario()+" "+usuario.getRol());
+            System.out.println("Usuario actualizado: " + usuario.getUsuario()+ " " + usuario.getRol());
         } else {
             System.out.println("No se puede actualizar el usuario. ID no encontrado: " + id);
         }

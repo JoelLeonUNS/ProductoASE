@@ -95,6 +95,7 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel {
         jCheckBox27 = new javax.swing.JCheckBox();
         jCheckBox28 = new javax.swing.JCheckBox();
 
+        setPreferredSize(new java.awt.Dimension(755, 495));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
