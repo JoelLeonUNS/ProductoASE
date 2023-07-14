@@ -1,8 +1,12 @@
 package vista;
 
+import historias.HistoriaClinica;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 import presentador.PresentadorGeneral;
 
 public class PanelHistoriaClinica extends javax.swing.JPanel  implements ActionListener{
@@ -11,6 +15,7 @@ public class PanelHistoriaClinica extends javax.swing.JPanel  implements ActionL
     private PanelHistoriaEstudiante pHistoriaEstudiante;
     private PanelHistoriaTrabajador pHistoriaTrabajador;
     
+    private DefaultTableModel modelTablaBuscarHistoria = new DefaultTableModel();
     private DefaultComboBoxModel<String> comboBoxNuevaHistoria = new DefaultComboBoxModel<>();
     
     public PanelHistoriaClinica(PresentadorGeneral pGeneral){
@@ -19,7 +24,14 @@ public class PanelHistoriaClinica extends javax.swing.JPanel  implements ActionL
         pHistoriaEstudiante = new PanelHistoriaEstudiante(pGeneral);
         pHistoriaTrabajador = new PanelHistoriaTrabajador(pGeneral);
         llenarComboBoxNuevaHistoria();
+        crearEncabezadoTablaBuscarHistoria();
         cmbBx_nuevaHistoria.addActionListener(this);
+        bttn_buscar.addActionListener(this);
+        
+    }
+    
+    public String getInputText(JTextField txtFld) {
+        return txtFld.getText();
     }
     
     private void llenarComboBoxNuevaHistoria() {
@@ -27,6 +39,34 @@ public class PanelHistoriaClinica extends javax.swing.JPanel  implements ActionL
         comboBoxNuevaHistoria.addElement("Estudiante");
         comboBoxNuevaHistoria.addElement("Trabajador");
     }
+    
+    private void crearEncabezadoTablaBuscarHistoria() {
+        modelTablaBuscarHistoria.addColumn("DNI");
+        modelTablaBuscarHistoria.addColumn("Nombre");
+        modelTablaBuscarHistoria.addColumn("Apellido");
+    }
+    
+    public boolean isBusquedaDNI(){
+        return this.txtFld_valorBuscado.getText().matches("[0-9]+");
+    }
+    
+    public void mostrarTablaBuscarHistoria(ArrayList<HistoriaClinica> historiasClinicas) {
+        modelTablaBuscarHistoria.setRowCount(0);
+        for (HistoriaClinica historiaClinica : historiasClinicas) {
+            addHistoriaClinica(historiaClinica);
+        }
+    }
+    
+    private void addHistoriaClinica(HistoriaClinica historiaClinica) {
+        if(historiaClinica!=null){
+            modelTablaBuscarHistoria.addRow(new Object[]{
+            historiaClinica, // Guardar el objeto HistoriaClinica
+            historiaClinica.getPaciente().getNombre(),
+            historiaClinica.getPaciente().getApellido(),   
+            });
+        }
+    }
+    
     
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -37,7 +77,15 @@ public class PanelHistoriaClinica extends javax.swing.JPanel  implements ActionL
                 } else if (cmbBx_nuevaHistoria.getSelectedIndex() == 2) {
                     pGeneral.getpHistoriaClinica().cambiarTipoHistoriaClinica(pnl_baseHistoriaClinica, pHistoriaTrabajador);
                 }
-            }      
+            }
+            case "Buscar" -> {
+                if(isBusquedaDNI()){
+                    modelTablaBuscarHistoria.setRowCount(0);
+                    addHistoriaClinica(pGeneral.getpHistoriaClinica().buscarHistoriaClinicaDNI(getInputText(txtFld_valorBuscado)));
+                }else{
+                    mostrarTablaBuscarHistoria(pGeneral.getpHistoriaClinica().buscarHistoriaClinicaCoincidente(getInputText(txtFld_valorBuscado)));
+                }
+            }
         }
     }
     
@@ -69,14 +117,7 @@ public class PanelHistoriaClinica extends javax.swing.JPanel  implements ActionL
         add(bttn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 130, 35));
 
         tbl_busquedaHistoria.setBackground(new java.awt.Color(217, 217, 217));
-        tbl_busquedaHistoria.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "DNI", "Nombre", "Apellido"
-            }
-        ));
+        tbl_busquedaHistoria.setModel(modelTablaBuscarHistoria);
         tbl_busquedaHistoria.setPreferredSize(new java.awt.Dimension(400, 495));
         scrll_tablaBusqueda.setViewportView(tbl_busquedaHistoria);
 

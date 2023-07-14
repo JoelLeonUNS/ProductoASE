@@ -72,18 +72,19 @@ public class HistoriaClinica {
 
     @Override
     public String toString() {
-        return "\nNro. Historia Clinica: " + numeroHistoriaClinica + "\n__________________________________" + paciente + "\nAntecedentes Patologicos: " + antecedentesPatologicos + "\nAntecedentes Familiares: " + antecedentesFamiliares + listarConsultas();
+//        return "\nNro. Historia Clinica: " + numeroHistoriaClinica + "\n__________________________________" + paciente + "\nAntecedentes Patologicos: " + antecedentesPatologicos + "\nAntecedentes Familiares: " + antecedentesFamiliares + listarConsultas();
+        return this.paciente.getDNI();
     }
 
-    private String listarConsultas() {
-        String lista = "";
-        if (!consultasMedicas.isEmpty()) {
-            lista = "\n__________________________________";
-            for (ConsultaMedica consulta : consultasMedicas) {
-                lista += consulta;
-            }
-        }
-        return lista;
-    }
+//    private String listarConsultas() {
+//        String lista = "";
+//        if (!consultasMedicas.isEmpty()) {
+//            lista = "\n__________________________________";
+//            for (ConsultaMedica consulta : consultasMedicas) {
+//                lista += consulta;
+//            }
+//        }
+//        return lista;
+//    }
 
 }
