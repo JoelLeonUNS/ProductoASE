@@ -35,6 +35,7 @@ public class PanelInforme extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
+        setPreferredSize(new java.awt.Dimension(1280, 620));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -62,7 +63,7 @@ public class PanelInforme extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 95, -1, -1));
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Generar Informe", "informe1", "informe2" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Generar Informe", "informe1", "informe2", "informe3", "informe4", "informe5" }));
         jComboBox1.setPreferredSize(new java.awt.Dimension(215, 35));
         add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 30, -1, -1));
 
@@ -72,7 +73,7 @@ public class PanelInforme extends javax.swing.JPanel {
         add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(729, 30, -1, -1));
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton2.setText("Guardar");
+        jButton2.setText("Descargar PDF");
         jButton2.setPreferredSize(new java.awt.Dimension(133, 35));
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1117, 30, -1, -1));
 
