@@ -1,10 +1,56 @@
 package vista;
 
-public class VistaLogin extends javax.swing.JFrame {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+import presentador.PresentadorGeneral;
 
+public class VistaLogin extends javax.swing.JFrame implements ActionListener{
+    
+    private PresentadorGeneral pGeneral;
+    
     public VistaLogin() {
         initComponents();
         lookAndFeel();
+    }
+    
+    public void setPresentador(PresentadorGeneral pGeneral) {
+        this.pGeneral = pGeneral;
+        this.bttn_iniciarSesion.addActionListener(this);
+    }
+    
+    public String getUsuario() {
+        return txtFld_usuario.getText();
+    }
+    
+    public String getClave() {
+        return String.copyValueOf(psswrdFld_clave.getPassword());
+    }
+    
+    public void mensaje(String salida) {
+        JOptionPane.showMessageDialog(null, salida);
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
+        chckBox_recordarSesion.isSelected();
+        
+        pGeneral.getpLogin().setDatosUsuario(this.getUsuario(), this.getClave());
+            pGeneral.getpLogin().iniciarSesion();
+            mensaje(pGeneral.getpLogin().showMensaje());
+            if (pGeneral.getpLogin().isAcceso()) {
+                this.dispose();
+                if (pGeneral.getpLogin().isRecordado()) {
+                    pGeneral.getpLogin().recordarSesion();
+                    //pGeneral.getpLogin().mostrarPanelUsuario("FORM");
+                } else {
+                    //pGeneral.getpLogin().mostrarRecodar("FORM");
+                }
+            }
+            if (pGeneral.getpLogin().isBloqueado()) {
+                bttn_iniciarSesion.setEnabled(false);
+            }
     }
 
     @SuppressWarnings("unchecked")
@@ -12,10 +58,10 @@ public class VistaLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         pnl_header = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lbl_unsLogo = new javax.swing.JLabel();
+        lbl_unidadMedica = new javax.swing.JLabel();
         pnl_login = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        lbl_fotoSesion = new javax.swing.JLabel();
         lbl_usuario = new javax.swing.JLabel();
         txtFld_usuario = new javax.swing.JTextField();
         lbl_clave = new javax.swing.JLabel();
@@ -30,105 +76,53 @@ public class VistaLogin extends javax.swing.JFrame {
 
         pnl_header.setBackground(new java.awt.Color(255, 255, 255));
         pnl_header.setPreferredSize(new java.awt.Dimension(1220, 70));
+        pnl_header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Mi proyecto.png"))); // NOI18N
+        lbl_unsLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Mi proyecto.png"))); // NOI18N
+        pnl_header.add(lbl_unsLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 13, 110, 45));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("Unidad Médica");
+        lbl_unidadMedica.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbl_unidadMedica.setText("Unidad Médica");
+        pnl_header.add(lbl_unidadMedica, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 22, -1, -1));
 
-        javax.swing.GroupLayout pnl_headerLayout = new javax.swing.GroupLayout(pnl_header);
-        pnl_header.setLayout(pnl_headerLayout);
-        pnl_headerLayout.setHorizontalGroup(
-            pnl_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_headerLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1)
-                .addGap(120, 120, 120)
-                .addComponent(jLabel2)
-                .addContainerGap(956, Short.MAX_VALUE))
-        );
-        pnl_headerLayout.setVerticalGroup(
-            pnl_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_headerLayout.createSequentialGroup()
-                .addGroup(pnl_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnl_headerLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(pnl_headerLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel2)))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(pnl_header, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        getContentPane().add(pnl_header, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 1220, 70));
 
         pnl_login.setBackground(new java.awt.Color(255, 255, 255));
         pnl_login.setPreferredSize(new java.awt.Dimension(450, 540));
+        pnl_login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/usuario.png"))); // NOI18N
+        lbl_fotoSesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_fotoSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario.png"))); // NOI18N
+        pnl_login.add(lbl_fotoSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 310, 150));
 
         lbl_usuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl_usuario.setText("Usuario");
+        pnl_login.add(lbl_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
 
         txtFld_usuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtFld_usuario.setPreferredSize(new java.awt.Dimension(71, 30));
+        pnl_login.add(txtFld_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 310, 30));
 
         lbl_clave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl_clave.setText("Clave");
+        pnl_login.add(lbl_clave, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, -1, -1));
 
         bttn_iniciarSesion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bttn_iniciarSesion.setText("INICIAR SESIÓN");
         bttn_iniciarSesion.setPreferredSize(new java.awt.Dimension(75, 35));
+        pnl_login.add(bttn_iniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 310, 40));
 
         psswrdFld_clave.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         psswrdFld_clave.setPreferredSize(new java.awt.Dimension(90, 30));
+        pnl_login.add(psswrdFld_clave, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 310, 30));
 
         chckBox_recordarSesion.setText("Recordar sesión");
+        pnl_login.add(chckBox_recordarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, -1, -1));
 
-        javax.swing.GroupLayout pnl_loginLayout = new javax.swing.GroupLayout(pnl_login);
-        pnl_login.setLayout(pnl_loginLayout);
-        pnl_loginLayout.setHorizontalGroup(
-            pnl_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_loginLayout.createSequentialGroup()
-                .addContainerGap(290, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(160, 160, 160))
-            .addGroup(pnl_loginLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(pnl_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chckBox_recordarSesion)
-                    .addGroup(pnl_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lbl_clave)
-                        .addComponent(lbl_usuario)
-                        .addComponent(txtFld_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bttn_iniciarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                        .addComponent(psswrdFld_clave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnl_loginLayout.setVerticalGroup(
-            pnl_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_loginLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(jLabel4)
-                .addGap(30, 30, 30)
-                .addComponent(lbl_usuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtFld_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(lbl_clave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(psswrdFld_clave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(chckBox_recordarSesion)
-                .addGap(32, 32, 32)
-                .addComponent(bttn_iniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(189, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(pnl_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, -1, -1));
+        getContentPane().add(pnl_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 130, 450, 540));
 
         lbl_foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/unidadMedica.jpg"))); // NOI18N
-        getContentPane().add(lbl_foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        getContentPane().add(lbl_foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 700, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -148,15 +142,17 @@ public class VistaLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttn_iniciarSesion;
     private javax.swing.JCheckBox chckBox_recordarSesion;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lbl_clave;
     private javax.swing.JLabel lbl_foto;
+    private javax.swing.JLabel lbl_fotoSesion;
+    private javax.swing.JLabel lbl_unidadMedica;
+    private javax.swing.JLabel lbl_unsLogo;
     private javax.swing.JLabel lbl_usuario;
     private javax.swing.JPanel pnl_header;
     private javax.swing.JPanel pnl_login;
     private javax.swing.JPasswordField psswrdFld_clave;
     private javax.swing.JTextField txtFld_usuario;
     // End of variables declaration//GEN-END:variables
+
+    
 }

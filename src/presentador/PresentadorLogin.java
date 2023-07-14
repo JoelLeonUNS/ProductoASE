@@ -4,76 +4,80 @@ import medicos.Usuario;
 import modelo.ModeloUsuario;
 
 public class PresentadorLogin {
-    private final ModeloUsuario modeloUsuario;
+    private ModeloUsuario mUsuario;
     
-    public PresentadorLogin(ModeloUsuario modeloUsuario) {
-        this.modeloUsuario = modeloUsuario;
+    public PresentadorLogin() {
+        
+    }
+    
+    public void setModelo(ModeloUsuario mUsuario) {
+        this.mUsuario = mUsuario;
     }
 
-    public void setModel(String usuario, String clave) {
-        modeloUsuario.getUsuario().setUsuario(usuario);
-        modeloUsuario.getUsuario().setClave(clave);
+    public void setDatosUsuario(String usuario, String clave) {
+        mUsuario.getUsuario().setUsuario(usuario);
+        mUsuario.getUsuario().setClave(clave);
     }
 
     public String getUsuarioRecordado() {
-        if (modeloUsuario.getRecuerdoSesion() != null) {
-            return modeloUsuario.getRecuerdoSesion().split(";")[0];
+        if (mUsuario.getRecuerdoSesion() != null) {
+            return mUsuario.getRecuerdoSesion().split(";")[0];
         } else {
             return "";
         }
     }
 
     public String getClaveRecordada() {
-        if (modeloUsuario.getRecuerdoSesion() != null) {
-            return modeloUsuario.getRecuerdoSesion().split(";")[1];
+        if (mUsuario.getRecuerdoSesion() != null) {
+            return mUsuario.getRecuerdoSesion().split(";")[1];
         } else {
             return "";
         }
     }
     
     public Usuario getUsuarioBD() {
-        return modeloUsuario.getUsuarioBD();
+        return mUsuario.getUsuarioBD();
     }
 
     public void iniciarSesion() {
-        modeloUsuario.iniciarSesion();
+        mUsuario.iniciarSesion();
     }
 
     public void recordarSesion() {
-        modeloUsuario.recordarSesion();
+        mUsuario.recordarSesion();
     }
     
     public void noRecordarSesion() {
-        modeloUsuario.setRecuerdoSesion(null);
+        mUsuario.setRecuerdoSesion(null);
     }
 
     public boolean isRecordado() {
-        modeloUsuario.setRecuerdoSesion(modeloUsuario.getUsuario().getUsuario() + ";" + modeloUsuario.getUsuario().getClave());
-        return modeloUsuario.getCareTaker().isExiste(modeloUsuario.guardarSesion());
+        mUsuario.setRecuerdoSesion(mUsuario.getUsuario().getUsuario() + ";" + mUsuario.getUsuario().getClave());
+        return mUsuario.getCareTaker().isExiste(mUsuario.guardarSesion());
     }
     
     public void cerrarSesion() {
         try {
-            modeloUsuario.cerrarSesion();
+            mUsuario.cerrarSesion();
         } catch (Exception e) {
         }
     }
     
     public void reiniciarNumeroIntentos() {
-        modeloUsuario.reiniciarNumeroIntentos();
+        mUsuario.reiniciarNumeroIntentos();
     }
 
     public boolean isAcceso() {
-        return modeloUsuario.isDatosValido() && modeloUsuario.getNumeroIntentos() < 3;
+        return mUsuario.isDatosValido() && mUsuario.getNumeroIntentos() < 3;
     }
 
     public boolean isBloqueado() {
-        return modeloUsuario.getNumeroIntentos() > 2;
+        return mUsuario.getNumeroIntentos() > 2;
     }
 
     public String showMensaje() {
-        if (!modeloUsuario.isDatosValido()) {
-            return "Datos incorrectos o usuario no encontrado.\nNro Intentos: " + modeloUsuario.getNumeroIntentos();
+        if (!mUsuario.isDatosValido()) {
+            return "Datos incorrectos o usuario no encontrado.\nNro Intentos: " + mUsuario.getNumeroIntentos();
         } else {
             return "Inicio de Sesion exitoso.";
         }
