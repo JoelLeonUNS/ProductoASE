@@ -61,7 +61,9 @@ public class VistaLogin extends javax.swing.JFrame implements ActionListener {
                     pGeneral.getpLogin().noRecordarSesion();
                 }
             }
-            if (!pGeneral.getpLogin().isHabilitado()) {
+            if (pGeneral.getpLogin().isHabilitado()) {
+                pGeneral.mostrarVistaMedico();
+            } else {
                 mensaje("Lo siento, su cuenta se\nencuentra inhabilitada.");
             }
         }
