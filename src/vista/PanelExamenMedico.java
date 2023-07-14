@@ -77,6 +77,7 @@ public class PanelExamenMedico extends javax.swing.JPanel {
 
         jButtonGuardarExamMedico.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonGuardarExamMedico.setText("Guardar");
+        jButtonGuardarExamMedico.setActionCommand("Guardar Examen Medico");
         jButtonGuardarExamMedico.setPreferredSize(new java.awt.Dimension(122, 30));
         add(jButtonGuardarExamMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 195, -1, -1));
     }// </editor-fold>//GEN-END:initComponents

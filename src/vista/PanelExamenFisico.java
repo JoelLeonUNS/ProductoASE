@@ -92,7 +92,7 @@ public class PanelExamenFisico extends javax.swing.JPanel {
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 45, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setText("SPO2");
+        jLabel8.setText("IMC");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 115, -1, -1));
 
         jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -125,6 +125,7 @@ public class PanelExamenFisico extends javax.swing.JPanel {
 
         jButtonGuardarExamFisico.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonGuardarExamFisico.setText("Guardar");
+        jButtonGuardarExamFisico.setActionCommand("Guardar Examen Fisico");
         jButtonGuardarExamFisico.setPreferredSize(new java.awt.Dimension(122, 30));
         add(jButtonGuardarExamFisico, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, -1));
     }// </editor-fold>//GEN-END:initComponents

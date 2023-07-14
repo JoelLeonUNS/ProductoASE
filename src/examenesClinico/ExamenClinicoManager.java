@@ -8,21 +8,14 @@ public class ExamenClinicoManager extends ExamenManager {
     
     @Override
     public Examen registrar() {
-        Examen nuevoExamen = new ExamenClinico();
-        //setDatos(nuevoExamen);
-        
-        return nuevoExamen;
+        return new ExamenClinico();
     }
 
-    @Override
-    public void setDatos(Examen examen) {
-        System.out.print("\nAP Cardiovascular: SI (1) NO (0)");
-        ((ExamenClinico) examen).setAPCardiovascular(estado(input.nextInt()));
-        System.out.print("AP Respiratorio: SI (1) NO (0)");
-        ((ExamenClinico) examen).setAPRespiratorio(estado(input.nextInt()));
-    }
-    
-    private boolean estado(int respuesta) {
-        return respuesta == 1;
+    public void setDatos(Examen exa, String observacion, boolean apCardio, boolean apRespiratorio) {
+        ExamenClinico examen = (ExamenClinico) exa;
+        examen.setAPCardiovascular(apCardio);
+        examen.setAPRespiratorio(apRespiratorio);
+        examen.setObservacion(observacion);
+        
     }
 }

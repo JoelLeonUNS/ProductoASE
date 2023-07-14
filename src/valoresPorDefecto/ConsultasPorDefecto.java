@@ -39,12 +39,12 @@ public class ConsultasPorDefecto {
         consulta2.agregarExamen(new ExamenClinico(false, true));
         consulta3.agregarExamen(new ExamenClinico(true, true));
         consulta4.agregarExamen(new ExamenClinico(false, false));
-        consulta5.agregarExamen(new ExamenFisico(36.5, "120/80", 16, 98, 70, 170, 18.6));
-        consulta6.agregarExamen(new ExamenFisico(37.2, "110/70", 18, 99, 72, 175, 18.9));
-        consulta7.agregarExamen(new ExamenFisico(38.5, "130/85", 14, 97, 68, 168, 23.9));
-        consulta8.agregarExamen(new ExamenFisico(35.4, "130/85", 17, 97, 65, 178, 22.5));
-        consulta9.agregarExamen(new ExamenFisico(39.2, "130/85", 16, 97, 70, 163, 24.9));
-        consulta10.agregarExamen(new ExamenFisico(36.8, "130/85", 14, 97, 68, 168, 25.6));
+//        consulta5.agregarExamen(new ExamenFisico(36.5, "120/80", 16, 98, 70, 170, 18.6));
+//        consulta6.agregarExamen(new ExamenFisico(37.2, "110/70", 18, 99, 72, 175, 18.9));
+//        consulta7.agregarExamen(new ExamenFisico(38.5, "130/85", 14, 97, 68, 168, 23.9));
+//        consulta8.agregarExamen(new ExamenFisico(35.4, "130/85", 17, 97, 65, 178, 22.5));
+//        consulta9.agregarExamen(new ExamenFisico(39.2, "130/85", 16, 97, 70, 163, 24.9));
+//        consulta10.agregarExamen(new ExamenFisico(36.8, "130/85", 14, 97, 68, 168, 25.6));
 
         HistoriaClinica historia1 = new HistoriaClinica(1, new Alumno("Sistemas", "12345678", "Juan", "Pérez", "M", "01/01/2000", "Lima", "Lima", "Lima", "Av. Principal 123", 987654321, "Soltero", new Familiar("María", "Madre", "Av. Los Álamos 456", "987654321", "")), "");
         HistoriaClinica historia2 = new HistoriaClinica(2, new Alumno("Derecho", "87654321", "Ana", "García", "F", "15/05/1998", "Arequipa", "Arequipa", "Arequipa", "Calle Pizarro 789", 987654321, "Soltera", new Familiar("Pedro", "Padre", "Jr. Las Rosas 789", "987654321", "")), "");

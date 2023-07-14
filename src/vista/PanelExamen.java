@@ -29,6 +29,8 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
         this.jButtonAñadirConsulta.addActionListener(this);
         this.jButtonGuardar.addActionListener(this);
         this.pExamenMedico.jButtonGuardarExamMedico.addActionListener(this);
+        this.pExamenFisico.jButtonGuardarExamFisico.addActionListener(this);
+        this.pExamenClinico.jButtonGuardarExamClinico.addActionListener(this);
         
         this.jButtonGuardar.setEnabled(false);
         setTxtFldsEditable(false);
@@ -288,7 +290,7 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
         this.jTextArea1.setText("");
     }
     
-    public void getDatosExamen(){
+    public void setDatosExamenMedico(){
         
     }
     
@@ -320,6 +322,16 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
                 this.jButtonGuardar.setEnabled(true);
             }
             case "Guardar"->{
+                
+            }
+            
+            case "Guardar Examen Medico"->{
+                
+            }
+            case "Guardar Examen Fisico"->{
+                
+            }
+            case "Guardar Examen Clinico"->{
                 
             }
         }

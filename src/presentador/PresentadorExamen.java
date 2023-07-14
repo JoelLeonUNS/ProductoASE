@@ -51,7 +51,7 @@ public class PresentadorExamen {
         modeloExamen.setTipoExamen(tipoExamen);
     }
     
-    public void setDatosExamen(){
+    public void setDatosExamenMedico(){
         
     }
     

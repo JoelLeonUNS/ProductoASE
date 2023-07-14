@@ -10,11 +10,13 @@ public class ExamenFisico extends Examen {
     private double peso;
     private double talla;
     private double IMC;
+    private double FC;
+    private double perimetroAbdominal;
 
     public ExamenFisico() {
     }
 
-    public ExamenFisico(double temperatura, String PA, double FR, double SPO2, double peso, double talla, double IMC) {
+    public ExamenFisico(double temperatura, String PA, double FR, double SPO2, double peso, double talla, double IMC, double FC, double perimetroAbdominal) {
         this.temperatura = temperatura;
         this.PA = PA;
         this.FR = FR;
@@ -22,6 +24,8 @@ public class ExamenFisico extends Examen {
         this.peso = peso;
         this.talla = talla;
         this.IMC = IMC;
+        this.FC = FC;
+        this.perimetroAbdominal = perimetroAbdominal;
     }
         
     public double getTemperatura() {
@@ -80,5 +84,19 @@ public class ExamenFisico extends Examen {
         this.IMC = IMC;
     }
 
-    
+    public double getFC() {
+        return FC;
+    }
+
+    public void setFC(double FC) {
+        this.FC = FC;
+    }
+
+    public double getPerimetroAbdominal() {
+        return perimetroAbdominal;
+    }
+
+    public void setPerimetroAbdominal(double perimetroAbdominal) {
+        this.perimetroAbdominal = perimetroAbdominal;
+    }
 }

@@ -10,28 +10,20 @@ public class ExamenFisicoManager extends ExamenManager {
 
     @Override
     public Examen registrar() {
-        Examen nuevoExamen = new ExamenFisico();
-        //setDatos(nuevoExamen);
-
-        return nuevoExamen;
+        return new ExamenFisico();
     }
 
-    @Override
-    public void setDatos(Examen examen) {
-        System.out.print("\nTemperatura: ");
-        ((ExamenFisico) examen).setTemperatura(input.nextDouble());
-        System.out.print("PA: ");
-        ((ExamenFisico) examen).setPA(input.next());
-        System.out.print("FR: ");
-        ((ExamenFisico) examen).setFR(input.nextDouble());
-        System.out.print("SPO2: ");
-        ((ExamenFisico) examen).setSPO2(input.nextDouble());
-        System.out.print("Peso: ");
-        ((ExamenFisico) examen).setPeso(input.nextDouble());
-        System.out.print("Talla: ");
-        ((ExamenFisico) examen).setTalla(input.nextDouble());
-        System.out.print("IMC: ");
-        ((ExamenFisico) examen).setIMC(input.nextDouble());
+    public void setDatos(Examen exa, double temp, String PA, double FR, double SPO2, double peso, double talla, double IMC, double FC, double perAbdominal) {
+        ExamenFisico examen = (ExamenFisico) exa;
+        examen.setTemperatura(temp);
+        examen.setPA(PA);
+        examen.setFR(FR);
+        examen.setSPO2(SPO2);
+        examen.setPeso(peso);
+        examen.setTalla(talla);
+        examen.setIMC(IMC);
+        examen.setFC(FC);
+        examen.setPerimetroAbdominal(perAbdominal);
     }
 
 }
