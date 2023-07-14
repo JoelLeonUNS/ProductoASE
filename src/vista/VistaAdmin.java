@@ -18,19 +18,19 @@ import presentador.PresentadorGeneral;
  */
 public class VistaAdmin extends javax.swing.JFrame implements ActionListener, ListSelectionListener {
 
-    private PresentadorGeneral presentador;
+    private PresentadorGeneral pGeneral;
     private DefaultTableModel modelTablaCuentas = new DefaultTableModel();
     
     public VistaAdmin(PresentadorGeneral p) {
         initComponents();
         crearEncabezadoTablaCuenta();
-        this.presentador = p;
+        this.pGeneral = p;
         this.jButton1.addActionListener(this);
         this.jButton2.addActionListener(this);
         this.jButton3.addActionListener(this);
         this.jButton4.addActionListener(this);
         this.jButton5.addActionListener(this);
-        this.jButton6.addActionListener(this);
+        this.bttn_cerrarSesion.addActionListener(this);
         
         this.jButton3.setEnabled(false);
         this.jButton4.setEnabled(false);
@@ -51,9 +51,10 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pnl_header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        bttn_cerrarSesion = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         txtFld_valorBuscado = new javax.swing.JTextField();
@@ -77,66 +78,68 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 725));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(600, 70));
+        pnl_header.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_header.setPreferredSize(new java.awt.Dimension(600, 70));
+        pnl_header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Administrar Cuentas");
+        pnl_header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 23, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel2.setText("Bienvenido:");
+        pnl_header.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 23, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 318, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(60, 60, 60))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
+        bttn_cerrarSesion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bttn_cerrarSesion.setText("Cerrar Sesión");
+        bttn_cerrarSesion.setBorderPainted(false);
+        bttn_cerrarSesion.setContentAreaFilled(false);
+        bttn_cerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bttn_cerrarSesion.setPreferredSize(new java.awt.Dimension(250, 70));
+        pnl_header.add(bttn_cerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(995, 0, 225, 70));
+
+        getContentPane().add(pnl_header, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 1220, -1));
 
         jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTable1.setModel(modelTablaCuentas);
         jTable1.setPreferredSize(new java.awt.Dimension(404, 510));
         jScrollPane1.setViewportView(jTable1);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 197, 400, 495));
+
         txtFld_valorBuscado.setPreferredSize(new java.awt.Dimension(250, 35));
+        getContentPane().add(txtFld_valorBuscado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setText("Buscar");
         jButton1.setPreferredSize(new java.awt.Dimension(150, 35));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 130, -1, -1));
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton2.setText("Crear Cuenta");
         jButton2.setPreferredSize(new java.awt.Dimension(150, 35));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(513, 130, -1, -1));
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton3.setText("Editar Cuenta");
         jButton3.setPreferredSize(new java.awt.Dimension(150, 35));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(693, 130, -1, -1));
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton4.setText("Desactivar Cuenta");
         jButton4.setPreferredSize(new java.awt.Dimension(150, 35));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(873, 130, -1, -1));
 
         jButton5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton5.setText("Guardar");
         jButton5.setPreferredSize(new java.awt.Dimension(150, 35));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 130, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -208,7 +211,7 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
                                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,75 +247,19 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
-        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton6.setText("Cerrar Sesión");
-        jButton6.setPreferredSize(new java.awt.Dimension(250, 70));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtFld_valorBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(77, 77, 77)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(77, 77, 77)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtFld_valorBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(513, 197, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bttn_cerrarSesion;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -323,7 +270,6 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
@@ -333,6 +279,7 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JPanel pnl_header;
     private javax.swing.JTextField txtFld_valorBuscado;
     // End of variables declaration//GEN-END:variables
 
@@ -397,44 +344,46 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
             case "Buscar" -> {
                 if(isBusquedaDNI()){
                     modelTablaCuentas.setRowCount(0);
-                    addMedico(presentador.getpAdministrarCuentas().buscarMedicoDNI(getInput(txtFld_valorBuscado)));
+                    addMedico(pGeneral.getpAdministrarCuentas().buscarMedicoDNI(getInput(txtFld_valorBuscado)));
                 }else{
-                    mostrarTablaCuentas(presentador.getpAdministrarCuentas().buscarMedicoCoincidente(getInput(txtFld_valorBuscado)));
+                    mostrarTablaCuentas(pGeneral.getpAdministrarCuentas().buscarMedicoCoincidente(getInput(txtFld_valorBuscado)));
                 }
             }
             case "Crear Cuenta" -> {
                 limpiarCasillas();
                 setTxtFldsEditable(true);
                 this.jButton5.setEnabled(true);
-                presentador.getpAdministrarCuentas().setTipoGuardado("CREAR");
+                pGeneral.getpAdministrarCuentas().setTipoGuardado("CREAR");
             }
             case "Editar Cuenta" -> {
                 setTxtFldsEditable(true);
                 this.jButton5.setEnabled(true);
-                presentador.getpAdministrarCuentas().setTipoGuardado("EDITAR");
+                pGeneral.getpAdministrarCuentas().setTipoGuardado("EDITAR");
             }
             case "Desactivar Cuenta" -> {
-                presentador.getpAdministrarCuentas().desactivarCuenta();
+                pGeneral.getpAdministrarCuentas().desactivarCuenta();
                 this.jButton4.setEnabled(false);
             }
             case "Guardar" -> {
-                presentador.getpAdministrarCuentas().setDatosMedico(getInput(jTextField2), getInput(jTextField3), getInput(jTextField4), getInput(jTextField5));
-                presentador.getpAdministrarCuentas().setDatosUsuario(getInput(jTextField6), getInput(jTextField7));   
-                if(presentador.getpAdministrarCuentas().getTipoGuardado().equals("CREAR")){
+                pGeneral.getpAdministrarCuentas().setDatosMedico(getInput(jTextField2), getInput(jTextField3), getInput(jTextField4), getInput(jTextField5));
+                pGeneral.getpAdministrarCuentas().setDatosUsuario(getInput(jTextField6), getInput(jTextField7));   
+                if(pGeneral.getpAdministrarCuentas().getTipoGuardado().equals("CREAR")){
                     if(camposllenos()){
-                        presentador.getpAdministrarCuentas().registrar();
+                        pGeneral.getpAdministrarCuentas().registrar();
                     }else{
                         JOptionPane.showMessageDialog(null, "Debe completar todos los campos.");
                     }
                     
-                }else if(presentador.getpAdministrarCuentas().getTipoGuardado().equals("EDITAR")){
-                    presentador.getpAdministrarCuentas().editar();
+                }else if(pGeneral.getpAdministrarCuentas().getTipoGuardado().equals("EDITAR")){
+                    pGeneral.getpAdministrarCuentas().editar();
                 }
                 this.jButton5.setEnabled(false);
                 setTxtFldsEditable(false);
             }
             case "Cerrar Sesión" -> {
-                //mostrarVistaLogin
+                pGeneral.getpLogin().cerrarSesion(); //
+                this.dispose();
+                pGeneral.mostrarVistaLogin();
             }
         }
     }
@@ -446,12 +395,12 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
         int selectedRow = jTable1.getSelectedRow();
         if(selectedRow != -1){
             String dni = jTable1.getValueAt(selectedRow, 0).toString();
-            jTextField2.setText(presentador.getpAdministrarCuentas().buscarMedicoDNI(dni).getDNI());
-            jTextField3.setText(presentador.getpAdministrarCuentas().buscarMedicoDNI(dni).getNombreMedico());
-            jTextField4.setText(presentador.getpAdministrarCuentas().buscarMedicoDNI(dni).getApellidoMedico());
-            jTextField5.setText(presentador.getpAdministrarCuentas().buscarMedicoDNI(dni).getTelefonoMedico());
-            jTextField6.setText(presentador.getpAdministrarCuentas().buscarMedicoDNI(dni).getUsuario().getUsuario());
-            jTextField7.setText(presentador.getpAdministrarCuentas().buscarMedicoDNI(dni).getUsuario().getClave());
+            jTextField2.setText(pGeneral.getpAdministrarCuentas().buscarMedicoDNI(dni).getDNI());
+            jTextField3.setText(pGeneral.getpAdministrarCuentas().buscarMedicoDNI(dni).getNombreMedico());
+            jTextField4.setText(pGeneral.getpAdministrarCuentas().buscarMedicoDNI(dni).getApellidoMedico());
+            jTextField5.setText(pGeneral.getpAdministrarCuentas().buscarMedicoDNI(dni).getTelefonoMedico());
+            jTextField6.setText(pGeneral.getpAdministrarCuentas().buscarMedicoDNI(dni).getUsuario().getUsuario());
+            jTextField7.setText(pGeneral.getpAdministrarCuentas().buscarMedicoDNI(dni).getUsuario().getClave());
             
         }
     }
