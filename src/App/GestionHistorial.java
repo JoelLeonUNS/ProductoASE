@@ -1,6 +1,8 @@
 package App;
 
+import BaseDeDatos.MedicoDAO;
 import BaseDeDatos.UsuarioDAO;
+import medicos.Medico;
 import medicos.Usuario;
 import modelo.ModeloUsuario;
 import presentador.PresentadorGeneral;
@@ -22,14 +24,16 @@ public class GestionHistorial {
     public static void main(String[] args) {
         PresentadorGeneral pg = new PresentadorGeneral();
         pg.setModeloPresentadorLogin(new ModeloUsuario());
-        VistaLogin vLogin = new VistaLogin();
-        vLogin.setPresentador(pg);
+        VistaLogin vLogin = new VistaLogin(pg);
         
         UsuarioDAO uDAO = new UsuarioDAO();
-        uDAO.create(new Usuario("Joel", "2werA1", false, "User"));
-        uDAO.create(new Usuario("Angie", "3werA2", true, "User"));
+        MedicoDAO mDAO = new MedicoDAO();
+        uDAO.create(new Usuario("Joel", "123", true, "User"));
+        uDAO.create(new Usuario("Angie", "123", true, "User"));
         uDAO.create(new Usuario("Abner", "4werA3", true, "Admin"));
         uDAO.create(new Usuario("Alex", "5werA4", true, "Admin"));
+        
+        mDAO.create(new Medico("Leon", "Joel", "960181410", "73944739", uDAO.read(0)));
         
         vLogin.iniciar();
 

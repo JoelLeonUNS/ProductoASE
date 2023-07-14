@@ -10,7 +10,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import medicos.Medico;
-import presentador.PresentadorAdministrarCuentas;
+import presentador.PresentadorGeneral;
 
 /**
  *
@@ -18,12 +18,12 @@ import presentador.PresentadorAdministrarCuentas;
  */
 public class VistaAdmin extends javax.swing.JFrame implements ActionListener, ListSelectionListener {
 
-    private PresentadorAdministrarCuentas presentador;
-    private DefaultTableModel modelTablaInventario = new DefaultTableModel();
+    private PresentadorGeneral presentador;
+    private DefaultTableModel modelTablaCuentas = new DefaultTableModel();
     
-    public VistaAdmin(PresentadorAdministrarCuentas p) {
+    public VistaAdmin(PresentadorGeneral p) {
         initComponents();
-        crearEncabezadoTablaInventario();
+        crearEncabezadoTablaCuenta();
         this.presentador = p;
         this.jButton1.addActionListener(this);
         this.jButton2.addActionListener(this);
@@ -36,6 +36,13 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
         this.jButton4.setEnabled(false);
         this.jButton5.setEnabled(false);
     }
+    
+    public void iniciar() {
+        pack();
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setVisible(true);// visualiza la ventana
+    }
 
     
     @SuppressWarnings("unchecked")
@@ -47,7 +54,7 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        txtFld_valorBuscado = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -88,7 +95,7 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 318, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 314, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(60, 60, 60))
         );
@@ -103,26 +110,11 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
         );
 
         jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "DNI", "Nombre", "Apellido"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable1.setPreferredSize(new java.awt.Dimension(404, 0));
+        jTable1.setModel(modelTablaCuentas);
+        jTable1.setPreferredSize(new java.awt.Dimension(404, 510));
         jScrollPane1.setViewportView(jTable1);
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(250, 35));
+        txtFld_valorBuscado.setPreferredSize(new java.awt.Dimension(250, 35));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setText("Buscar");
@@ -171,11 +163,6 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
         jLabel10.setText("Cuenta de usuario");
 
         jTextField2.setPreferredSize(new java.awt.Dimension(350, 30));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
 
         jTextField3.setPreferredSize(new java.awt.Dimension(350, 30));
 
@@ -192,7 +179,7 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
                     .addComponent(jLabel9)
@@ -262,12 +249,12 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 408, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtFld_valorBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -282,7 +269,7 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
                                 .addGap(77, 77, 77)
                                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,26 +280,22 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFld_valorBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -336,13 +319,13 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField txtFld_valorBuscado;
     // End of variables declaration//GEN-END:variables
 
     
@@ -360,28 +343,28 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
     }
         
     public boolean isBusquedaDNI(){
-        return this.jTextField1.getText().matches("[0-9]+");
+        return this.txtFld_valorBuscado.getText().matches("[0-9]+");
     }
     
-    public void mostrarTablaInventario(ArrayList<Medico> medicos) {
-        modelTablaInventario.setRowCount(0);
+    public void mostrarTablaCuentas(ArrayList<Medico> medicos) {
+        modelTablaCuentas.setRowCount(0);
         for (Medico medico : medicos) {
             addMedico(medico);
         }
     }
     
     private void addMedico(Medico medico) {
-        modelTablaInventario.addRow(new Object[]{
+        modelTablaCuentas.addRow(new Object[]{
             medico, // Guardar el objeto Producto
             medico.getNombreMedico(),
             medico.getApellidoMedico(),   
         });
     }
     
-    private void crearEncabezadoTablaInventario() {
-        modelTablaInventario.addColumn("DNI");
-        modelTablaInventario.addColumn("Nombre");
-        modelTablaInventario.addColumn("Apellido");
+    private void crearEncabezadoTablaCuenta() {
+        modelTablaCuentas.addColumn("DNI");
+        modelTablaCuentas.addColumn("Nombre");
+        modelTablaCuentas.addColumn("Apellido");
     }
     
     private boolean camposllenos(){
@@ -394,36 +377,37 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
         switch(e.getActionCommand()){
             case "Buscar" -> {
                 if(isBusquedaDNI()){
-                    addMedico(presentador.buscarMedicoDNI(getInput(jTextField1)));
+                    modelTablaCuentas.setRowCount(0);
+                    addMedico(presentador.getpAdministrarCuentas().buscarMedicoDNI(getInput(txtFld_valorBuscado)));
                 }else{
-                    mostrarTablaInventario(presentador.buscarMedicoCoincidente(getInput(jTextField1)));
+                    mostrarTablaCuentas(presentador.getpAdministrarCuentas().buscarMedicoCoincidente(getInput(txtFld_valorBuscado)));
                 }
             }
             case "Crear Cuenta" -> {
                 limpiarCasillas();
                 this.jButton5.setEnabled(true);
-                presentador.setTipoGuardado("CREAR");
+                presentador.getpAdministrarCuentas().setTipoGuardado("CREAR");
             }
             case "Editar Cuenta" -> {
                 this.jButton5.setEnabled(true);
-                presentador.setTipoGuardado("EDITAR");
+                presentador.getpAdministrarCuentas().setTipoGuardado("EDITAR");
             }
             case "Desactivar Cuenta" -> {
-                presentador.desactivarCuenta();
+                presentador.getpAdministrarCuentas().desactivarCuenta();
                 this.jButton4.setEnabled(false);
             }
             case "Guardar" -> {
-                presentador.setDatosMedico(getInput(jTextField2), getInput(jTextField3), getInput(jTextField4), getInput(jTextField5));
-                presentador.setDatosUsuario(getInput(jTextField6), getInput(jTextField7));   
-                if(presentador.getTipoGuardado().equals("CREAR")){
+                presentador.getpAdministrarCuentas().setDatosMedico(getInput(jTextField2), getInput(jTextField3), getInput(jTextField4), getInput(jTextField5));
+                presentador.getpAdministrarCuentas().setDatosUsuario(getInput(jTextField6), getInput(jTextField7));   
+                if(presentador.getpAdministrarCuentas().getTipoGuardado().equals("CREAR")){
                     if(camposllenos()){
-                        presentador.registrar();
+                        presentador.getpAdministrarCuentas().registrar();
                     }else{
                         JOptionPane.showMessageDialog(null, "Debe completar todos los campos.");
                     }
                     
-                }else if(presentador.getTipoGuardado().equals("EDITAR")){
-                    presentador.editar();
+                }else if(presentador.getpAdministrarCuentas().getTipoGuardado().equals("EDITAR")){
+                    presentador.getpAdministrarCuentas().editar();
                 }
                 this.jButton5.setEnabled(false);
             }
@@ -440,12 +424,12 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
         int selectedRow = jTable1.getSelectedRow();
         if(selectedRow != -1){
             String dni = jTable1.getValueAt(selectedRow, 0).toString();
-            jTextField2.setText(presentador.buscarMedicoDNI(dni).getDNI());
-            jTextField3.setText(presentador.buscarMedicoDNI(dni).getNombreMedico());
-            jTextField4.setText(presentador.buscarMedicoDNI(dni).getApellidoMedico());
-            jTextField5.setText(presentador.buscarMedicoDNI(dni).getTelefonoMedico());
-            jTextField6.setText(presentador.buscarMedicoDNI(dni).getUsuario().getUsuario());
-            jTextField7.setText(presentador.buscarMedicoDNI(dni).getUsuario().getClave());
+            jTextField2.setText(presentador.getpAdministrarCuentas().buscarMedicoDNI(dni).getDNI());
+            jTextField3.setText(presentador.getpAdministrarCuentas().buscarMedicoDNI(dni).getNombreMedico());
+            jTextField4.setText(presentador.getpAdministrarCuentas().buscarMedicoDNI(dni).getApellidoMedico());
+            jTextField5.setText(presentador.getpAdministrarCuentas().buscarMedicoDNI(dni).getTelefonoMedico());
+            jTextField6.setText(presentador.getpAdministrarCuentas().buscarMedicoDNI(dni).getUsuario().getUsuario());
+            jTextField7.setText(presentador.getpAdministrarCuentas().buscarMedicoDNI(dni).getUsuario().getClave());
             
         }
     }

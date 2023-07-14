@@ -6,7 +6,7 @@ import medicos.Medico;
 import modelo.ModeloMedico;
 
 public class PresentadorAdministrarCuentas {
-    private ModeloMedico modelo;
+    private ModeloMedico modelo = new ModeloMedico();
     private String tipoGuardado;
 
     public PresentadorAdministrarCuentas() {

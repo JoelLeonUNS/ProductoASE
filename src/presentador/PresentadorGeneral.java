@@ -2,11 +2,13 @@ package presentador;
 
 import modelo.ModeloMedico;
 import modelo.ModeloUsuario;
+import vista.VistaAdmin;
 import vista.VistaMedico;
 
 public class PresentadorGeneral {
     private PresentadorAdministrarCuentas pAdministrarCuentas;
     private PresentadorLogin pLogin;
+    
 
     public PresentadorGeneral() {
         pAdministrarCuentas = new PresentadorAdministrarCuentas();
@@ -14,8 +16,17 @@ public class PresentadorGeneral {
     }
     
     public void mostrarVistaMedico() {
-        VistaMedico vistaMedico = new VistaMedico();
-        //vistaMedico.iniciar();
+        VistaMedico vistaMedico = new VistaMedico(new PresentadorGeneral());
+        vistaMedico.iniciar();
+    }
+    
+    public void mostrarVistaAdmin() {
+        VistaAdmin vistaAdmin = new VistaAdmin(new PresentadorGeneral());
+        vistaAdmin.iniciar();
+    }
+    
+    public void mostrarVistaLogin() {
+        
     }
     
     public void setModeloPresentadorAdministrarCuentas(ModeloMedico mMedico) {

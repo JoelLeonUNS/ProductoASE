@@ -4,6 +4,7 @@ package modelo;
 import BaseDeDatos.MedicoDAO;
 import java.util.ArrayList;
 import medicos.Medico;
+import medicos.Usuario;
 
 public class ModeloMedico {
     private Medico medico;
@@ -12,6 +13,7 @@ public class ModeloMedico {
 
     public ModeloMedico() {
         this.medico = new Medico();
+        medico.setUsuario(new Usuario());
     }
     
     public void setDatosMedico(String dni, String nombre, String apellidos, String telefono){

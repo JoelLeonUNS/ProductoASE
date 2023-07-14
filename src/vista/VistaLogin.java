@@ -9,7 +9,8 @@ public class VistaLogin extends javax.swing.JFrame implements ActionListener {
 
     private PresentadorGeneral pGeneral;
 
-    public VistaLogin() {
+    public VistaLogin(PresentadorGeneral pGeneral) {
+        this.pGeneral = pGeneral;
         initComponents();
         lookAndFeel();
     }
@@ -17,14 +18,10 @@ public class VistaLogin extends javax.swing.JFrame implements ActionListener {
     public void iniciar() {
         pack();
         setCampos();
+        this.bttn_iniciarSesion.addActionListener(this);
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);// visualiza la ventana
-    }
-
-    public void setPresentador(PresentadorGeneral pGeneral) {
-        this.pGeneral = pGeneral;
-        this.bttn_iniciarSesion.addActionListener(this);
     }
 
     public void setCampos() {
@@ -62,7 +59,7 @@ public class VistaLogin extends javax.swing.JFrame implements ActionListener {
                 }
             }
             if (pGeneral.getpLogin().isHabilitado()) {
-                pGeneral.mostrarVistaMedico();
+                pGeneral.mostrarVistaAdmin();
             } else {
                 mensaje("Lo siento, su cuenta se\nencuentra inhabilitada.");
             }
