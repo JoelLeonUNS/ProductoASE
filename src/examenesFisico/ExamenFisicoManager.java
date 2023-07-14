@@ -11,7 +11,7 @@ public class ExamenFisicoManager extends ExamenManager {
     @Override
     public Examen registrar() {
         Examen nuevoExamen = new ExamenFisico();
-        setDatos(nuevoExamen);
+        //setDatos(nuevoExamen);
 
         return nuevoExamen;
     }

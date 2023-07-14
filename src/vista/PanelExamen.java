@@ -25,6 +25,14 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
         this.pExamenFisico = new PanelExamenFisico();
         this.pExamenMedico = new PanelExamenMedico();
         this.cmbBx_tipoExamen.addActionListener(this);
+        this.jButtonBuscar.addActionListener(this);
+        this.jButtonAñadirConsulta.addActionListener(this);
+        this.jButtonGuardar.addActionListener(this);
+        this.pExamenMedico.jButtonGuardarExamMedico.addActionListener(this);
+        
+        this.jButtonGuardar.setEnabled(false);
+        setTxtFldsEditable(false);
+        
         llenarComboBoxTipoExamen();
     }
     
@@ -41,12 +49,12 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
     private void initComponents() {
 
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jButtonBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        jButtonAñadirConsulta = new javax.swing.JButton();
         cmbBx_tipoExamen = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
+        jButtonGuardar = new javax.swing.JButton();
         pnl_consultaExamenes = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
@@ -78,10 +86,10 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
         jTextField1.setPreferredSize(new java.awt.Dimension(250, 35));
         add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setText("Buscar");
-        jButton1.setPreferredSize(new java.awt.Dimension(150, 35));
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 30, -1, -1));
+        jButtonBuscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButtonBuscar.setText("Buscar");
+        jButtonBuscar.setPreferredSize(new java.awt.Dimension(150, 35));
+        add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 30, -1, -1));
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(404, 500));
 
@@ -97,10 +105,10 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 95, -1, 500));
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton2.setText("Añadir consulta");
-        jButton2.setPreferredSize(new java.awt.Dimension(163, 35));
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 30, -1, -1));
+        jButtonAñadirConsulta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButtonAñadirConsulta.setText("Añadir consulta");
+        jButtonAñadirConsulta.setPreferredSize(new java.awt.Dimension(163, 35));
+        add(jButtonAñadirConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 30, -1, -1));
 
         cmbBx_tipoExamen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbBx_tipoExamen.setModel(comboBoxTipoExamen);
@@ -108,10 +116,10 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
         cmbBx_tipoExamen.setPreferredSize(new java.awt.Dimension(200, 35));
         add(cmbBx_tipoExamen, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 30, -1, -1));
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton3.setText("Guardar");
-        jButton3.setPreferredSize(new java.awt.Dimension(133, 35));
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1115, 30, -1, -1));
+        jButtonGuardar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButtonGuardar.setText("Guardar");
+        jButtonGuardar.setPreferredSize(new java.awt.Dimension(133, 35));
+        add(jButtonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1115, 30, -1, -1));
 
         pnl_consultaExamenes.setBackground(new java.awt.Color(217, 217, 217));
         pnl_consultaExamenes.setPreferredSize(new java.awt.Dimension(764, 500));
@@ -222,9 +230,9 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbBx_tipoExamen;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonAñadirConsulta;
+    private javax.swing.JButton jButtonBuscar;
+    private javax.swing.JButton jButtonGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -256,6 +264,34 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
         return jtxfld.getText();
     }
     
+    public void setTxtFldsEditable(boolean b){
+        this.jTextField2.setEditable(b);
+        this.jTextField3.setEditable(b);
+        this.jTextField4.setEditable(b);
+        this.jTextField5.setEditable(b);
+        this.jTextField6.setEditable(b);
+        this.jTextField7.setEditable(b);
+        this.jTextField8.setEditable(b);
+        this.jTextField9.setEditable(b);
+        this.jTextArea1.setEditable(b);
+    }
+    
+    public void limpiarCasillas(){
+        this.jTextField2.setText("");
+        this.jTextField3.setText("");
+        this.jTextField4.setText("");
+        this.jTextField5.setText("");
+        this.jTextField6.setText("");
+        this.jTextField7.setText("");
+        this.jTextField8.setText("");
+        this.jTextField9.setText("");
+        this.jTextArea1.setText("");
+    }
+    
+    public void getDatosExamen(){
+        
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
@@ -263,14 +299,28 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
                 switch (cmbBx_tipoExamen.getSelectedIndex()) {
                     case 1 -> {
                         pGeneral.getpExamen().cambiarTipoExamen(pnl_baseTipoExamen, pExamenMedico);
+                        pGeneral.getpExamen().setTipoExamen("MEDICO");
                     }
                     case 2 -> {
                         pGeneral.getpExamen().cambiarTipoExamen(pnl_baseTipoExamen, pExamenFisico);
+                        pGeneral.getpExamen().setTipoExamen("FISICO");
                     }
                     case 3 -> {
                         pGeneral.getpExamen().cambiarTipoExamen(pnl_baseTipoExamen, pExamenClinico);
+                        pGeneral.getpExamen().setTipoExamen("CLINICO");
                     }
                 }
+            }
+            case "Buscar"->{
+                
+            }
+            case "Añadir consulta"->{
+                limpiarCasillas();
+                setTxtFldsEditable(true);
+                this.jButtonGuardar.setEnabled(true);
+            }
+            case "Guardar"->{
+                
             }
         }
     }

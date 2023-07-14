@@ -1,5 +1,6 @@
 package vista;
 
+
 public class PanelExamenClinico extends javax.swing.JPanel {
 
     public PanelExamenClinico() {
@@ -16,7 +17,7 @@ public class PanelExamenClinico extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        jButtonGuardarExamClinico = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(217, 217, 217));
         setPreferredSize(new java.awt.Dimension(764, 250));
@@ -46,15 +47,15 @@ public class PanelExamenClinico extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setText("Guardar");
-        jButton1.setPreferredSize(new java.awt.Dimension(122, 30));
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, -1));
+        jButtonGuardarExamClinico.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButtonGuardarExamClinico.setText("Guardar");
+        jButtonGuardarExamClinico.setPreferredSize(new java.awt.Dimension(122, 30));
+        add(jButtonGuardarExamClinico, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    public javax.swing.JButton jButtonGuardarExamClinico;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
@@ -62,4 +63,30 @@ public class PanelExamenClinico extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+
+    public boolean getjCheckBox1() {
+        return jCheckBox1.isSelected();
+    }
+
+    public void setjCheckBox1(boolean jCheckBox1) {
+        this.jCheckBox1.setSelected(jCheckBox1);
+    }
+
+    public boolean getjCheckBox2() {
+        return jCheckBox2.isSelected();
+    }
+
+    public void setjCheckBox2(boolean jCheckBox2) {
+        this.jCheckBox2.setSelected(jCheckBox2);
+    }
+
+    public String getjTextArea1() {
+        return jTextArea1.getText();
+    }
+
+    public void setjTextArea1(String jTextArea1) {
+        this.jTextArea1.setText(jTextArea1);
+    }
+
+    
 }

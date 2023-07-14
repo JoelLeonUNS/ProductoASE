@@ -47,6 +47,14 @@ public class PresentadorExamen {
         this.modeloHistoriaClinica = modeloHistoriaClinica;
     }
     
+    public void setTipoExamen(String tipoExamen){
+        modeloExamen.setTipoExamen(tipoExamen);
+    }
+    
+    public void setDatosExamen(){
+        
+    }
+    
     
     
 }

@@ -1,5 +1,6 @@
 package vista;
 
+
 public class PanelExamenMedico extends javax.swing.JPanel {
 
     public PanelExamenMedico() {
@@ -21,7 +22,7 @@ public class PanelExamenMedico extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonGuardarExamMedico = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(217, 217, 217));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -74,15 +75,15 @@ public class PanelExamenMedico extends javax.swing.JPanel {
         jLabel1.setText("Examen Médico");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 10, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setText("Guardar");
-        jButton1.setPreferredSize(new java.awt.Dimension(122, 30));
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 195, -1, -1));
+        jButtonGuardarExamMedico.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButtonGuardarExamMedico.setText("Guardar");
+        jButtonGuardarExamMedico.setPreferredSize(new java.awt.Dimension(122, 30));
+        add(jButtonGuardarExamMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 195, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    public javax.swing.JButton jButtonGuardarExamMedico;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -95,4 +96,36 @@ public class PanelExamenMedico extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
+
+    public String getjTextArea1() {
+        return jTextArea1.getText();
+    }
+
+    public void setjTextArea1(String jTextArea1) {
+        this.jTextArea1.setText(jTextArea1);
+    }
+
+    public String getjTextArea2() {
+        return jTextArea2.getText();
+    }
+
+    public void setjTextArea2(String jTextArea2) {
+        this.jTextArea2.setText(jTextArea2);
+    }
+
+    public String getjTextField6() {
+        return jTextField6.getText();
+    }
+
+    public void setjTextField6(String jTextField6) {
+        this.jTextField6.setText(jTextField6);
+    }
+
+    public String getjTextField8() {
+        return jTextField8.getText();
+    }
+
+    public void setjTextField8(String jTextField8) {
+        this.jTextField8.setText(jTextField8);
+    }    
 }

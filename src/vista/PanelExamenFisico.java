@@ -1,5 +1,7 @@
 package vista;
 
+import javax.swing.JTextField;
+
 public class PanelExamenFisico extends javax.swing.JPanel {
 
     public PanelExamenFisico() {
@@ -31,7 +33,7 @@ public class PanelExamenFisico extends javax.swing.JPanel {
         jTextField9 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jButtonGuardarExamFisico = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(217, 217, 217));
         setPreferredSize(new java.awt.Dimension(764, 250));
@@ -121,15 +123,15 @@ public class PanelExamenFisico extends javax.swing.JPanel {
         jTextField10.setPreferredSize(new java.awt.Dimension(204, 30));
         add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 140, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setText("Guardar");
-        jButton1.setPreferredSize(new java.awt.Dimension(122, 30));
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, -1));
+        jButtonGuardarExamFisico.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButtonGuardarExamFisico.setText("Guardar");
+        jButtonGuardarExamFisico.setPreferredSize(new java.awt.Dimension(122, 30));
+        add(jButtonGuardarExamFisico, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    public javax.swing.JButton jButtonGuardarExamFisico;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -152,4 +154,87 @@ public class PanelExamenFisico extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
+
+    public String getjTextField1() {
+        return jTextField1.getText();
+    }
+
+    public void setjTextField1(String jTextField1) {
+        this.jTextField1.setText(jTextField1);
+    }
+
+    public String getjTextField10() {
+        return jTextField10.getText();
+    }
+
+    public void setjTextField10(String jTextField10) {
+        this.jTextField10 .setText(jTextField10);
+    }
+
+    public String getjTextField2() {
+        return jTextField2.getText();
+    }
+
+    public void setjTextField2(String jTextField2) {
+        this.jTextField2.setText(jTextField2);
+    }
+
+    public String getjTextField3() {
+        return jTextField3.getText();
+    }
+
+    public void setjTextField3(String jTextField3) {
+        this.jTextField3.setText(jTextField3);
+    }
+
+    public String getjTextField4() {
+        return jTextField4.getText();
+    }
+
+    public void setjTextField4(String jTextField4) {
+        this.jTextField4.setText(jTextField4);
+    }
+
+    public String getjTextField5() {
+        return jTextField5.getText();
+    }
+
+    public void setjTextField5(String jTextField5) {
+        this.jTextField5.setText(jTextField5);
+    }
+
+    public String getjTextField6() {
+        return jTextField6.getText();
+    }
+
+    public void setjTextField6(String jTextField6) {
+        this.jTextField6.setText(jTextField6);
+    }
+
+    public String getjTextField7() {
+        return jTextField7.getText();
+    }
+
+    public void setjTextField7(String jTextField7) {
+        this.jTextField7.setText(jTextField7);
+    }
+
+    public String getjTextField8() {
+        return jTextField8.getText();
+    }
+
+    public void setjTextField8(String jTextField8) {
+        this.jTextField8.setText(jTextField8);
+    }
+
+    public String getjTextField9() {
+        return jTextField9.getText();
+    }
+
+    public void setjTextField9(String jTextField9) {
+        this.jTextField9.setText(jTextField9);
+    }
+
+    
+    
 }

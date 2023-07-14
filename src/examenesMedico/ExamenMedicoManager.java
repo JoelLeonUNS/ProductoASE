@@ -10,7 +10,7 @@ public class ExamenMedicoManager extends ExamenManager {
     @Override
     public Examen registrar() {
         ExamenMedico nuevoExamen = new ExamenMedico();
-        setDatos(nuevoExamen);
+        //setDatos(nuevoExamen);
         
         return nuevoExamen;
     }
