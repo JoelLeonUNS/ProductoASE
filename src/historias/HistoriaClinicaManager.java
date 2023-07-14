@@ -1,6 +1,5 @@
 package historias;
 
-import BaseDeDatos.BD;
 import java.util.Scanner;
 import pacientes.Paciente;
 
@@ -52,13 +51,13 @@ public abstract class HistoriaClinicaManager {
         historia.getPaciente().setTelefono(input.nextInt());
         System.out.print("Nombre de familiar: ");
         input.nextLine();
-        historia.getPaciente().setNombreFamiliar(input.nextLine());
+        historia.getPaciente().getFamiliar().setNombreFamiliar(input.nextLine());
         System.out.print("Direccion de familiar: ");
-        historia.getPaciente().setDireccionFamiliar(input.nextLine());
+        historia.getPaciente().getFamiliar().setDireccionFamiliar(input.nextLine());
         System.out.print("Parentesco: ");
-        historia.getPaciente().setParentescoFamiliar(input.next());
+        historia.getPaciente().getFamiliar().setParentesco(input.next());
         System.out.print("Telefono de familiar: ");
-        historia.getPaciente().setTelefonoFamiliar(input.nextInt());
+        historia.getPaciente().getFamiliar().setTelefonoFamiliar(input.next());
         System.out.print("Antecedentes Patologios: ");
         input.nextLine();
         historia.setAntecedentesPatologicos(input.nextLine());
@@ -81,11 +80,11 @@ public abstract class HistoriaClinicaManager {
             }
             case 4 -> {
                 System.out.print("Ingrese nueva dirección del familiar: ");
-                historia.getPaciente().setDireccionFamiliar(input.nextLine());
+                historia.getPaciente().getFamiliar().setDireccionFamiliar(input.nextLine());
             }
             case 5 -> {
                 System.out.print("Ingrese nuevo teléfono del familiar: ");
-                historia.getPaciente().setTelefonoFamiliar(input.nextInt());
+                historia.getPaciente().getFamiliar().setTelefonoFamiliar(input.next());
             }
             case 6 -> {
                 System.out.println("Ingrese antecedente (familiar, enfermedad): ");

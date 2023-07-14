@@ -1,22 +1,27 @@
 package presentador;
 
+import modelo.ModeloHistoriaClinica;
 import modelo.ModeloMedico;
 import modelo.ModeloUsuario;
-import vista.VistaAdmin;
+import vista.VistaInterfazAdmin;
 import vista.VistaLogin;
-import vista.VistaMedico;
+import vista.VistaInterfazMedico;
 
 public class PresentadorGeneral {
-    private PresentadorAdministrarCuentas pAdministrarCuentas;
-    private PresentadorMedico pMedico;
-    private PresentadorLogin pLogin;
-    private PresentadorExamen pExamen;
+    private PresentadorLogin pLogin;   
+    private PresentadorInterfazAdmin pInterfazAdmin;
+    
+    private PresentadorInterfazMedico pInterfazMedico;
+        private PresentadorHistoriaClinica pHistoriaClinica;
+        private PresentadorExamen pExamen;
+        
     private static PresentadorGeneral pGeneral;
 
-    public PresentadorGeneral() {
-        pAdministrarCuentas = new PresentadorAdministrarCuentas();
+    private PresentadorGeneral() {
         pLogin = new PresentadorLogin();
-        pMedico = new PresentadorMedico();
+        pInterfazAdmin = new PresentadorInterfazAdmin();
+        pInterfazMedico = new PresentadorInterfazMedico();
+        pHistoriaClinica = new PresentadorHistoriaClinica();
         pExamen = new PresentadorExamen();
     }
     
@@ -28,13 +33,13 @@ public class PresentadorGeneral {
         }
     }
     
-    public void mostrarVistaMedico() {
-        VistaMedico vistaMedico = new VistaMedico(PresentadorGeneral.getInstancia());
-        vistaMedico.iniciar();
+    public void mostrarVistaInterfazMedico() {
+        VistaInterfazMedico vistaInterfazMedico = new VistaInterfazMedico(PresentadorGeneral.getInstancia());
+        vistaInterfazMedico.iniciar();
     }
     
-    public void mostrarVistaAdmin() {
-        VistaAdmin vistaAdmin = new VistaAdmin(PresentadorGeneral.getInstancia());
+    public void mostrarVistaInterfazAdmin() {
+        VistaInterfazAdmin vistaAdmin = new VistaInterfazAdmin(PresentadorGeneral.getInstancia());
         vistaAdmin.iniciar();
     }
     
@@ -43,32 +48,40 @@ public class PresentadorGeneral {
         vistaLogin.iniciar();
     }
     
-    public void setModeloPresentadorAdministrarCuentas(ModeloMedico mMedico) {
-        pAdministrarCuentas.setModelo(mMedico);
+    //
+    public void setModeloPresentadorInterfazAdmin(ModeloMedico mMedico) {
+        pInterfazAdmin.setModelo(mMedico);
     }
     
     public void setModeloPresentadorLogin(ModeloUsuario mUsuario) {
         pLogin.setModelo(mUsuario);
     }
-
-    public PresentadorAdministrarCuentas getpAdministrarCuentas() {
-        return pAdministrarCuentas;
+    
+    public void setModeloPresentadorHistoriaClinica(ModeloHistoriaClinica mHistoriClinica) {
+        pHistoriaClinica.setModelo(mHistoriClinica);
     }
+    
+    //
 
+    
     public PresentadorLogin getpLogin() {
         return pLogin;
     }
 
-    public PresentadorMedico getpMedico() {
-        return pMedico;
+    public PresentadorInterfazMedico getpInterfazMedico() {
+        return pInterfazMedico;
     }
 
-    public void setpMedico(PresentadorMedico pMediCo) {
-        this.pMedico = pMediCo;
+    public PresentadorHistoriaClinica getpHistoriaClinica() {
+        return pHistoriaClinica;
     }
 
     public PresentadorExamen getpExamen() {
         return pExamen;
+    }
+
+    public PresentadorInterfazAdmin getpInterfazAdmin() {
+        return pInterfazAdmin;
     }
 
     public void setpExamen(PresentadorExamen pExamen) {

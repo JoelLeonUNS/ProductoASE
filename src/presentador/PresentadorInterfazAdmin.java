@@ -5,12 +5,16 @@ import java.util.ArrayList;
 import medicos.Medico;
 import modelo.ModeloMedico;
 
-public class PresentadorAdministrarCuentas {
-    private ModeloMedico modelo = new ModeloMedico();
+public class PresentadorInterfazAdmin {
+    private ModeloMedico modelo;
     private String tipoGuardado;
 
-    public PresentadorAdministrarCuentas() {
+    public PresentadorInterfazAdmin() {
        
+    }
+    
+    public void setModelo(ModeloMedico modelo) {
+         this.modelo = modelo;
     }
 
     public String getTipoGuardado() {
@@ -21,9 +25,7 @@ public class PresentadorAdministrarCuentas {
         this.tipoGuardado = tipoGuardado;
     }
         
-    public void setModelo(ModeloMedico modelo) {
-         this.modelo = modelo;
-    }
+    
     
     public void setDatosMedico(String dni, String nombre, String apellidos, String telefono){
         modelo.setDatosMedico(dni, nombre, apellidos, telefono);

@@ -2,10 +2,12 @@ package vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 import presentador.PresentadorGeneral;
 
-public class VistaLogin extends javax.swing.JFrame implements ActionListener {
+public class VistaLogin extends javax.swing.JFrame implements ActionListener, KeyListener {
 
     private PresentadorGeneral pGeneral;
 
@@ -13,6 +15,7 @@ public class VistaLogin extends javax.swing.JFrame implements ActionListener {
         this.pGeneral = pGeneral;
         initComponents();
         this.bttn_iniciarSesion.addActionListener(this);
+        this.psswrdFld_clave.addKeyListener(this);
         lookAndFeel();
     }
 
@@ -41,9 +44,8 @@ public class VistaLogin extends javax.swing.JFrame implements ActionListener {
     public void mensaje(String salida) {
         JOptionPane.showMessageDialog(null, salida);
     }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
+    
+    public void actionIniciarSesion() {
         pGeneral.getpLogin().setDatosUsuario(this.getUsuario(), this.getClave());
         pGeneral.getpLogin().iniciarSesion();
         mensaje(pGeneral.getpLogin().showMensaje());
@@ -60,9 +62,9 @@ public class VistaLogin extends javax.swing.JFrame implements ActionListener {
             }
             if (pGeneral.getpLogin().isHabilitado()) {
                 if (pGeneral.getpLogin().getUsuarioRolBD().equals("Admin")) {
-                    pGeneral.mostrarVistaAdmin();
+                    pGeneral.mostrarVistaInterfazAdmin();
                 } else {
-                    pGeneral.mostrarVistaMedico();
+                    pGeneral.mostrarVistaInterfazMedico();
                 } 
             } else {
                 mensaje("Lo siento, su cuenta se\nencuentra inhabilitada.");
@@ -70,6 +72,27 @@ public class VistaLogin extends javax.swing.JFrame implements ActionListener {
         }
         if (pGeneral.getpLogin().isBloqueado()) {
             bttn_iniciarSesion.setEnabled(false);
+        }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        actionIniciarSesion();
+    }
+    
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+        if (keyCode == KeyEvent.VK_ENTER) {
+            actionIniciarSesion();
         }
     }
 
@@ -168,5 +191,4 @@ public class VistaLogin extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JPasswordField psswrdFld_clave;
     private javax.swing.JTextField txtFld_usuario;
     // End of variables declaration//GEN-END:variables
-
 }

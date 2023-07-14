@@ -4,8 +4,11 @@ import BaseDeDatos.MedicoDAO;
 import BaseDeDatos.UsuarioDAO;
 import medicos.Medico;
 import medicos.Usuario;
+import modelo.ModeloHistoriaClinica;
+import modelo.ModeloMedico;
 import modelo.ModeloUsuario;
 import presentador.PresentadorGeneral;
+import valoresPorDefecto.MedicosPorDefecto;
 import vista.VistaLogin;
 
 public class GestionHistorial {
@@ -22,19 +25,13 @@ public class GestionHistorial {
 //    private static ExamenManager examenManager;
 //
     public static void main(String[] args) {
+        MedicosPorDefecto.poblar();
         
         PresentadorGeneral.getInstancia().setModeloPresentadorLogin(new ModeloUsuario());
-        VistaLogin vLogin = new VistaLogin(PresentadorGeneral.getInstancia());
+        PresentadorGeneral.getInstancia().setModeloPresentadorInterfazAdmin(new ModeloMedico());
+        PresentadorGeneral.getInstancia().setModeloPresentadorHistoriaClinica(new ModeloHistoriaClinica());
         
-        UsuarioDAO uDAO = new UsuarioDAO();
-        MedicoDAO mDAO = new MedicoDAO();
-        uDAO.create(new Usuario("Joel", "123", true, "User"));
-        uDAO.create(new Usuario("Angie", "123", true, "User"));
-        uDAO.create(new Usuario("Abner", "4werA3", true, "Admin"));
-        uDAO.create(new Usuario("Alex", "5werA4", true, "Admin"));
-        
-        mDAO.create(new Medico("Leon", "Joel", "960181410", "73944739", uDAO.read(0)));
-        
+        VistaLogin vLogin = new VistaLogin(PresentadorGeneral.getInstancia()); 
         vLogin.iniciar();
 
     }

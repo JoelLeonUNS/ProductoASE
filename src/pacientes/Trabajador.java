@@ -3,14 +3,16 @@ package pacientes;
 public class Trabajador extends Paciente {
 
     private String areaTrabajo;
-
-    public Trabajador() {
-    }
+    private boolean docente;
     
     // Solo para valores por defecto.
-    public Trabajador(String areaTrabajo, String DNI, String nombre, String apellido, String sexo, String fechaNac, String lugarNac, String distrito, String departamento, String direccion, int telefono, String estadoCivil, String nombreFamiliar, String parentescoFamiliar, String direccionFamiliar, int telefonoFamiliar) {
-        super(DNI, nombre, apellido, sexo, fechaNac, lugarNac, distrito, departamento, direccion, telefono, estadoCivil, nombreFamiliar, parentescoFamiliar, direccionFamiliar, telefonoFamiliar);
+    public Trabajador(String areaTrabajo, boolean docente, String DNI, String nombre, String apellido, String sexo, String fechaNac, String lugarNac, String distrito, String departamento, String direccion, int telefono, String estadoCivil, Familiar familiar) {
+        super(DNI, nombre, apellido, sexo, fechaNac, lugarNac, distrito, departamento, direccion, telefono, estadoCivil, familiar);
         this.areaTrabajo = areaTrabajo;
+        this.docente = docente;
+    }
+    
+    public Trabajador() {
     }
     
     public String getAreaTrabajo() {
@@ -21,10 +23,16 @@ public class Trabajador extends Paciente {
         this.areaTrabajo = areaTrabajo;
     }
 
+    public boolean isDocente() {
+        return docente;
+    }
+
+    public void setDocente(boolean docente) {
+        this.docente = docente;
+    }
+
     @Override
     public String toString() {
-        return super.toString() + "\nArea de Trabajo: " + areaTrabajo;
+        return super.toString() + "\nArea de Trabajo: " + areaTrabajo + "\nDocente: " + docente;
     }
-    
-    
 }

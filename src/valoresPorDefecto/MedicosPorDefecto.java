@@ -1,10 +1,21 @@
 package valoresPorDefecto;
 
-import BaseDeDatos.BD;
+import BaseDeDatos.MedicoDAO;
+import BaseDeDatos.UsuarioDAO;
 import medicos.Medico;
+import medicos.Usuario;
 
 public class MedicosPorDefecto {
     public static void poblar() {
+        
+        UsuarioDAO uDAO = new UsuarioDAO();
+        MedicoDAO mDAO = new MedicoDAO();
+        uDAO.create(new Usuario("Joel", "123", true, "User"));
+        uDAO.create(new Usuario("Angie", "123", true, "User"));
+        uDAO.create(new Usuario("Abner", "4werA3", true, "Admin"));
+        uDAO.create(new Usuario("Alex", "5werA4", true, "Admin"));
+        
+        mDAO.create(new Medico("Leon", "Joel", "960181410", "73944739", uDAO.read(0)));
 //        BD.insertMedico(new Medico("usr1", "pass1", "Lopez", "Juan", "123456789", "11111111", true));
 //        BD.insertMedico(new Medico("usr2", "pass2", "Garcia", "Maria", "987654321", "22222222", true));
 //        BD.insertMedico(new Medico("usr3", "pass3", "Rodriguez", "Carlos", "555555555", "33333333", false));

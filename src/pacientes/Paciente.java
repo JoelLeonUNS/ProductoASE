@@ -13,15 +13,12 @@ public class Paciente {
     private String direccion;
     private int telefono;
     private String estadoCivil;
-    private String nombreFamiliar;
-    private String parentescoFamiliar;
-    private String direccionFamiliar;
-    private int telefonoFamiliar;
+    private Familiar familiar;
 
     public Paciente() {
     }
 
-    public Paciente(String DNI, String nombre, String apellido, String sexo, String fechaNac, String lugarNac, String distrito, String departamento, String direccion, int telefono, String estadoCivil, String nombreFamiliar, String parentescoFamiliar, String direccionFamiliar, int telefonoFamiliar) {
+    public Paciente(String DNI, String nombre, String apellido, String sexo, String fechaNac, String lugarNac, String distrito, String departamento, String direccion, int telefono, String estadoCivil, Familiar familiar) {
         this.DNI = DNI;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -33,10 +30,7 @@ public class Paciente {
         this.direccion = direccion;
         this.telefono = telefono;
         this.estadoCivil = estadoCivil;
-        this.nombreFamiliar = nombreFamiliar;
-        this.parentescoFamiliar = parentescoFamiliar;
-        this.direccionFamiliar = direccionFamiliar;
-        this.telefonoFamiliar = telefonoFamiliar;
+        this.familiar = familiar;
     }
 
     public String getDNI() {
@@ -127,41 +121,17 @@ public class Paciente {
         this.estadoCivil = estadoCivil;
     }
 
-    public String getNombreFamiliar() {
-        return nombreFamiliar;
+    public Familiar getFamiliar() {
+        return familiar;
     }
 
-    public void setNombreFamiliar(String nombreFamiliar) {
-        this.nombreFamiliar = nombreFamiliar;
+    public void setFamiliar(Familiar familiar) {
+        this.familiar = familiar;
     }
-
-    public String getParentescoFamiliar() {
-        return parentescoFamiliar;
-    }
-
-    public void setParentescoFamiliar(String parentescoFamiliar) {
-        this.parentescoFamiliar = parentescoFamiliar;
-    }
-
-    public String getDireccionFamiliar() {
-        return direccionFamiliar;
-    }
-
-    public void setDireccionFamiliar(String direccionFamiliar) {
-        this.direccionFamiliar = direccionFamiliar;
-    }
-
-    public int getTelefonoFamiliar() {
-        return telefonoFamiliar;
-    }
-
-    public void setTelefonoFamiliar(int telefonoFamiliar) {
-        this.telefonoFamiliar = telefonoFamiliar;
-    }
-
+    
     @Override
     public String toString() {
-        return "\nDNI: " + DNI + "\nNombre: " + nombre + "\nApellido: " + apellido + "\nSexo: " + sexo + "\nFecha de Nac.: " + fechaNac + "\nLugar de Nac.: " + lugarNac + "\nDistrito: " + distrito + "\nDepartamento: " + departamento + "\nDireccion: " + direccion + "\nTelefono: " + telefono + "\nEstado Civil: " + estadoCivil + "\nNombre Familiar: " + nombreFamiliar + "\nParentesco Familiar: " + parentescoFamiliar + "\nDireccionFamiliar: " + direccionFamiliar + "\nTelefono Familiar: " + telefonoFamiliar;
+        return "\nDNI: " + DNI + "\nNombre: " + nombre + "\nApellido: " + apellido + "\nSexo: " + sexo + "\nFecha de Nac.: " + fechaNac + "\nLugar de Nac.: " + lugarNac + "\nDistrito: " + distrito + "\nDepartamento: " + departamento + "\nDireccion: " + direccion + "\nTelefono: " + telefono + "\nEstado Civil: " + estadoCivil + "\nNombre Familiar: " + familiar.getNombreFamiliar() + "\nParentesco Familiar: " + familiar.getParentesco() + "\nDireccionFamiliar: " + familiar.getDireccionFamiliar() + "\nTelefono Familiar: " + familiar.getTelefonoFamiliar();
     }
     
     

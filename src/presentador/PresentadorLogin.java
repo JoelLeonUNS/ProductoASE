@@ -5,8 +5,7 @@ import modelo.ModeloUsuario;
 public class PresentadorLogin {
     private ModeloUsuario mUsuario;
     
-    public PresentadorLogin() {
-        
+    public PresentadorLogin() {   
     }
     
     public void setModelo(ModeloUsuario mUsuario) {

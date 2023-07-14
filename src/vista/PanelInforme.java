@@ -35,6 +35,7 @@ public class PanelInforme extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1280, 620));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

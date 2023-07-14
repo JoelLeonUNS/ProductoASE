@@ -16,12 +16,12 @@ import presentador.PresentadorGeneral;
  *
  * @author PC1
  */
-public class VistaAdmin extends javax.swing.JFrame implements ActionListener, ListSelectionListener {
+public class VistaInterfazAdmin extends javax.swing.JFrame implements ActionListener, ListSelectionListener {
 
     private PresentadorGeneral pGeneral;
     private DefaultTableModel modelTablaCuentas = new DefaultTableModel();
     
-    public VistaAdmin(PresentadorGeneral p) {
+    public VistaInterfazAdmin(PresentadorGeneral p) {
         initComponents();
         crearEncabezadoTablaCuenta();
         this.pGeneral = p;
@@ -81,7 +81,6 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 725));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnl_header.setBackground(new java.awt.Color(255, 255, 255));
@@ -344,38 +343,38 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
             case "Buscar" -> {
                 if(isBusquedaDNI()){
                     modelTablaCuentas.setRowCount(0);
-                    addMedico(pGeneral.getpAdministrarCuentas().buscarMedicoDNI(getInput(txtFld_valorBuscado)));
+                    addMedico(pGeneral.getpInterfazAdmin().buscarMedicoDNI(getInput(txtFld_valorBuscado)));
                 }else{
-                    mostrarTablaCuentas(pGeneral.getpAdministrarCuentas().buscarMedicoCoincidente(getInput(txtFld_valorBuscado)));
+                    mostrarTablaCuentas(pGeneral.getpInterfazAdmin().buscarMedicoCoincidente(getInput(txtFld_valorBuscado)));
                 }
             }
             case "Crear Cuenta" -> {
                 limpiarCasillas();
                 setTxtFldsEditable(true);
                 this.jButton5.setEnabled(true);
-                pGeneral.getpAdministrarCuentas().setTipoGuardado("CREAR");
+                pGeneral.getpInterfazAdmin().setTipoGuardado("CREAR");
             }
             case "Editar Cuenta" -> {
                 setTxtFldsEditable(true);
                 this.jButton5.setEnabled(true);
-                pGeneral.getpAdministrarCuentas().setTipoGuardado("EDITAR");
+                pGeneral.getpInterfazAdmin().setTipoGuardado("EDITAR");
             }
             case "Desactivar Cuenta" -> {
-                pGeneral.getpAdministrarCuentas().desactivarCuenta();
+                pGeneral.getpInterfazAdmin().desactivarCuenta();
                 this.jButton4.setEnabled(false);
             }
             case "Guardar" -> {
-                pGeneral.getpAdministrarCuentas().setDatosMedico(getInput(jTextField2), getInput(jTextField3), getInput(jTextField4), getInput(jTextField5));
-                pGeneral.getpAdministrarCuentas().setDatosUsuario(getInput(jTextField6), getInput(jTextField7));   
-                if(pGeneral.getpAdministrarCuentas().getTipoGuardado().equals("CREAR")){
+                pGeneral.getpInterfazAdmin().setDatosMedico(getInput(jTextField2), getInput(jTextField3), getInput(jTextField4), getInput(jTextField5));
+                pGeneral.getpInterfazAdmin().setDatosUsuario(getInput(jTextField6), getInput(jTextField7));   
+                if(pGeneral.getpInterfazAdmin().getTipoGuardado().equals("CREAR")){
                     if(camposllenos()){
-                        pGeneral.getpAdministrarCuentas().registrar();
+                        pGeneral.getpInterfazAdmin().registrar();
                     }else{
                         JOptionPane.showMessageDialog(null, "Debe completar todos los campos.");
                     }
                     
-                }else if(pGeneral.getpAdministrarCuentas().getTipoGuardado().equals("EDITAR")){
-                    pGeneral.getpAdministrarCuentas().editar();
+                }else if(pGeneral.getpInterfazAdmin().getTipoGuardado().equals("EDITAR")){
+                    pGeneral.getpInterfazAdmin().editar();
                 }
                 this.jButton5.setEnabled(false);
                 setTxtFldsEditable(false);
@@ -395,12 +394,12 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
         int selectedRow = jTable1.getSelectedRow();
         if(selectedRow != -1){
             String dni = jTable1.getValueAt(selectedRow, 0).toString();
-            jTextField2.setText(pGeneral.getpAdministrarCuentas().buscarMedicoDNI(dni).getDNI());
-            jTextField3.setText(pGeneral.getpAdministrarCuentas().buscarMedicoDNI(dni).getNombreMedico());
-            jTextField4.setText(pGeneral.getpAdministrarCuentas().buscarMedicoDNI(dni).getApellidoMedico());
-            jTextField5.setText(pGeneral.getpAdministrarCuentas().buscarMedicoDNI(dni).getTelefonoMedico());
-            jTextField6.setText(pGeneral.getpAdministrarCuentas().buscarMedicoDNI(dni).getUsuario().getUsuario());
-            jTextField7.setText(pGeneral.getpAdministrarCuentas().buscarMedicoDNI(dni).getUsuario().getClave());
+            jTextField2.setText(pGeneral.getpInterfazAdmin().buscarMedicoDNI(dni).getDNI());
+            jTextField3.setText(pGeneral.getpInterfazAdmin().buscarMedicoDNI(dni).getNombreMedico());
+            jTextField4.setText(pGeneral.getpInterfazAdmin().buscarMedicoDNI(dni).getApellidoMedico());
+            jTextField5.setText(pGeneral.getpInterfazAdmin().buscarMedicoDNI(dni).getTelefonoMedico());
+            jTextField6.setText(pGeneral.getpInterfazAdmin().buscarMedicoDNI(dni).getUsuario().getUsuario());
+            jTextField7.setText(pGeneral.getpInterfazAdmin().buscarMedicoDNI(dni).getUsuario().getClave());
             
         }
     }

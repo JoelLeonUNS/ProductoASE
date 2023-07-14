@@ -1,9 +1,17 @@
 package vista;
 
+import javax.swing.DefaultComboBoxModel;
+import presentador.PresentadorGeneral;
+
 public class PanelHistoriaTrabajador extends javax.swing.JPanel {
 
-    public PanelHistoriaTrabajador() {
+    private PresentadorGeneral pGeneral;
+    private DefaultComboBoxModel comboBoxEstaoCivil = new DefaultComboBoxModel();
+    private DefaultComboBoxModel comboBoxParentesco = new DefaultComboBoxModel();
+    
+    public PanelHistoriaTrabajador(PresentadorGeneral pGeneral) {
         initComponents();
+        this.pGeneral = pGeneral;
     }
 
     @SuppressWarnings("unchecked")
@@ -46,6 +54,8 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel {
         cmbBx_estadoCivil = new javax.swing.JComboBox<>();
         lbl_nombreFamiliar = new javax.swing.JLabel();
         lbl_areaTrabajo = new javax.swing.JLabel();
+        jCheckBox9 = new javax.swing.JCheckBox();
+        jCheckBox10 = new javax.swing.JCheckBox();
         jCheckBox11 = new javax.swing.JCheckBox();
         jCheckBox12 = new javax.swing.JCheckBox();
         jCheckBox13 = new javax.swing.JCheckBox();
@@ -60,8 +70,6 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel {
         jCheckBox22 = new javax.swing.JCheckBox();
         jCheckBox23 = new javax.swing.JCheckBox();
         jCheckBox24 = new javax.swing.JCheckBox();
-        jCheckBox25 = new javax.swing.JCheckBox();
-        jCheckBox26 = new javax.swing.JCheckBox();
         lbl_antecedentesPatologicos = new javax.swing.JLabel();
         lbl_direccion = new javax.swing.JLabel();
         lbl_telefono = new javax.swing.JLabel();
@@ -79,6 +87,7 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel {
         chckBx_no = new javax.swing.JCheckBox();
         chckBx_si = new javax.swing.JCheckBox();
 
+        setBackground(new java.awt.Color(217, 217, 217));
         setMinimumSize(new java.awt.Dimension(775, 495));
         setPreferredSize(new java.awt.Dimension(755, 495));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -228,69 +237,69 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel {
         lbl_areaTrabajo.setText("Área de trabajo");
         add(lbl_areaTrabajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 160, -1, -1));
 
+        jCheckBox9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jCheckBox9.setText("Faringitis");
+        add(jCheckBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, -1, -1));
+
+        jCheckBox10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jCheckBox10.setText("Amigdalitis");
+        add(jCheckBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 272, -1, -1));
+
         jCheckBox11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox11.setText("Faringitis");
-        add(jCheckBox11, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, -1, -1));
+        jCheckBox11.setText("Cólera");
+        add(jCheckBox11, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 294, -1, -1));
 
         jCheckBox12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox12.setText("Amigdalitis");
-        add(jCheckBox12, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 272, -1, -1));
+        jCheckBox12.setText("Parásitos");
+        add(jCheckBox12, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 316, -1, -1));
 
         jCheckBox13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox13.setText("Cólera");
-        add(jCheckBox13, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 294, -1, -1));
+        jCheckBox13.setText("Alergias");
+        add(jCheckBox13, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 338, -1, -1));
 
         jCheckBox14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox14.setText("Parásitos");
-        add(jCheckBox14, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 316, -1, -1));
+        jCheckBox14.setText("Anemia");
+        add(jCheckBox14, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, -1, -1));
 
         jCheckBox15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox15.setText("Alergias");
-        add(jCheckBox15, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 338, -1, -1));
+        jCheckBox15.setText("Fracturas");
+        add(jCheckBox15, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 382, -1, -1));
 
         jCheckBox16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox16.setText("Anemia");
-        add(jCheckBox16, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, -1, -1));
+        jCheckBox16.setText("Operaciones");
+        add(jCheckBox16, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 404, -1, -1));
 
         jCheckBox17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox17.setText("Fracturas");
-        add(jCheckBox17, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 382, -1, -1));
+        jCheckBox17.setText("Miopía");
+        add(jCheckBox17, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 250, -1, -1));
 
         jCheckBox18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox18.setText("Operaciones");
-        add(jCheckBox18, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 404, -1, -1));
+        jCheckBox18.setText("Hipertensión Art.");
+        add(jCheckBox18, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 272, -1, -1));
 
         jCheckBox19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox19.setText("Miopía");
-        add(jCheckBox19, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 250, -1, -1));
+        jCheckBox19.setText("Soplo Cardiaco");
+        add(jCheckBox19, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 294, -1, -1));
 
         jCheckBox20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox20.setText("Hipertensión Art.");
-        add(jCheckBox20, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 272, -1, -1));
+        jCheckBox20.setText("Insuficiencia Urin.");
+        add(jCheckBox20, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 316, -1, -1));
 
         jCheckBox21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox21.setText("Soplo Cardiaco");
-        add(jCheckBox21, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 294, -1, -1));
+        jCheckBox21.setText("Quiste Ovario");
+        add(jCheckBox21, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 338, -1, -1));
 
         jCheckBox22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox22.setText("Insuficiencia Urin.");
-        add(jCheckBox22, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 316, -1, -1));
+        jCheckBox22.setText("Desmayos");
+        add(jCheckBox22, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 360, -1, -1));
 
         jCheckBox23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox23.setText("Quiste Ovario");
-        add(jCheckBox23, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 338, -1, -1));
+        jCheckBox23.setText("Hongos piel, uña");
+        add(jCheckBox23, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 382, -1, -1));
 
         jCheckBox24.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox24.setText("Desmayos");
-        add(jCheckBox24, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 360, -1, -1));
-
-        jCheckBox25.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox25.setText("Hongos piel, uña");
-        add(jCheckBox25, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 382, -1, -1));
-
-        jCheckBox26.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox26.setText("Transf. Sanguínea");
-        add(jCheckBox26, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 404, -1, -1));
+        jCheckBox24.setText("Transf. Sanguínea");
+        add(jCheckBox24, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 404, -1, -1));
 
         lbl_antecedentesPatologicos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl_antecedentesPatologicos.setText("Antecedentes Patológicos");
@@ -333,6 +342,8 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel {
         txtFld_telefono.setPreferredSize(new java.awt.Dimension(130, 30));
         add(txtFld_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 395, -1, -1));
 
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         jScrollPane2.setPreferredSize(new java.awt.Dimension(190, 75));
 
         txtAr_antecedentes.setColumns(20);
@@ -369,6 +380,7 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmbBx_estadoCivil;
     private javax.swing.JComboBox<String> cmbBx_parentesco;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox10;
     private javax.swing.JCheckBox jCheckBox11;
     private javax.swing.JCheckBox jCheckBox12;
     private javax.swing.JCheckBox jCheckBox13;
@@ -384,14 +396,13 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel {
     private javax.swing.JCheckBox jCheckBox22;
     private javax.swing.JCheckBox jCheckBox23;
     private javax.swing.JCheckBox jCheckBox24;
-    private javax.swing.JCheckBox jCheckBox25;
-    private javax.swing.JCheckBox jCheckBox26;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JCheckBox jCheckBox7;
     private javax.swing.JCheckBox jCheckBox8;
+    private javax.swing.JCheckBox jCheckBox9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_antecedentes;
     private javax.swing.JLabel lbl_antecedentesFamiliares;
