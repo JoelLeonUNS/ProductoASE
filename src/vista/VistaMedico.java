@@ -8,7 +8,7 @@ public class VistaMedico extends javax.swing.JFrame implements ActionListener {
     
     private PresentadorGeneral pGeneral;
     private PanelHistorialMedico pHistoriaMedico = new PanelHistorialMedico();
-    private PanelExamen pExamen  = new PanelExamen();
+    private PanelExamen pExamen  = new PanelExamen(pGeneral);
     private PanelInforme pInforme = new PanelInforme();
     
     public VistaMedico(PresentadorGeneral pGeneral) {

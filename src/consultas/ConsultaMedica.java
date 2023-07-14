@@ -2,6 +2,7 @@ package consultas;
 
 import examenes.Examen;
 import java.util.ArrayList;
+import medicos.Medico;
 
 public class ConsultaMedica {
 
@@ -14,13 +15,14 @@ public class ConsultaMedica {
     private String sueño;
     private String sed;
     private String estadoAnimo;
+    private Medico atendidoPor;
     private ArrayList<Examen> examenes = new ArrayList<>();
 
     public ConsultaMedica() {
     }
     
     // solo para los valores por defecto.
-    public ConsultaMedica(String fecha, String hora, int edad, String motivo, int tiempoEnfermedad, String apetito, String sueño, String sed, String estadoAnimo) {
+    public ConsultaMedica(String fecha, String hora, int edad, String motivo, int tiempoEnfermedad, String apetito, String sueño, String sed, String estadoAnimo, Medico atendidoPor) {
         this.fecha = fecha;
         this.hora = hora;
         this.edad = edad;
@@ -30,6 +32,7 @@ public class ConsultaMedica {
         this.sueño = sueño;
         this.sed = sed;
         this.estadoAnimo = estadoAnimo;
+        this.atendidoPor = atendidoPor;
     }
 
     public String getFecha() {
@@ -103,6 +106,23 @@ public class ConsultaMedica {
     public void setEstadoAnimo(String estadoAnimo) {
         this.estadoAnimo = estadoAnimo;
     }
+
+    public Medico getAtendidoPor() {
+        return atendidoPor;
+    }
+
+    public void setAtendidoPor(Medico atendidoPor) {
+        this.atendidoPor = atendidoPor;
+    }
+
+    public ArrayList<Examen> getExamenes() {
+        return examenes;
+    }
+
+    public void setExamenes(ArrayList<Examen> examenes) {
+        this.examenes = examenes;
+    }
+    
 
     public void agregarExamen(Examen examen) {
         examenes.add(examen);

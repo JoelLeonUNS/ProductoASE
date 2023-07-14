@@ -1,8 +1,9 @@
-package consultas;
+package modelo;
 
+import consultas.ConsultaMedica;
 import java.util.Scanner;
 
-public class ConsultaManager {
+public class ModeloConsulta {
 
     private final Scanner input = new Scanner(System.in);
 

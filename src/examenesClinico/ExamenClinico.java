@@ -1,7 +1,6 @@
 package examenesClinico;
 
 import examenes.Examen;
-import medicos.Medico;
 
 public class ExamenClinico extends Examen {
 
@@ -11,8 +10,7 @@ public class ExamenClinico extends Examen {
     public ExamenClinico() {
     }
 
-    public ExamenClinico(boolean APCardiovascular, boolean APRespiratorio, Medico atendidoPor) {
-        super(atendidoPor);
+    public ExamenClinico(boolean APCardiovascular, boolean APRespiratorio) {
         this.APCardiovascular = APCardiovascular;
         this.APRespiratorio = APRespiratorio;
     }

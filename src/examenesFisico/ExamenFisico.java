@@ -1,6 +1,5 @@
 package examenesFisico;
 import examenes.Examen;
-import medicos.Medico;
 
 public class ExamenFisico extends Examen {
 
@@ -15,8 +14,7 @@ public class ExamenFisico extends Examen {
     public ExamenFisico() {
     }
 
-    public ExamenFisico(double temperatura, String PA, double FR, double SPO2, double peso, double talla, double IMC, Medico atendidoPor) {
-        super(atendidoPor);
+    public ExamenFisico(double temperatura, String PA, double FR, double SPO2, double peso, double talla, double IMC) {
         this.temperatura = temperatura;
         this.PA = PA;
         this.FR = FR;

@@ -35,6 +35,8 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
         this.jButton3.setEnabled(false);
         this.jButton4.setEnabled(false);
         this.jButton5.setEnabled(false);
+        
+        setTxtFldsEditable(false);
     }
     
     public void iniciar() {
@@ -95,7 +97,7 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 314, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 318, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(60, 60, 60))
         );
@@ -162,16 +164,22 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setText("Cuenta de usuario");
 
+        jTextField2.setEditable(false);
         jTextField2.setPreferredSize(new java.awt.Dimension(350, 30));
 
+        jTextField3.setEditable(false);
         jTextField3.setPreferredSize(new java.awt.Dimension(350, 30));
 
+        jTextField4.setEditable(false);
         jTextField4.setPreferredSize(new java.awt.Dimension(350, 30));
 
+        jTextField5.setEditable(false);
         jTextField5.setPreferredSize(new java.awt.Dimension(350, 30));
 
+        jTextField6.setEditable(false);
         jTextField6.setPreferredSize(new java.awt.Dimension(350, 30));
 
+        jTextField7.setEditable(false);
         jTextField7.setPreferredSize(new java.awt.Dimension(350, 30));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -333,6 +341,15 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
         return jtxfld.getText();
     }
     
+    public void setTxtFldsEditable(boolean b){
+        this.jTextField2.setEditable(b);
+        this.jTextField3.setEditable(b);
+        this.jTextField4.setEditable(b);
+        this.jTextField5.setEditable(b);
+        this.jTextField6.setEditable(b);
+        this.jTextField7.setEditable(b);
+    }
+    
     public void limpiarCasillas(){
         this.jTextField2.setText("");
         this.jTextField3.setText("");
@@ -354,11 +371,13 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
     }
     
     private void addMedico(Medico medico) {
-        modelTablaCuentas.addRow(new Object[]{
+        if(medico!=null){
+            modelTablaCuentas.addRow(new Object[]{
             medico, // Guardar el objeto Producto
             medico.getNombreMedico(),
             medico.getApellidoMedico(),   
-        });
+            });
+        }
     }
     
     private void crearEncabezadoTablaCuenta() {
@@ -385,10 +404,12 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
             }
             case "Crear Cuenta" -> {
                 limpiarCasillas();
+                setTxtFldsEditable(true);
                 this.jButton5.setEnabled(true);
                 presentador.getpAdministrarCuentas().setTipoGuardado("CREAR");
             }
             case "Editar Cuenta" -> {
+                setTxtFldsEditable(true);
                 this.jButton5.setEnabled(true);
                 presentador.getpAdministrarCuentas().setTipoGuardado("EDITAR");
             }
@@ -410,6 +431,7 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
                     presentador.getpAdministrarCuentas().editar();
                 }
                 this.jButton5.setEnabled(false);
+                setTxtFldsEditable(false);
             }
             case "Cerrar Sesión" -> {
                 //mostrarVistaLogin

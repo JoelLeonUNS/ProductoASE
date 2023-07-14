@@ -1,25 +1,23 @@
 package examenes;
-import medicos.Medico;
 
 
 public class Examen {
-    private Medico atendidoPor;
+    private String observacion;
 
     public Examen() {
     }
     
     // solo para los valores por defecto.
-    public Examen(Medico atendidoPor) {
-        this.atendidoPor = atendidoPor;
-    }
-    
-    
-    
-    public Medico getAtendidoPor() {
-        return atendidoPor;
+    public Examen(String observacion) {
+        this.observacion = observacion;
     }
 
-    public void setAtendidoPor(Medico atendidoPor) {
-        this.atendidoPor = atendidoPor;
-    }    
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+    
 }

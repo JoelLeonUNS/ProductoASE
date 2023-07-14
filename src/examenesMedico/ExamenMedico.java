@@ -1,25 +1,20 @@
 package examenesMedico;
 import examenes.Examen;
-import medicos.Medico;
-
 
 public class ExamenMedico extends Examen {
 
     private String diagnostico;
     private String tratamiento;
     private String examenesAux;
-    private String observacion;
 
     public ExamenMedico() {
     }
     
     // solo para poblar
-    public ExamenMedico(String diagnostico, String tratamiento, String examenesAux, String observacion, Medico atendidoPor) {
-        super(atendidoPor);
+    public ExamenMedico(String diagnostico, String tratamiento, String examenesAux) {
         this.diagnostico = diagnostico;
         this.tratamiento = tratamiento;
         this.examenesAux = examenesAux;
-        this.observacion = observacion;
     }
     
     public String getDiagnostico() {
@@ -44,15 +39,5 @@ public class ExamenMedico extends Examen {
 
     public void setExamenesAux(String examenesAux) {
         this.examenesAux = examenesAux;
-    }
-
-    public String getObservacion() {
-        return observacion;
-    }
-
-    public void setObservacion(String observación) {
-        this.observacion = observación;
-    }
-    
-    
+    }  
 }
