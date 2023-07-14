@@ -7,11 +7,20 @@ import modelo.ModeloMedico;
 
 public class PresentadorAdministrarCuentas {
     private ModeloMedico modelo;
+    private String tipoGuardado;
 
     public PresentadorAdministrarCuentas() {
        
     }
-    
+
+    public String getTipoGuardado() {
+        return tipoGuardado;
+    }
+
+    public void setTipoGuardado(String tipoGuardado) {
+        this.tipoGuardado = tipoGuardado;
+    }
+        
     public void setModelo(ModeloMedico modelo) {
          this.modelo = modelo;
     }
@@ -35,6 +44,14 @@ public class PresentadorAdministrarCuentas {
     
     public void registrar(){
         modelo.registrar();
+    }
+    
+    public void editar(){
+        modelo.editar();
+    }
+    
+    public void desactivarCuenta(){
+        modelo.darDeBaja();
     }
     
 }

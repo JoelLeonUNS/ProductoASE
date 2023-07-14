@@ -4,6 +4,7 @@ package vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -30,6 +31,10 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
         this.jButton4.addActionListener(this);
         this.jButton5.addActionListener(this);
         this.jButton6.addActionListener(this);
+        
+        this.jButton3.setEnabled(false);
+        this.jButton4.setEnabled(false);
+        this.jButton5.setEnabled(false);
     }
 
     
@@ -379,6 +384,11 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
         modelTablaInventario.addColumn("Apellido");
     }
     
+    private boolean camposllenos(){
+        return !"".equals(getInput(jTextField2)) && !"".equals(getInput(jTextField3)) && !"".equals(getInput(jTextField4))
+                 && !"".equals(getInput(jTextField5)) && !"".equals(getInput(jTextField6)) && !"".equals(getInput(jTextField7));
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         switch(e.getActionCommand()){
@@ -391,20 +401,34 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
             }
             case "Crear Cuenta" -> {
                 limpiarCasillas();
+                this.jButton5.setEnabled(true);
+                presentador.setTipoGuardado("CREAR");
             }
             case "Editar Cuenta" -> {
-                
+                this.jButton5.setEnabled(true);
+                presentador.setTipoGuardado("EDITAR");
             }
             case "Desactivar Cuenta" -> {
-                
+                presentador.desactivarCuenta();
+                this.jButton4.setEnabled(false);
             }
             case "Guardar" -> {
                 presentador.setDatosMedico(getInput(jTextField2), getInput(jTextField3), getInput(jTextField4), getInput(jTextField5));
-                presentador.setDatosUsuario(getInput(jTextField6), getInput(jTextField7));                
-                presentador.registrar();
+                presentador.setDatosUsuario(getInput(jTextField6), getInput(jTextField7));   
+                if(presentador.getTipoGuardado().equals("CREAR")){
+                    if(camposllenos()){
+                        presentador.registrar();
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Debe completar todos los campos.");
+                    }
+                    
+                }else if(presentador.getTipoGuardado().equals("EDITAR")){
+                    presentador.editar();
+                }
+                this.jButton5.setEnabled(false);
             }
             case "Cerrar Sesión" -> {
-                
+                //mostrarVistaLogin
             }
         }
     }
@@ -420,6 +444,9 @@ public class VistaAdmin extends javax.swing.JFrame implements ActionListener, Li
             jTextField3.setText(presentador.buscarMedicoDNI(dni).getNombreMedico());
             jTextField4.setText(presentador.buscarMedicoDNI(dni).getApellidoMedico());
             jTextField5.setText(presentador.buscarMedicoDNI(dni).getTelefonoMedico());
+            jTextField6.setText(presentador.buscarMedicoDNI(dni).getUsuario().getUsuario());
+            jTextField7.setText(presentador.buscarMedicoDNI(dni).getUsuario().getClave());
+            
         }
     }
 }

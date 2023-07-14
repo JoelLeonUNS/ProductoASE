@@ -64,18 +64,16 @@ public class ModeloMedico {
     }
     
     public void editar(){
-        
+        MedicoDAO medicoDao = new MedicoDAO();
+        medicoDao.update(medico, idMedico);
     }
     
-    public void darDeBaja(Medico medico){
-        medico.getUsuario().setEstado(false);
+    public void darDeBaja(){
+        getMedicoBD().getUsuario().setEstado(false);
     }
     
-//    public Medico getMedicoBD(){
-//        MedicoDAO medicoDao = new MedicoDAO();
-//        return idMedico!=0 ? medicoDao.read(idMedico) : null;
-//    }
-    
-    
-    
+    public Medico getMedicoBD(){
+        MedicoDAO medicoDao = new MedicoDAO();
+        return idMedico!=0 ? medicoDao.read(idMedico) : null;
+    }
 }
