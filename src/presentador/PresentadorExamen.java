@@ -1,20 +1,26 @@
-
 package presentador;
 
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
 import modelo.ModeloConsulta;
 import modelo.ModeloExamen;
 import modelo.ModeloHistoriaClinica;
 
-/**
- *
- * @author USER
- */
 public class PresentadorExamen {
     private ModeloExamen modeloExamen = new ModeloExamen();
     private ModeloConsulta modeloConsulta = new ModeloConsulta();
     private ModeloHistoriaClinica modeloHistoriaClinica = new ModeloHistoriaClinica();
 
     public PresentadorExamen() {
+    }
+    
+    public void cambiarTipoExamen(JPanel base, JPanel siguiente) {
+        siguiente.setSize(764, 250);
+        siguiente.setLocation(0, 0);
+        base.removeAll();
+        base.add(siguiente, BorderLayout.CENTER);
+        base.revalidate();
+        base.repaint();
     }
 
     public ModeloExamen getModeloExamen() {

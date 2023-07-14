@@ -3,18 +3,36 @@ package vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import presentador.PresentadorGeneral;
 
 public class PanelExamen extends javax.swing.JPanel implements ActionListener {
 
-    private PresentadorGeneral presentador;
+    private PresentadorGeneral pGeneral;
+    private PanelExamenClinico pExamenClinico;
+    private PanelExamenMedico pExamenMedico;
+    private PanelExamenFisico pExamenFisico;
+    
     private DefaultTableModel modelTablaCuentas = new DefaultTableModel();
+    private DefaultComboBoxModel comboBoxTipoExamen = new DefaultComboBoxModel();
     
     public PanelExamen(PresentadorGeneral p) {
         initComponents();
-        this.presentador = p;
+        this.pGeneral = p;
+        this.pExamenClinico = new PanelExamenClinico();
+        this.pExamenFisico = new PanelExamenFisico();
+        this.pExamenMedico = new PanelExamenMedico();
+        this.cmbBx_tipoExamen.addActionListener(this);
+        llenarComboBoxTipoExamen();
+    }
+    
+    private void llenarComboBoxTipoExamen() {
+        cmbBx_tipoExamen.addItem("Tipo de Examen");
+        cmbBx_tipoExamen.addItem("Examen Médico");
+        cmbBx_tipoExamen.addItem("Examen Físico");
+        cmbBx_tipoExamen.addItem("Examen Clínico");
     }
     
 
@@ -27,7 +45,7 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbBx_tipoExamen = new javax.swing.JComboBox<>();
         jButton3 = new javax.swing.JButton();
         pnl_consultaExamenes = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -84,10 +102,11 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
         jButton2.setPreferredSize(new java.awt.Dimension(163, 35));
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 30, -1, -1));
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo de examen", "Examen Médico", "Examen Físico", "Examen Clínico" }));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(200, 35));
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 30, -1, -1));
+        cmbBx_tipoExamen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbBx_tipoExamen.setModel(comboBoxTipoExamen);
+        cmbBx_tipoExamen.setActionCommand("Tipo de Examen");
+        cmbBx_tipoExamen.setPreferredSize(new java.awt.Dimension(200, 35));
+        add(cmbBx_tipoExamen, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 30, -1, -1));
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton3.setText("Guardar");
@@ -202,10 +221,10 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbBx_tipoExamen;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -239,6 +258,20 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        switch (e.getActionCommand()) {
+            case "Tipo de Examen" -> {
+                switch (cmbBx_tipoExamen.getSelectedIndex()) {
+                    case 1 -> {
+                        pGeneral.getpExamen().cambiarTipoExamen(pnl_baseTipoExamen, pExamenMedico);
+                    }
+                    case 2 -> {
+                        pGeneral.getpExamen().cambiarTipoExamen(pnl_baseTipoExamen, pExamenFisico);
+                    }
+                    case 3 -> {
+                        pGeneral.getpExamen().cambiarTipoExamen(pnl_baseTipoExamen, pExamenClinico);
+                    }
+                }
+            }
+        }
     }
 }

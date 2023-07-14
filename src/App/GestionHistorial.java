@@ -4,6 +4,8 @@ import BaseDeDatos.MedicoDAO;
 import BaseDeDatos.UsuarioDAO;
 import medicos.Medico;
 import medicos.Usuario;
+import modelo.ModeloConsulta;
+import modelo.ModeloExamen;
 import modelo.ModeloHistoriaClinica;
 import modelo.ModeloMedico;
 import modelo.ModeloUsuario;
@@ -27,9 +29,12 @@ public class GestionHistorial {
     public static void main(String[] args) {
         MedicosPorDefecto.poblar();
         
+        ModeloHistoriaClinica mHistoriaClinica = new ModeloHistoriaClinica();
+        
         PresentadorGeneral.getInstancia().setModeloPresentadorLogin(new ModeloUsuario());
         PresentadorGeneral.getInstancia().setModeloPresentadorInterfazAdmin(new ModeloMedico());
-        PresentadorGeneral.getInstancia().setModeloPresentadorHistoriaClinica(new ModeloHistoriaClinica());
+        PresentadorGeneral.getInstancia().setModeloPresentadorHistoriaClinica(mHistoriaClinica);
+        PresentadorGeneral.getInstancia().setModeloPresentadorExamen(new ModeloExamen(), new ModeloConsulta(), mHistoriaClinica);
         
         VistaLogin vLogin = new VistaLogin(PresentadorGeneral.getInstancia()); 
         vLogin.iniciar();
