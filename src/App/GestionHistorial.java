@@ -11,6 +11,7 @@ import pacientes.Alumno;
 import pacientes.Familiar;
 import presentador.PresentadorGeneral;
 import valoresPorDefecto.ConsultasPorDefecto;
+import valoresPorDefecto.ExamenesPorDefecto;
 import valoresPorDefecto.MedicosPorDefecto;
 import vista.VistaLogin;
 
@@ -29,6 +30,7 @@ public class GestionHistorial {
 //
     public static void main(String[] args) {
         MedicosPorDefecto.poblar();
+        ExamenesPorDefecto.poblar();
         ConsultasPorDefecto.poblar();
         
         HistoriaClinicaDAO hcDAO = new HistoriaClinicaDAO();
