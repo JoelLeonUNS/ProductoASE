@@ -1,6 +1,8 @@
 
 package presentador;
 
+import java.util.ArrayList;
+import medicos.Medico;
 import modelo.ModeloMedico;
 
 public class PresentadorAdministrarCuentas {
@@ -20,6 +22,15 @@ public class PresentadorAdministrarCuentas {
     
     public void setDatosUsuario(String usuario, String clave){
         modelo.setDatosUsuario(usuario, clave);
+    }
+    
+    public Medico buscarMedicoDNI(String dni){
+        return modelo.buscarMedicoDNI(dni);
+    }
+    
+    public ArrayList<Medico> buscarMedicoCoincidente(String cadena){
+        modelo.buscarMedicoCoincidente(cadena);
+        return modelo.getMedicosCoincidentesBD();
     }
     
     public void registrar(){

@@ -11,12 +11,12 @@ import javax.swing.JPanel;
  *
  * @author PC1
  */
-public class VMedico extends javax.swing.JFrame {
+public class VistaMedico extends javax.swing.JFrame {
 
     /**
      * Creates new form VMedicoHistoriaClinica
      */
-    public VMedico() {
+    public VistaMedico() {
         initComponents();
         
     }

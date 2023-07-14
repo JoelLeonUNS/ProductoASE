@@ -2,11 +2,13 @@
 package modelo;
 
 import BaseDeDatos.MedicoDAO;
+import java.util.ArrayList;
 import medicos.Medico;
 
 public class ModeloMedico {
     private Medico medico;
     private int idMedico;
+    private ArrayList<Integer> idMedicos;
 
     public ModeloMedico() {
         this.medico = new Medico();
@@ -26,15 +28,34 @@ public class ModeloMedico {
         medico.getUsuario().setRol("Medico");
     }
     
-    public Medico buscarMedico(String nombre, String apellido){
+    public Medico buscarMedicoDNI(String dni){
         MedicoDAO medicoDao = new MedicoDAO();
         for (int i = 0; i < medicoDao.count(); i++) {
-            if (medicoDao.read(i).getNombreMedico().equals(nombre)&&(medicoDao.read(i).getApellidoMedico().equals(apellido))) {
+            if (medicoDao.read(i).getDNI().equals(dni)) {
                 idMedico = i;
-                break;
+                return medicoDao.read(i);
             } 
         }
-        return getMedicoBD();
+        return null;
+    }
+    
+    public void buscarMedicoCoincidente(String cadena) {
+        MedicoDAO medicoDao = new MedicoDAO();
+        idMedicos = new ArrayList<>();   
+        for (int i = 0; i < medicoDao.count(); i++) {
+            if (medicoDao.read(i).getNombreMedico().toUpperCase().contains(cadena.toUpperCase()) || medicoDao.read(i).getApellidoMedico().toUpperCase().contains(cadena.toUpperCase())) {
+                idMedicos.add(i);
+            }
+        }
+    }
+    
+    public ArrayList<Medico> getMedicosCoincidentesBD() {
+        ArrayList<Medico> medicos = new ArrayList<>();
+        MedicoDAO medicoDao = new MedicoDAO();
+        for (Integer idMed : idMedicos) {
+            medicos.add(medicoDao.read(idMed));
+        }
+        return medicos;
     }
     
     public void registrar(){
@@ -50,10 +71,10 @@ public class ModeloMedico {
         medico.getUsuario().setEstado(false);
     }
     
-    public Medico getMedicoBD(){
-        MedicoDAO medicoDao = new MedicoDAO();
-        return idMedico!=0 ? medicoDao.read(idMedico) : null;
-    }
+//    public Medico getMedicoBD(){
+//        MedicoDAO medicoDao = new MedicoDAO();
+//        return idMedico!=0 ? medicoDao.read(idMedico) : null;
+//    }
     
     
     
