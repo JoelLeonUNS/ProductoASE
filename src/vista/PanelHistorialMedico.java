@@ -5,7 +5,7 @@ public class PanelHistorialMedico extends javax.swing.JPanel {
     public PanelHistorialMedico() {
         initComponents();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

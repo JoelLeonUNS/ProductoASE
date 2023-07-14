@@ -59,7 +59,11 @@ public class VistaLogin extends javax.swing.JFrame implements ActionListener {
                 }
             }
             if (pGeneral.getpLogin().isHabilitado()) {
-                pGeneral.mostrarVistaAdmin();
+                if (pGeneral.getpLogin().getUsuarioRolBD().equals("Admin")) {
+                    pGeneral.mostrarVistaAdmin();
+                } else {
+                    pGeneral.mostrarVistaMedico();
+                } 
             } else {
                 mensaje("Lo siento, su cuenta se\nencuentra inhabilitada.");
             }

@@ -5,32 +5,57 @@ import java.awt.event.ActionListener;
 import presentador.PresentadorGeneral;
 
 public class VistaMedico extends javax.swing.JFrame implements ActionListener {
-
+    
     private PresentadorGeneral pGeneral;
+    private PanelHistorialMedico pHistoriaMedico = new PanelHistorialMedico();
+    private PanelExamen pExamen  = new PanelExamen();
+    private PanelInforme pInforme = new PanelInforme();
     
     public VistaMedico(PresentadorGeneral pGeneral) {
         this.pGeneral = pGeneral;
         initComponents();
+        addActionListenerBotones();
     }
     
     public void iniciar() {
         pack();
-        this.bttn_historiasClinicas.addActionListener(this);
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);// visualiza la ventana
     }
     
+    private void addActionListenerBotones() {
+        this.bttn_historiasClinicas.addActionListener(this);
+        this.bttn_examenes.addActionListener(this);
+        this.bttn_informes.addActionListener(this);
+        this.bttn_cerrarSesion.addActionListener(this);
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
+        switch (e.getActionCommand()) {
+            case "HISTORIAS CLINICAS" -> {
+                pGeneral.getpMedico().vincularPanel(pnl_medico, pHistoriaMedico);
+            }
+            case "EXAMENES" -> {
+                pGeneral.getpMedico().vincularPanel(pnl_medico, pExamen);
+            }
+            case "INFORMES" -> {
+                pGeneral.getpMedico().vincularPanel(pnl_medico, pInforme);
+            }
+        }
     }
+    
+    
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         bttn_cerrarSesion = new javax.swing.JButton();
-        PanelMedico = new javax.swing.JPanel();
+        pnl_medico = new javax.swing.JPanel();
         bttn_historiasClinicas = new javax.swing.JButton();
         bttn_examenes = new javax.swing.JButton();
         bttn_informes = new javax.swing.JButton();
@@ -38,6 +63,7 @@ public class VistaMedico extends javax.swing.JFrame implements ActionListener {
         lbl_nombreApellido = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bttn_cerrarSesion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -48,13 +74,14 @@ public class VistaMedico extends javax.swing.JFrame implements ActionListener {
         bttn_cerrarSesion.setPreferredSize(new java.awt.Dimension(250, 70));
         getContentPane().add(bttn_cerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 30, -1, -1));
 
-        PanelMedico.setBackground(new java.awt.Color(204, 204, 204));
-        PanelMedico.setPreferredSize(new java.awt.Dimension(1280, 620));
-        PanelMedico.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(PanelMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, -1));
+        pnl_medico.setBackground(new java.awt.Color(204, 204, 204));
+        pnl_medico.setPreferredSize(new java.awt.Dimension(1280, 620));
+        pnl_medico.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(pnl_medico, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 1220, -1));
 
         bttn_historiasClinicas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bttn_historiasClinicas.setText("Historias Clínicas");
+        bttn_historiasClinicas.setActionCommand("HISTORIAS CLINICAS");
         bttn_historiasClinicas.setBorderPainted(false);
         bttn_historiasClinicas.setContentAreaFilled(false);
         bttn_historiasClinicas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -63,6 +90,7 @@ public class VistaMedico extends javax.swing.JFrame implements ActionListener {
 
         bttn_examenes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bttn_examenes.setText("Exámenes");
+        bttn_examenes.setActionCommand("EXAMENES");
         bttn_examenes.setBorderPainted(false);
         bttn_examenes.setContentAreaFilled(false);
         bttn_examenes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -71,6 +99,7 @@ public class VistaMedico extends javax.swing.JFrame implements ActionListener {
 
         bttn_informes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bttn_informes.setText("Informes");
+        bttn_informes.setActionCommand("INFORMES");
         bttn_informes.setBorderPainted(false);
         bttn_informes.setContentAreaFilled(false);
         bttn_informes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -91,13 +120,13 @@ public class VistaMedico extends javax.swing.JFrame implements ActionListener {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelMedico;
     private javax.swing.JButton bttn_cerrarSesion;
     private javax.swing.JButton bttn_examenes;
     private javax.swing.JButton bttn_historiasClinicas;
     private javax.swing.JButton bttn_informes;
     private javax.swing.JLabel lbl_nombreApellido;
     private javax.swing.JPanel pnl_header;
+    private javax.swing.JPanel pnl_medico;
     // End of variables declaration//GEN-END:variables
 
     

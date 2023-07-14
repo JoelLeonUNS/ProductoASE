@@ -1,6 +1,5 @@
 package presentador;
 
-import medicos.Usuario;
 import modelo.ModeloUsuario;
 
 public class PresentadorLogin {
@@ -29,8 +28,8 @@ public class PresentadorLogin {
         else return "";
     }
     
-    public Usuario getUsuarioBD() {
-        return mUsuario.getUsuarioBD();
+    public String getUsuarioRolBD() {
+        return mUsuario.getUsuarioBD().getRol();
     }
 
     public void iniciarSesion() {
