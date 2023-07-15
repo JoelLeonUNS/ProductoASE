@@ -1,25 +1,33 @@
 
 package vista;
 
+import consultas.ConsultaMedica;
+import historias.HistoriaClinica;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import presentador.PresentadorGeneral;
 
-public class PanelExamen extends javax.swing.JPanel implements ActionListener {
+public class PanelExamen extends javax.swing.JPanel implements ActionListener, ListSelectionListener {
 
     private PresentadorGeneral pGeneral;
     private PanelExamenClinico pExamenClinico;
     private PanelExamenMedico pExamenMedico;
     private PanelExamenFisico pExamenFisico;
     
-    private DefaultTableModel modelTablaCuentas = new DefaultTableModel();
+    private DefaultTableModel modelTablaBuscarHistoria = new DefaultTableModel();
+    private DefaultTableModel modelTablaConsultas = new DefaultTableModel();
     private DefaultComboBoxModel comboBoxTipoExamen = new DefaultComboBoxModel();
     
     public PanelExamen(PresentadorGeneral p) {
         initComponents();
+        crearEncabezadosTablaHistorias();
+        crearEncabezadosTablaConsultas();
         this.pGeneral = p;
         this.pExamenClinico = new PanelExamenClinico();
         this.pExamenFisico = new PanelExamenFisico();
@@ -45,6 +53,18 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
         cmbBx_tipoExamen.addItem("Examen Clínico");
     }
     
+    private void crearEncabezadosTablaHistorias(){
+        modelTablaBuscarHistoria.addColumn("DNI");
+        modelTablaBuscarHistoria.addColumn("Nombre");
+        modelTablaBuscarHistoria.addColumn("Apellido");
+    }
+    
+    private void crearEncabezadosTablaConsultas(){
+        modelTablaConsultas.addColumn("N°");
+        modelTablaConsultas.addColumn("Fecha");
+        modelTablaConsultas.addColumn("Motivo");
+    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -53,32 +73,34 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
         jTextField1 = new javax.swing.JTextField();
         jButtonBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableHistorias = new javax.swing.JTable();
         jButtonAñadirConsulta = new javax.swing.JButton();
         cmbBx_tipoExamen = new javax.swing.JComboBox<>();
         jButtonGuardar = new javax.swing.JButton();
         pnl_consultaExamenes = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtFldFecha = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtFldHora = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtFldEdad = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtFldTiempoEferm = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTextField7 = new javax.swing.JTextField();
+        txtFldMotivo = new javax.swing.JTextArea();
+        txtFldSueño = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        txtFldSed = new javax.swing.JTextField();
+        txtFldEstadoAnimo = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        txtFldApetito = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         pnl_baseTipoExamen = new javax.swing.JPanel();
         lbl_indicacionTipoHistoria = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTableConsultas = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1280, 620));
@@ -95,17 +117,11 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(404, 500));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        jTableHistorias.setModel(modelTablaBuscarHistoria);
+        jTableHistorias.setPreferredSize(new java.awt.Dimension(404, 250));
+        jScrollPane1.setViewportView(jTableHistorias);
 
-            },
-            new String [] {
-                "DNI", "Nombre", "Apellido"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 95, -1, 500));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 95, -1, 250));
 
         jButtonAñadirConsulta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonAñadirConsulta.setText("Añadir consulta");
@@ -131,33 +147,33 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
         jLabel2.setText("Fecha");
         pnl_consultaExamenes.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField2.setPreferredSize(new java.awt.Dimension(180, 30));
-        pnl_consultaExamenes.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 55, -1, -1));
+        txtFldFecha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtFldFecha.setPreferredSize(new java.awt.Dimension(180, 30));
+        pnl_consultaExamenes.add(txtFldFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 55, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Hora");
         pnl_consultaExamenes.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(234, 30, -1, -1));
 
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField3.setPreferredSize(new java.awt.Dimension(120, 30));
-        pnl_consultaExamenes.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(234, 55, -1, -1));
+        txtFldHora.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtFldHora.setPreferredSize(new java.awt.Dimension(120, 30));
+        pnl_consultaExamenes.add(txtFldHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(234, 55, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Edad");
         pnl_consultaExamenes.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 30, -1, -1));
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField4.setPreferredSize(new java.awt.Dimension(90, 30));
-        pnl_consultaExamenes.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 55, -1, -1));
+        txtFldEdad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtFldEdad.setPreferredSize(new java.awt.Dimension(90, 30));
+        pnl_consultaExamenes.add(txtFldEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 55, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Tipo de enfermedad");
         pnl_consultaExamenes.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 30, -1, -1));
 
-        jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField5.setPreferredSize(new java.awt.Dimension(234, 30));
-        pnl_consultaExamenes.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 55, -1, -1));
+        txtFldTiempoEferm.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtFldTiempoEferm.setPreferredSize(new java.awt.Dimension(234, 30));
+        pnl_consultaExamenes.add(txtFldTiempoEferm, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 55, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setText("Motivo");
@@ -165,16 +181,16 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
 
         jScrollPane2.setPreferredSize(new java.awt.Dimension(234, 99));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setPreferredSize(new java.awt.Dimension(232, 85));
-        jScrollPane2.setViewportView(jTextArea1);
+        txtFldMotivo.setColumns(20);
+        txtFldMotivo.setRows(5);
+        txtFldMotivo.setPreferredSize(new java.awt.Dimension(232, 85));
+        jScrollPane2.setViewportView(txtFldMotivo);
 
         pnl_consultaExamenes.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(488, 125, -1, -1));
 
-        jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField7.setPreferredSize(new java.awt.Dimension(205, 30));
-        pnl_consultaExamenes.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 125, -1, -1));
+        txtFldSueño.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtFldSueño.setPreferredSize(new java.awt.Dimension(205, 30));
+        pnl_consultaExamenes.add(txtFldSueño, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 125, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Sueño");
@@ -184,21 +200,21 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
         jLabel8.setText("Sed");
         pnl_consultaExamenes.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 170, -1, -1));
 
-        jTextField8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField8.setPreferredSize(new java.awt.Dimension(205, 30));
-        pnl_consultaExamenes.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 195, -1, -1));
+        txtFldSed.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtFldSed.setPreferredSize(new java.awt.Dimension(205, 30));
+        pnl_consultaExamenes.add(txtFldSed, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 195, -1, -1));
 
-        jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField6.setPreferredSize(new java.awt.Dimension(205, 30));
-        pnl_consultaExamenes.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 195, -1, -1));
+        txtFldEstadoAnimo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtFldEstadoAnimo.setPreferredSize(new java.awt.Dimension(205, 30));
+        pnl_consultaExamenes.add(txtFldEstadoAnimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 195, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Estado de ánimo");
         pnl_consultaExamenes.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
-        jTextField9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField9.setPreferredSize(new java.awt.Dimension(205, 30));
-        pnl_consultaExamenes.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 125, -1, -1));
+        txtFldApetito.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtFldApetito.setPreferredSize(new java.awt.Dimension(205, 30));
+        pnl_consultaExamenes.add(txtFldApetito, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 125, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Apetito");
@@ -227,6 +243,14 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
         pnl_consultaExamenes.add(pnl_baseTipoExamen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 764, 250));
 
         add(pnl_consultaExamenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 95, -1, -1));
+
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(404, 230));
+
+        jTableConsultas.setModel(modelTablaConsultas);
+        jTableConsultas.setPreferredSize(new java.awt.Dimension(404, 230));
+        jScrollPane3.setViewportView(jTableConsultas);
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, 230));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -246,48 +270,71 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTableConsultas;
+    private javax.swing.JTable jTableHistorias;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lbl_indicacionTipoHistoria;
     private javax.swing.JPanel pnl_baseTipoExamen;
     private javax.swing.JPanel pnl_consultaExamenes;
+    private javax.swing.JTextField txtFldApetito;
+    private javax.swing.JTextField txtFldEdad;
+    private javax.swing.JTextField txtFldEstadoAnimo;
+    private javax.swing.JTextField txtFldFecha;
+    private javax.swing.JTextField txtFldHora;
+    private javax.swing.JTextArea txtFldMotivo;
+    private javax.swing.JTextField txtFldSed;
+    private javax.swing.JTextField txtFldSueño;
+    private javax.swing.JTextField txtFldTiempoEferm;
     // End of variables declaration//GEN-END:variables
 
+    public boolean isBusquedaDNI(){
+        return this.jTextField1.getText().matches("[0-9]+");
+    }
+    
+    public void mostrarTablaBuscarHistoria(ArrayList<HistoriaClinica> historiasClinicas) {
+        modelTablaBuscarHistoria.setRowCount(0);
+        for (HistoriaClinica historiaClinica : historiasClinicas) {
+            addHistoriaClinica(historiaClinica);
+        }
+    }
+    
+    private void addHistoriaClinica(HistoriaClinica historiaClinica) {
+        if(historiaClinica!=null){
+            modelTablaBuscarHistoria.addRow(new Object[]{
+            historiaClinica, // Guardar el objeto HistoriaClinica
+            historiaClinica.getPaciente().getNombre(),
+            historiaClinica.getPaciente().getApellido(),   
+            });
+        }
+    }
+    
     public String getInput(JTextField jtxfld){
         return jtxfld.getText();
     }
     
     public void setTxtFldsEditable(boolean b){
-        this.jTextField2.setEditable(b);
-        this.jTextField3.setEditable(b);
-        this.jTextField4.setEditable(b);
-        this.jTextField5.setEditable(b);
-        this.jTextField6.setEditable(b);
-        this.jTextField7.setEditable(b);
-        this.jTextField8.setEditable(b);
-        this.jTextField9.setEditable(b);
-        this.jTextArea1.setEditable(b);
+        this.txtFldFecha.setEditable(b);
+        this.txtFldHora.setEditable(b);
+        this.txtFldEdad.setEditable(b);
+        this.txtFldTiempoEferm.setEditable(b);
+        this.txtFldEstadoAnimo.setEditable(b);
+        this.txtFldSueño.setEditable(b);
+        this.txtFldSed.setEditable(b);
+        this.txtFldApetito.setEditable(b);
+        this.txtFldMotivo.setEditable(b);
     }
     
     public void limpiarCasillas(){
-        this.jTextField2.setText("");
-        this.jTextField3.setText("");
-        this.jTextField4.setText("");
-        this.jTextField5.setText("");
-        this.jTextField6.setText("");
-        this.jTextField7.setText("");
-        this.jTextField8.setText("");
-        this.jTextField9.setText("");
-        this.jTextArea1.setText("");
+        this.txtFldFecha.setText("");
+        this.txtFldHora.setText("");
+        this.txtFldEdad.setText("");
+        this.txtFldTiempoEferm.setText("");
+        this.txtFldEstadoAnimo.setText("");
+        this.txtFldSueño.setText("");
+        this.txtFldSed.setText("");
+        this.txtFldApetito.setText("");
+        this.txtFldMotivo.setText("");
     }
     
     public void setDatosExamenMedico(){
@@ -334,7 +381,12 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
                 }
             }
             case "Buscar"->{
-                
+                if(isBusquedaDNI()){  //VERIFICAR USO DEL PRESENTADOR HISTORIA CLINICA
+                    modelTablaBuscarHistoria.setRowCount(0);
+                    addHistoriaClinica(pGeneral.getpHistoriaClinica().buscarHistoriaClinicaDNI(getInput(jTextField1)));
+                }else{
+                    mostrarTablaBuscarHistoria(pGeneral.getpHistoriaClinica().buscarHistoriaClinicaCoincidente(getInput(jTextField1)));
+                }
             }
             case "Añadir consulta"->{
                 limpiarCasillas();
@@ -360,6 +412,34 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
                 pGeneral.getpExamen().añadirExamenAConsulta();
                 resetearPanelClinico();
             }
+        }
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        System.out.println("Se eligio una fila");
+        this.jButtonGuardar.setEnabled(false);
+        int selectedRow = jTableHistorias.getSelectedRow();
+        if(selectedRow != -1){
+            String dni = jTableHistorias.getValueAt(selectedRow, 0).toString();
+            mostrarConsultas(pGeneral.getpHistoriaClinica().buscarHistoriaClinicaDNI(dni).getConsultasMedicas());
+        }
+    }
+    
+    public void mostrarConsultas(ArrayList<ConsultaMedica> consultas){
+        modelTablaConsultas.setRowCount(0);
+        for (int i = 0; i < consultas.size(); i++) {
+            addConsultaMedica(consultas.get(i), i+1);
+        }
+    }
+    
+    private void addConsultaMedica(ConsultaMedica consulta, int i) {
+        if(consulta!=null){
+            modelTablaBuscarHistoria.addRow(new Object[]{
+            i,
+            consulta.getFecha(),
+            consulta.getMotivo(),   
+            });
         }
     }
 }

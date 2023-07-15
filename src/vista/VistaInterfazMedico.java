@@ -15,7 +15,7 @@ public class VistaInterfazMedico extends javax.swing.JFrame implements ActionLis
         this.pGeneral = pGeneral;
         pExamen = new PanelExamen(pGeneral);
         pHistorialMedico = new PanelHistoriaClinica(pGeneral);
-        pInforme = new PanelInforme();
+        pInforme = new PanelInforme(pGeneral);
         initComponents();
         addActionListenerBotones();
         pGeneral.getpInterfazMedico().cambiarPanel(pnl_medico, pHistorialMedico); // primera ventana
