@@ -69,7 +69,6 @@ public class ModeloHistoriaClinica {
         historiaClinicaEstudiante.setPaciente(estudiante);
         historiaClinicaEstudiante.agregarAntecedentesPatologicos(antecedentesPatologicos);
         hcDAO.create(historiaClinicaEstudiante);
-        System.out.println("Hola");
     }
     
     public void editarHistoriaEstudiante() {

@@ -55,8 +55,7 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
     }
     
     public String getRadioButtonSexo() {
-        
-        return ((ButtonModel) buttonGroupSexo.getSelection()).getActionCommand();
+        return (rdBttn_m.isSelected() ? rdBttn_m.getText() : "F");
     }
     
     private JCheckBox[] arrayCheckBox() {
