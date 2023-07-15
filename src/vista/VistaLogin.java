@@ -50,7 +50,6 @@ public class VistaLogin extends javax.swing.JFrame implements ActionListener, Ke
         pGeneral.getpLogin().iniciarSesion();
         mensaje(pGeneral.getpLogin().showMensaje());
         if (pGeneral.getpLogin().isAcceso()) {
-            this.dispose();
             if (pGeneral.getpLogin().isRecordado()) {
                 pGeneral.getpLogin().recordarSesion(); // lo recuerda de nuevo
             } else {
@@ -61,6 +60,7 @@ public class VistaLogin extends javax.swing.JFrame implements ActionListener, Ke
                 }
             }
             if (pGeneral.getpLogin().isHabilitado()) {
+                this.dispose();
                 if (pGeneral.getpLogin().getUsuarioRolBD().equals("Admin")) {
                     pGeneral.mostrarVistaInterfazAdmin();
                 } else {

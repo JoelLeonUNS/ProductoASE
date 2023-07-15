@@ -360,6 +360,7 @@ public class VistaInterfazAdmin extends javax.swing.JFrame implements ActionList
             case "Desactivar Cuenta" -> {
                 pGeneral.getpInterfazAdmin().desactivarCuenta();
                 this.jButton4.setEnabled(false);
+                JOptionPane.showMessageDialog(null, "Cuenta Deshabilitada");
             }
             case "Guardar" -> {
                 pGeneral.getpInterfazAdmin().setDatosMedico(getInput(jTextField2), getInput(jTextField3), getInput(jTextField4), getInput(jTextField5));

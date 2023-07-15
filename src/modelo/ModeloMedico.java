@@ -76,6 +76,6 @@ public class ModeloMedico {
     
     public Medico getMedicoBD(){
         MedicoDAO medicoDao = new MedicoDAO();
-        return idMedico!=0 ? medicoDao.read(idMedico) : null;
+        return idMedico!=-1 ? medicoDao.read(idMedico) : null;
     }
 }
