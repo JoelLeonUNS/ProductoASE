@@ -8,9 +8,11 @@ import modelo.ModeloHistoriaClinica;
 
 public class PresentadorHistoriaClinica {
     private ModeloHistoriaClinica modeloHistoriaClinica;
+    private String tipoHistoria;
+    private boolean historiaEstudianteEditable = false;
+    private boolean historiaTrabajadorEditable = false;
     
-    public PresentadorHistoriaClinica() {
-        
+    public PresentadorHistoriaClinica() {    
     }
     
     public void setModelo(ModeloHistoriaClinica mHistoriaClinica) {
@@ -34,7 +36,35 @@ public class PresentadorHistoriaClinica {
         modeloHistoriaClinica.buscarHistoriaCoincidente(cadena);
         return modeloHistoriaClinica.getHistoriasCoincidentesBD();
     }
-    
-    
-    
+
+    public void setHistoriaEditable(boolean editable) {
+        switch (tipoHistoria) {
+            case "ESTUDIANTE" -> {
+                this.historiaEstudianteEditable = editable;
+            }
+            case "TRABAJADOR" -> {
+                this.historiaTrabajadorEditable = editable;
+            }   
+        }
+    }
+
+    public boolean isHistoriaEditable() {
+        switch (tipoHistoria) {
+            case "ESTUDIANTE" -> {
+                return this.historiaEstudianteEditable;
+            }
+            case "TRABAJADOR" -> {
+                return this.historiaTrabajadorEditable;
+            }   
+        }
+        return false;
+    }
+
+    public String getTipoHistoria() {
+        return tipoHistoria;
+    }
+
+    public void setTipoHistoria(String tipoHistoria) {
+        this.tipoHistoria = tipoHistoria;
+    }
 }

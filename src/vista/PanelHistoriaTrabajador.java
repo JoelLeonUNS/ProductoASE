@@ -1,17 +1,64 @@
 package vista;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JCheckBox;
+import javax.swing.JTextField;
 import presentador.PresentadorGeneral;
 
 public class PanelHistoriaTrabajador extends javax.swing.JPanel {
 
-    private PresentadorGeneral pGeneral;
+    private PresentadorGeneral pGeneral;   
+    private JCheckBox[] checkBoxes;
     private DefaultComboBoxModel comboBoxEstaoCivil = new DefaultComboBoxModel();
     private DefaultComboBoxModel comboBoxParentesco = new DefaultComboBoxModel();
-    
+
     public PanelHistoriaTrabajador(PresentadorGeneral pGeneral) {
         initComponents();
         this.pGeneral = pGeneral;
+        checkBoxes = arrayCheckBox();
+        setEnableBotones(false);
+    }
+
+    public String getInputText(JTextField txtFld) {
+        return txtFld.getText();
+    }
+    
+    private JCheckBox[] arrayCheckBox() {
+        JCheckBox[] chckBxs = {
+            jCheckBox1,jCheckBox2,jCheckBox3,jCheckBox4,jCheckBox5,jCheckBox6,
+            jCheckBox7, jCheckBox8, jCheckBox9, jCheckBox10, jCheckBox11, jCheckBox12,
+            jCheckBox13, jCheckBox14, jCheckBox15, jCheckBox16, jCheckBox17, jCheckBox18,
+            jCheckBox19, jCheckBox20, jCheckBox21, jCheckBox22, jCheckBox23, jCheckBox24
+        };
+        return chckBxs;
+    }
+
+    public void setEnableBotones(boolean b) {
+        txtFld_apellidos.setEditable(b);
+        txtFld_nombres.setEditable(b);
+        txtFld_edad.setEditable(b);
+        chckBx_m.setEnabled(b);
+        chckBx_f.setEnabled(b);
+        txtFld_fechaNac.setEditable(b);
+        txtFld_lugarNac.setEditable(b);
+        txtFld_distrito.setEditable(b);
+        txtFld_departamento.setEditable(b);
+        txtFld_direccion.setEditable(b);
+        txtFld_areaTrabajo.setEditable(b);
+        txtFld_telefono.setEditable(b);
+        chckBx_no.setEnabled(b);
+        chckBx_si.setEnabled(b);
+        cmbBx_estadoCivil.setEnabled(b);
+        jCheckBox1.setEnabled(b);
+        for (JCheckBox checkBox : checkBoxes) {
+            checkBox.setEnabled(b);
+        }
+        cmbBx_parentesco.setEnabled(b);
+        txtFld_nombreFamiliar.setEditable(b);
+        txtFld_direccionFamiliar.setEditable(b);
+        txtAr_antecedentes.setEditable(b);
+        txtFld_telefonoFamiliar.setEditable(b);
+        bttn_guardarFamiliar.setEnabled(b);
     }
 
     @SuppressWarnings("unchecked")
@@ -54,6 +101,7 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel {
         cmbBx_estadoCivil = new javax.swing.JComboBox<>();
         lbl_nombreFamiliar = new javax.swing.JLabel();
         lbl_areaTrabajo = new javax.swing.JLabel();
+        txtFld_telefono = new javax.swing.JTextField();
         jCheckBox9 = new javax.swing.JCheckBox();
         jCheckBox10 = new javax.swing.JCheckBox();
         jCheckBox11 = new javax.swing.JCheckBox();
@@ -72,20 +120,21 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel {
         jCheckBox24 = new javax.swing.JCheckBox();
         lbl_antecedentesPatologicos = new javax.swing.JLabel();
         lbl_direccion = new javax.swing.JLabel();
-        lbl_telefono = new javax.swing.JLabel();
+        lbl_telefonoFamiliar = new javax.swing.JLabel();
         cmbBx_parentesco = new javax.swing.JComboBox<>();
         lbl_parentesco = new javax.swing.JLabel();
         lbl_direccionFamiliar = new javax.swing.JLabel();
         lbl_antecedentes = new javax.swing.JLabel();
         txtFld_nombreFamiliar = new javax.swing.JTextField();
         txtFld_direccionFamiliar = new javax.swing.JTextField();
-        txtFld_telefono = new javax.swing.JTextField();
+        txtFld_telefonoFamiliar = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtAr_antecedentes = new javax.swing.JTextArea();
         bttn_guardarFamiliar = new javax.swing.JButton();
         lbl_docente = new javax.swing.JLabel();
         chckBx_no = new javax.swing.JCheckBox();
         chckBx_si = new javax.swing.JCheckBox();
+        lbl_telefono = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(217, 217, 217));
         setMinimumSize(new java.awt.Dimension(775, 495));
@@ -122,7 +171,7 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel {
 
         txtFld_direccion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtFld_direccion.setPreferredSize(new java.awt.Dimension(300, 30));
-        add(txtFld_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 180, -1, -1));
+        add(txtFld_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 180, 200, -1));
 
         lbl_antecedentesFamiliares.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl_antecedentesFamiliares.setText("Antecedentes Familiares");
@@ -222,7 +271,7 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel {
 
         txtFld_areaTrabajo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtFld_areaTrabajo.setPreferredSize(new java.awt.Dimension(195, 30));
-        add(txtFld_areaTrabajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 180, -1, -1));
+        add(txtFld_areaTrabajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 180, 170, -1));
 
         cmbBx_estadoCivil.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbBx_estadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltero", "Casado", "Viudo", "Divorciado" }));
@@ -235,7 +284,11 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel {
 
         lbl_areaTrabajo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_areaTrabajo.setText("Área de trabajo");
-        add(lbl_areaTrabajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 160, -1, -1));
+        add(lbl_areaTrabajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 160, -1, -1));
+
+        txtFld_telefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtFld_telefono.setPreferredSize(new java.awt.Dimension(195, 30));
+        add(txtFld_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 180, 110, -1));
 
         jCheckBox9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jCheckBox9.setText("Faringitis");
@@ -309,9 +362,9 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel {
         lbl_direccion.setText("Dirección");
         add(lbl_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 160, -1, -1));
 
-        lbl_telefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl_telefono.setText("Teléfono");
-        add(lbl_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 375, -1, -1));
+        lbl_telefonoFamiliar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_telefonoFamiliar.setText("Teléfono");
+        add(lbl_telefonoFamiliar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 375, -1, -1));
 
         cmbBx_parentesco.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbBx_parentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Padre", "Madre", "Hermano" }));
@@ -338,9 +391,9 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel {
         txtFld_direccionFamiliar.setPreferredSize(new java.awt.Dimension(335, 30));
         add(txtFld_direccionFamiliar, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 335, -1, -1));
 
-        txtFld_telefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtFld_telefono.setPreferredSize(new java.awt.Dimension(130, 30));
-        add(txtFld_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 395, -1, -1));
+        txtFld_telefonoFamiliar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtFld_telefonoFamiliar.setPreferredSize(new java.awt.Dimension(130, 30));
+        add(txtFld_telefonoFamiliar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 395, -1, -1));
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -368,6 +421,10 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel {
         chckBx_si.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         chckBx_si.setText("Si");
         add(chckBx_si, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 185, -1, -1));
+
+        lbl_telefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_telefono.setText("Teléfono");
+        add(lbl_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 160, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -426,6 +483,7 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_parentesco;
     private javax.swing.JLabel lbl_sexo;
     private javax.swing.JLabel lbl_telefono;
+    private javax.swing.JLabel lbl_telefonoFamiliar;
     private javax.swing.JTextArea txtAr_antecedentes;
     private javax.swing.JTextField txtFld_apellidos;
     private javax.swing.JTextField txtFld_areaTrabajo;
@@ -440,5 +498,6 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel {
     private javax.swing.JTextField txtFld_nombres;
     private javax.swing.JTextField txtFld_otros;
     private javax.swing.JTextField txtFld_telefono;
+    private javax.swing.JTextField txtFld_telefonoFamiliar;
     // End of variables declaration//GEN-END:variables
 }

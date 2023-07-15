@@ -1,24 +1,63 @@
 package vista;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import presentador.PresentadorGeneral;
 
 public class PanelHistoriaEstudiante extends javax.swing.JPanel {
     
     private PresentadorGeneral pGeneral;
+    private JCheckBox[] checkBoxes;
     private DefaultComboBoxModel comboBoxEstaoCivil = new DefaultComboBoxModel();
     private DefaultComboBoxModel comboBoxParentesco = new DefaultComboBoxModel();
     
     public PanelHistoriaEstudiante(PresentadorGeneral pGeneral) {
         initComponents();
         this.pGeneral = pGeneral;
+        checkBoxes = arrayCheckBox();
+        setEnableBotones(false);
     }
     
-    public String getCampoTexto(JTextField txtFld) {
+    public String getInputText(JTextField txtFld) {
         return txtFld.getText();
     }
     
+    private JCheckBox[] arrayCheckBox() {
+        JCheckBox[] chckBxs = {
+            jCheckBox1,jCheckBox2,jCheckBox3,jCheckBox4,jCheckBox5,jCheckBox6,
+            jCheckBox7, jCheckBox8, jCheckBox9, jCheckBox10, jCheckBox11, jCheckBox12,
+            jCheckBox13, jCheckBox14, jCheckBox15, jCheckBox16, jCheckBox17, jCheckBox18,
+            jCheckBox19, jCheckBox20, jCheckBox21, jCheckBox22, jCheckBox23, jCheckBox24
+        };
+        return chckBxs;
+    }
+    
+    public void setEnableBotones(boolean b) {
+        txtFld_apellidos.setEditable(b);
+        txtFld_nombres.setEditable(b);
+        txtFld_edad.setEditable(b);
+        chckBx_m.setEnabled(b);
+        chckBx_f.setEnabled(b);
+        txtFld_fechaNac.setEditable(b);
+        txtFld_lugarNac.setEditable(b);
+        txtFld_distrito.setEditable(b);
+        txtFld_departamento.setEditable(b);
+        txtFld_direccion.setEditable(b);
+        txtFld_escuela.setEditable(b);
+        txtFld_telefono.setEditable(b);
+        cmbBx_estadoCivil.setEnabled(b);
+        jCheckBox1.setEnabled(b);
+        for (JCheckBox checkBox : checkBoxes) {
+            checkBox.setEnabled(b);
+        }
+        cmbBx_parentesco.setEnabled(b);
+        txtFld_nombreFamiliar.setEditable(b);
+        txtFld_direccionFamiliar.setEditable(b);
+        txtAr_antecedentes.setEditable(b);
+        txtFld_telefonoFamiliar.setEditable(b);
+        bttn_guardarFamiliar.setEnabled(b);
+    }
     
     
     @SuppressWarnings("unchecked")
@@ -79,17 +118,19 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel {
         jCheckBox24 = new javax.swing.JCheckBox();
         lbl_antecedentesPatologicos = new javax.swing.JLabel();
         lbl_direccion = new javax.swing.JLabel();
-        lbl_telefono = new javax.swing.JLabel();
+        lbl_telefonoFamiliar = new javax.swing.JLabel();
         cmbBx_parentesco = new javax.swing.JComboBox<>();
         lbl_parentesco = new javax.swing.JLabel();
         lbl_direccionFamiliar = new javax.swing.JLabel();
         lbl_antecedentes = new javax.swing.JLabel();
         txtFld_nombreFamiliar = new javax.swing.JTextField();
         txtFld_direccionFamiliar = new javax.swing.JTextField();
-        txtFld_telefono = new javax.swing.JTextField();
+        txtFld_telefonoFamiliar = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtAr_antecedentes = new javax.swing.JTextArea();
         bttn_guardarFamiliar = new javax.swing.JButton();
+        txtFld_telefono = new javax.swing.JTextField();
+        lbl_telefono = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(217, 217, 217));
         setPreferredSize(new java.awt.Dimension(755, 495));
@@ -125,7 +166,7 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel {
 
         txtFld_direccion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtFld_direccion.setPreferredSize(new java.awt.Dimension(300, 30));
-        add(txtFld_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 180, -1, -1));
+        add(txtFld_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 180, 235, -1));
 
         lbl_antecedentesFamiliares.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl_antecedentesFamiliares.setText("Antecedentes Familiares");
@@ -225,7 +266,7 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel {
 
         txtFld_escuela.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtFld_escuela.setPreferredSize(new java.awt.Dimension(270, 30));
-        add(txtFld_escuela, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 180, -1, -1));
+        add(txtFld_escuela, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 195, -1));
 
         cmbBx_estadoCivil.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbBx_estadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltero", "Casado", "Viudo", "Divorciado" }));
@@ -238,7 +279,7 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel {
 
         lbl_escuela.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_escuela.setText("E.A.P.");
-        add(lbl_escuela, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 160, -1, -1));
+        add(lbl_escuela, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
 
         jCheckBox9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jCheckBox9.setText("Faringitis");
@@ -312,9 +353,9 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel {
         lbl_direccion.setText("Dirección");
         add(lbl_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 160, -1, -1));
 
-        lbl_telefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl_telefono.setText("Teléfono");
-        add(lbl_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 375, -1, -1));
+        lbl_telefonoFamiliar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_telefonoFamiliar.setText("Teléfono");
+        add(lbl_telefonoFamiliar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 375, -1, -1));
 
         cmbBx_parentesco.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbBx_parentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Padre", "Madre", "Hermano" }));
@@ -341,9 +382,9 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel {
         txtFld_direccionFamiliar.setPreferredSize(new java.awt.Dimension(335, 30));
         add(txtFld_direccionFamiliar, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 335, -1, -1));
 
-        txtFld_telefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtFld_telefono.setPreferredSize(new java.awt.Dimension(130, 30));
-        add(txtFld_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 395, -1, -1));
+        txtFld_telefonoFamiliar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtFld_telefonoFamiliar.setPreferredSize(new java.awt.Dimension(130, 30));
+        add(txtFld_telefonoFamiliar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 395, -1, -1));
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -359,6 +400,14 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel {
         bttn_guardarFamiliar.setText("Guardar");
         bttn_guardarFamiliar.setPreferredSize(new java.awt.Dimension(130, 30));
         add(bttn_guardarFamiliar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 440, -1, -1));
+
+        txtFld_telefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtFld_telefono.setPreferredSize(new java.awt.Dimension(270, 30));
+        add(txtFld_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 180, 130, -1));
+
+        lbl_telefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_telefono.setText("Teléfono");
+        add(lbl_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 160, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -414,6 +463,7 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_parentesco;
     private javax.swing.JLabel lbl_sexo;
     private javax.swing.JLabel lbl_telefono;
+    private javax.swing.JLabel lbl_telefonoFamiliar;
     private javax.swing.JTextArea txtAr_antecedentes;
     private javax.swing.JTextField txtFld_apellidos;
     private javax.swing.JTextField txtFld_departamento;
@@ -428,5 +478,6 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel {
     private javax.swing.JTextField txtFld_nombres;
     private javax.swing.JTextField txtFld_otros;
     private javax.swing.JTextField txtFld_telefono;
+    private javax.swing.JTextField txtFld_telefonoFamiliar;
     // End of variables declaration//GEN-END:variables
 }

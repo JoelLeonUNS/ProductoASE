@@ -25,15 +25,29 @@ public class PanelHistoriaClinica extends javax.swing.JPanel  implements ActionL
         pHistoriaTrabajador = new PanelHistoriaTrabajador(pGeneral);
         llenarComboBoxNuevaHistoria();
         crearEncabezadoTablaBuscarHistoria();
+        
+        
         cmbBx_nuevaHistoria.addActionListener(this);
         bttn_buscar.addActionListener(this);
-        
+        bttn_editarHistoria.addActionListener(this);
+        bttn_guardar.addActionListener(this);
     }
     
     public String getInputText(JTextField txtFld) {
         return txtFld.getText();
     }
     
+    public void setEnableBotones(){
+        switch (pGeneral.getpHistoriaClinica().getTipoHistoria()) {
+            case "ESTUDIANTE" -> {
+                pHistoriaEstudiante.setEnableBotones(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+            }
+            case "TRABAJADOR" -> {
+                pHistoriaTrabajador.setEnableBotones(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+            }   
+        }
+    }
+
     private void llenarComboBoxNuevaHistoria() {
         comboBoxNuevaHistoria.addElement("Nueva Historia");
         comboBoxNuevaHistoria.addElement("Estudiante");
@@ -81,15 +95,19 @@ public class PanelHistoriaClinica extends javax.swing.JPanel  implements ActionL
             case "Nueva Historia" -> {
                 if (cmbBx_nuevaHistoria.getSelectedIndex() == 1) {
                     pGeneral.getpHistoriaClinica().cambiarTipoHistoriaClinica(pnl_baseHistoriaClinica, pHistoriaEstudiante);
+                    pGeneral.getpHistoriaClinica().setTipoHistoria("ESTUDIANTE");
                 } else if (cmbBx_nuevaHistoria.getSelectedIndex() == 2) {
                     pGeneral.getpHistoriaClinica().cambiarTipoHistoriaClinica(pnl_baseHistoriaClinica, pHistoriaTrabajador);
+                    pGeneral.getpHistoriaClinica().setTipoHistoria("TRABAJADOR");
                 }
             }
             case "Editar Historia" -> {
-                
+                pGeneral.getpHistoriaClinica().setHistoriaEditable(true);
+                setEnableBotones();
             }
-            case "Guardar" -> {
-                
+            case "Guardar Historia" -> {
+                pGeneral.getpHistoriaClinica().setHistoriaEditable(false);
+                setEnableBotones();
             }
         }
     }
@@ -142,6 +160,7 @@ public class PanelHistoriaClinica extends javax.swing.JPanel  implements ActionL
 
         bttn_guardar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         bttn_guardar.setText("Guardar");
+        bttn_guardar.setActionCommand("Guardar Historia");
         bttn_guardar.setPreferredSize(new java.awt.Dimension(133, 35));
         add(bttn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 30, -1, -1));
 
