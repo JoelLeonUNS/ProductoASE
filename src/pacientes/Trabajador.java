@@ -11,9 +11,11 @@ public class Trabajador extends Paciente {
         super(DNI, nombre, apellido, sexo, fechaNac, lugarNac, distrito, departamento, direccion, telefono, estadoCivil);
         this.areaTrabajo = areaTrabajo;
         this.docente = docente;
+        super.tipoPaciente = "TRABAJADOR";
     }
     
     public Trabajador() {
+        super.tipoPaciente = "TRABAJADOR";
     }
 
     public String getAreaTrabajo() {

@@ -918,7 +918,6 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="rdBttn_m">
       <Properties>
-        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="M"/>
       </Properties>
       <Constraints>
@@ -939,7 +938,6 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="rdBttn_no">
       <Properties>
-        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="No"/>
       </Properties>
       <Constraints>

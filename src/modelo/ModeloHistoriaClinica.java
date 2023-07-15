@@ -68,11 +68,17 @@ public class ModeloHistoriaClinica {
         estudiante.setFamiliares(new ArrayList<>(familiaresEstudiante.values()));
         historiaClinicaEstudiante.setPaciente(estudiante);
         historiaClinicaEstudiante.agregarAntecedentesPatologicos(antecedentesPatologicos);
+        HistoriaClinica.masNroStaticHistoria();
+        historiaClinicaEstudiante.setNumeroHistoriaClinica(HistoriaClinica.getNroStaticHistoria());
         hcDAO.create(historiaClinicaEstudiante);
     }
     
     public void editarHistoriaEstudiante() {
-        
+        HistoriaClinicaDAO hcDAO = new HistoriaClinicaDAO();
+        estudiante.setFamiliares(new ArrayList<>(familiaresEstudiante.values()));
+        historiaClinicaEstudiante.setPaciente(estudiante);
+        historiaClinicaEstudiante.agregarAntecedentesPatologicos(antecedentesPatologicos);
+        hcDAO.update(historiaClinicaEstudiante, getIdHistoriaBD());
     }
     
     public void registrarHistoriaTrabajador() {
@@ -80,11 +86,27 @@ public class ModeloHistoriaClinica {
         trabajador.setFamiliares(new ArrayList<>(familiaresTrabajador.values()));
         historiaClinicaTrabajador.setPaciente(trabajador);
         historiaClinicaTrabajador.agregarAntecedentesPatologicos(antecedentesPatologicos);
+        HistoriaClinica.masNroStaticHistoria();
+        historiaClinicaTrabajador.setNumeroHistoriaClinica(HistoriaClinica.getNroStaticHistoria());
         hcDAO.create(historiaClinicaTrabajador);
     }
     
     public void editarHistoriaTrabajador() {
-        
+        HistoriaClinicaDAO hcDAO = new HistoriaClinicaDAO();
+        trabajador.setFamiliares(new ArrayList<>(familiaresTrabajador.values()));
+        historiaClinicaTrabajador.setPaciente(trabajador);
+        historiaClinicaTrabajador.agregarAntecedentesPatologicos(antecedentesPatologicos);
+        hcDAO.update(historiaClinicaTrabajador, getIdHistoriaBD());
+    }
+    
+    public int getIdHistoriaBD() {
+        HistoriaClinicaDAO hcDAO = new HistoriaClinicaDAO();  
+        for (int i = 0; i < hcDAO.count(); i++) {
+            if (hcDAO.read(i).equals(historiaSeleccionada)) {
+                return i;
+            }
+        }
+        return 0;
     }
 
     public HistoriaClinica getHistoriaSeleccionada() {

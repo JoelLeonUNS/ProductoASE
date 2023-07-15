@@ -94,6 +94,17 @@ public class PresentadorHistoriaClinica {
         }
     }
     
+    public void editarHistoriaClinica() {
+        switch (tipoHistoria) {
+            case "ESTUDIANTE" -> {
+                modeloHistoriaClinica.editarHistoriaEstudiante();
+            }
+            case "TRABAJADOR" -> {
+                modeloHistoriaClinica.editarHistoriaTrabajador();
+            }   
+        }
+    }
+    
     public void setDatosFamiliar(String nombreFamiliar, String parentesco, String direccionFamiliar, String telefonoFamiliar, String antecedentesPatologicos) {
         modeloHistoriaClinica.setFamiliar(nombreFamiliar, parentesco, direccionFamiliar, telefonoFamiliar, antecedentesPatologicos);
     }

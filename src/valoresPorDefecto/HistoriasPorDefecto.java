@@ -94,26 +94,26 @@ public class HistoriasPorDefecto {
         paciente20.agregarFamiliar(familiar20);
 
         //HISTORIAS CLINICAS
-        HistoriaClinica historia1 = new HistoriaClinica(1, paciente1, "Asma, Parkinson");
-        HistoriaClinica historia2 = new HistoriaClinica(2, paciente2, "");
-        HistoriaClinica historia3 = new HistoriaClinica(3, paciente3, "");
-        HistoriaClinica historia4 = new HistoriaClinica(4, paciente4, "");
-        HistoriaClinica historia5 = new HistoriaClinica(5, paciente5, "");
-        HistoriaClinica historia6 = new HistoriaClinica(6, paciente6, "");
-        HistoriaClinica historia7 = new HistoriaClinica(7, paciente7, "");
-        HistoriaClinica historia8 = new HistoriaClinica(8, paciente8, "");
-        HistoriaClinica historia9 = new HistoriaClinica(9, paciente9, "");
-        HistoriaClinica historia10 = new HistoriaClinica(10, paciente10, "");
-        HistoriaClinica historia11 = new HistoriaClinica(11, paciente11, "");
-        HistoriaClinica historia12 = new HistoriaClinica(12, paciente12, "");
-        HistoriaClinica historia13 = new HistoriaClinica(13, paciente13, "Asma");
-        HistoriaClinica historia14 = new HistoriaClinica(14, paciente14, "");
-        HistoriaClinica historia15 = new HistoriaClinica(15, paciente15, "");
-        HistoriaClinica historia16 = new HistoriaClinica(16, paciente16, "");
-        HistoriaClinica historia17 = new HistoriaClinica(17, paciente17, "");
-        HistoriaClinica historia18 = new HistoriaClinica(18, paciente18, "");
-        HistoriaClinica historia19 = new HistoriaClinica(19, paciente19, "");
-        HistoriaClinica historia20 = new HistoriaClinica(20, paciente20, "");
+        HistoriaClinica historia1 = new HistoriaClinica(paciente1, "Asma, Parkinson");
+        HistoriaClinica historia2 = new HistoriaClinica(paciente2, "");
+        HistoriaClinica historia3 = new HistoriaClinica(paciente3, "");
+        HistoriaClinica historia4 = new HistoriaClinica(paciente4, "");
+        HistoriaClinica historia5 = new HistoriaClinica(paciente5, "");
+        HistoriaClinica historia6 = new HistoriaClinica(paciente6, "");
+        HistoriaClinica historia7 = new HistoriaClinica(paciente7, "");
+        HistoriaClinica historia8 = new HistoriaClinica(paciente8, "");
+        HistoriaClinica historia9 = new HistoriaClinica(paciente9, "");
+        HistoriaClinica historia10 = new HistoriaClinica(paciente10, "");
+        HistoriaClinica historia11 = new HistoriaClinica(paciente11, "");
+        HistoriaClinica historia12 = new HistoriaClinica(paciente12, "");
+        HistoriaClinica historia13 = new HistoriaClinica(paciente13, "Asma");
+        HistoriaClinica historia14 = new HistoriaClinica(paciente14, "");
+        HistoriaClinica historia15 = new HistoriaClinica(paciente15, "");
+        HistoriaClinica historia16 = new HistoriaClinica(paciente16, "");
+        HistoriaClinica historia17 = new HistoriaClinica(paciente17, "");
+        HistoriaClinica historia18 = new HistoriaClinica(paciente18, "");
+        HistoriaClinica historia19 = new HistoriaClinica(paciente19, "");
+        HistoriaClinica historia20 = new HistoriaClinica(paciente20, "");
 
         // AGREGAR ANTECEDENTES PATOLOGICOS (ENFERMEDADES)
         historia1.agregarAntecedentePatologico(Enfermedad.SARAMPION);

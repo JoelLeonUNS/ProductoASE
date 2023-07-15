@@ -512,14 +512,12 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel implements Actio
         lbl_telefono.setText("Teléfono");
         add(lbl_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 50, -1, -1));
 
-        rdBttn_m.setSelected(true);
         rdBttn_m.setText("M");
         add(rdBttn_m, new org.netbeans.lib.awtextra.AbsoluteConstraints(665, 75, -1, -1));
 
         rdBttn_f.setText("F");
         add(rdBttn_f, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 75, -1, -1));
 
-        rdBttn_no.setSelected(true);
         rdBttn_no.setText("No");
         add(rdBttn_no, new org.netbeans.lib.awtextra.AbsoluteConstraints(525, 185, -1, -1));
 

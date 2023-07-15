@@ -6,7 +6,8 @@ import modelo.Enfermedad;
 import pacientes.Paciente;
 
 public class HistoriaClinica {
-
+    
+    private static int nroStaticHistoria;
     private int numeroHistoriaClinica;
     private Paciente paciente;
     private String otrosAntecedentesPatologicos;
@@ -17,10 +18,18 @@ public class HistoriaClinica {
     }
 
     // solo para los valores por defecto.
-    public HistoriaClinica(int numeroHistoriaClinica, Paciente paciente, String otrosAntecedentesPatologicos) {
-        this.numeroHistoriaClinica = numeroHistoriaClinica;
+    public HistoriaClinica(Paciente paciente, String otrosAntecedentesPatologicos) {
+        this.numeroHistoriaClinica = HistoriaClinica.masNroStaticHistoria();
         this.paciente = paciente;
         this.otrosAntecedentesPatologicos = otrosAntecedentesPatologicos;
+    }
+
+    public static int masNroStaticHistoria() {
+        return ++nroStaticHistoria;
+    }
+    
+    public static int getNroStaticHistoria() {
+        return nroStaticHistoria;
     }
 
     public int getNumeroHistoriaClinica() {

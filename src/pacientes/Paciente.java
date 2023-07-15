@@ -18,6 +18,7 @@ public class Paciente {
     private String direccion;
     private String telefono;
     private String estadoCivil;
+    protected String tipoPaciente;
     private ArrayList<Familiar> familiares = new  ArrayList<>();
 
     public Paciente() {
@@ -131,6 +132,10 @@ public class Paciente {
 
     public void setFamiliares(ArrayList<Familiar> familiares) {
         this.familiares = familiares;
+    }
+    
+    public String getTipoPaciente() {
+        return tipoPaciente;
     }
 
     @Override
