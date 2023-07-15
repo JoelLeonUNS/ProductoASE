@@ -3,6 +3,8 @@ package modelo;
 import BaseDeDatos.HistoriaClinicaDAO;
 import historias.HistoriaClinica;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import pacientes.Alumno;
 import pacientes.Familiar;
 import pacientes.Paciente;
@@ -14,10 +16,11 @@ public class ModeloHistoriaClinica {
     private ArrayList<Integer> idHistoriasCoincidentes;
     private HistoriaClinica historiaClinicaEstudiante;
     private HistoriaClinica historiaClinicaTrabajador;
-    private Paciente estudiante;
-    private Paciente trabajador;
-    private ArrayList<Familiar> familiaresEstudiante;
-    private ArrayList<Familiar> familiaresTrabajador;
+    private Alumno estudiante;
+    private Trabajador trabajador;
+    private Familiar familiar;
+    private Map<Integer, Familiar> familiaresEstudiante;
+    private Map<Integer, Familiar> familiaresTrabajador;
     private ArrayList<Enfermedad> antecedentesPatologicos;
 
     public ModeloHistoriaClinica() {
@@ -25,8 +28,9 @@ public class ModeloHistoriaClinica {
         this.historiaClinicaTrabajador = new HistoriaClinica();
         this.estudiante = new Alumno();
         this.trabajador = new Trabajador();
-        this.familiaresEstudiante = new ArrayList<>();
-        this.familiaresTrabajador = new ArrayList<>();
+        this.familiar = new Familiar();
+        this.familiaresEstudiante = new HashMap<>();
+        this.familiaresTrabajador = new HashMap<>();
     }
     
     public HistoriaClinica buscarHistoriaClinicaDNI(String dni){
@@ -61,8 +65,9 @@ public class ModeloHistoriaClinica {
 
     public void registrarHistoriaEstudiante() {
         HistoriaClinicaDAO hcDAO = new HistoriaClinicaDAO();
-        estudiante.setFamiliares(familiaresEstudiante);
+        estudiante.setFamiliares(new ArrayList<>(familiaresEstudiante.values()));
         historiaClinicaEstudiante.setPaciente(estudiante);
+        historiaClinicaEstudiante.agregarAntecedentesPatologicos(antecedentesPatologicos);
         hcDAO.create(historiaClinicaEstudiante);
     }
     
@@ -72,8 +77,9 @@ public class ModeloHistoriaClinica {
     
     public void registrarHistoriaTrabajador() {
         HistoriaClinicaDAO hcDAO = new HistoriaClinicaDAO();
-        trabajador.setFamiliares(familiaresTrabajador);
+        trabajador.setFamiliares(new ArrayList<>(familiaresTrabajador.values()));
         historiaClinicaTrabajador.setPaciente(trabajador);
+        historiaClinicaTrabajador.agregarAntecedentesPatologicos(antecedentesPatologicos);
         hcDAO.create(historiaClinicaTrabajador);
     }
     
@@ -105,39 +111,60 @@ public class ModeloHistoriaClinica {
         this.historiaClinicaTrabajador = historiaClinicaTrabajador;
     }
 
-    public Paciente getEstudiante() {
+    public Alumno getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(Paciente estudiante) {
+    public void setEstudiante(Alumno estudiante) {
         this.estudiante = estudiante;
     }
 
-    public Paciente getTrabajador() {
+    public Trabajador getTrabajador() {
         return trabajador;
     }
 
-    public void setTrabajador(Paciente trabajador) {
+    public void setTrabajador(Trabajador trabajador) {
         this.trabajador = trabajador;
     }
 
-    public ArrayList<Familiar> getFamiliaresEstudiante() {
-        return familiaresEstudiante;
+    public Familiar getFamiliar() {
+        return familiar;
+    }
+    
+    public void setFamiliar(String nombreFamiliar, String parentesco, String direccionFamiliar, String telefonoFamiliar, String antecedentesPatologicos) {
+        this.familiar = new Familiar(nombreFamiliar, parentesco, direccionFamiliar, telefonoFamiliar, antecedentesPatologicos);
     }
 
-    public void agregarFamiliarEstudiante(Familiar familiarEstudiante) {
-        this.familiaresEstudiante.add(familiarEstudiante);
+    public Familiar getFamiliaresEstudiante(int indice) {
+        try {
+            return familiaresEstudiante.get(indice);
+        } catch (Exception e) {
+            return null;
+        }
+        
     }
 
-    public ArrayList<Familiar> getFamiliaresTrabajador() {
-        return familiaresTrabajador;
+    public Familiar getFamiliaresTrabajador(int indice) {
+        try {
+        return familiaresTrabajador.get(indice);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
-    public void agregarFamiliarTrabajador(Familiar familiarTrabajador) {
-        this.familiaresTrabajador.add(familiarTrabajador);
+    public void addFamiliaresEstudiante(int indice, Familiar familiar) {
+        familiaresEstudiante.put(indice, familiar);
+    }
+
+    public void addFamiliaresTrabajador(int indice, Familiar familiar) {
+        familiaresTrabajador.put(indice, familiar);
     }
     
     public void agregarAntecedentePatologico(Enfermedad enfermedad) {
         this.antecedentesPatologicos.add(enfermedad);
-    }  
+    }
+    
+    public void limpiarAntecedentesPatologicos() {
+        this.antecedentesPatologicos.clear();
+    }
 }

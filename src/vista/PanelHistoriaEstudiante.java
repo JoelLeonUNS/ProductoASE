@@ -4,40 +4,61 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import modelo.Enfermedad;
 import presentador.PresentadorGeneral;
 
-public class PanelHistoriaEstudiante extends javax.swing.JPanel implements ActionListener{
-    
-    private PresentadorGeneral pGeneral;
+public class PanelHistoriaEstudiante extends javax.swing.JPanel implements ActionListener {
+
+    private final PresentadorGeneral pGeneral;
     private JCheckBox[] checkBoxes;
     private DefaultComboBoxModel comboBoxEstaoCivil = new DefaultComboBoxModel();
     private DefaultComboBoxModel comboBoxParentesco = new DefaultComboBoxModel();
-    
+
     public PanelHistoriaEstudiante(PresentadorGeneral pGeneral) {
         initComponents();
         this.pGeneral = pGeneral;
         checkBoxes = arrayCheckBox();
         pGeneral.getpHistoriaClinica().setTipoHistoria("ESTUDIANTE");
         pGeneral.getpHistoriaClinica().setHistoriaEditable(false);
+
+        cmbBx_parentesco.addActionListener(this);
+        bttn_guardarFamiliar.addActionListener(this);
         setEnableBotones();
     }
-    
+
     public String getInputText(JTextField txtFld) {
         return txtFld.getText();
     }
-    
+
+    public void setInputText(JTextField txtFld, String cadena) {
+        txtFld.setText(cadena);
+    }
+
+    public String getInputTextAr(JTextArea txtAr) {
+        return txtAr.getText();
+    }
+
+    public void setInputTextAr(JTextArea txtAr, String cadena) {
+        txtAr.setText(cadena);
+    }
+
+    public String getComboBoxText(JComboBox cmbBx) {
+        return (String) cmbBx.getSelectedItem();
+    }
+
     private JCheckBox[] arrayCheckBox() {
         JCheckBox[] chckBxs = {
-            jCheckBox1,jCheckBox2,jCheckBox3,jCheckBox4,jCheckBox5,jCheckBox6,
+            jCheckBox1, jCheckBox2, jCheckBox3, jCheckBox4, jCheckBox5, jCheckBox6,
             jCheckBox7, jCheckBox8, jCheckBox9, jCheckBox10, jCheckBox11, jCheckBox12,
             jCheckBox13, jCheckBox14, jCheckBox15, jCheckBox16, jCheckBox17, jCheckBox18,
             jCheckBox19, jCheckBox20, jCheckBox21, jCheckBox22, jCheckBox23, jCheckBox24
         };
         return chckBxs;
     }
-    
+
     public void setEnableBotones() {
         txtFld_apellidos.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
         txtFld_nombres.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
@@ -63,9 +84,7 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
         txtFld_telefonoFamiliar.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
         bttn_guardarFamiliar.setEnabled(pGeneral.getpHistoriaClinica().isHistoriaEditable());
     }
-    
-    
-    
+
     public void agregarEnfermedades() {
         int i = 0;
         for (JCheckBox checkBox : checkBoxes) {
@@ -74,13 +93,51 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
             }
             i++;
         }
+        pGeneral.getpHistoriaClinica().limpiarAntecedentesPatologicos();
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        int intParentesco = cmbBx_parentesco.getSelectedIndex();
+        switch (e.getActionCommand()) {
+            case "Guardar" -> {
+                pGeneral.getpHistoriaClinica().setDatosFamiliar(getInputText(txtFld_nombreFamiliar), getComboBoxText(cmbBx_parentesco), getInputText(txtFld_direccionFamiliar), getInputText(txtFld_telefonoFamiliar), getInputTextAr(txtAr_antecedentes));
+                switch (intParentesco) {
+                    case 0 -> { // Padre
+                        pGeneral.getpHistoriaClinica().agregarFamiliar(0);
+                    }
+                    case 1 -> { // Madre
+                        pGeneral.getpHistoriaClinica().agregarFamiliar(1);
+                    }
+                    case 2 -> { // Hermano(a)
+                        pGeneral.getpHistoriaClinica().agregarFamiliar(2);
+                    }
+
+                }
+            }
+            case "Parentesco" -> {
+                switch (intParentesco) {
+                    case 0 -> { // Padre
+                        mostrarFamiliar(0);
+                    }
+                    case 1 -> { // Madre
+                        mostrarFamiliar(1);
+                    }
+                    case 2 -> { // Hermano(a)
+                        mostrarFamiliar(2);
+                    }
+                }
+            }
+        }
     }
-    
+
+    public void mostrarFamiliar(int indice) {
+        setInputText(txtFld_nombreFamiliar, pGeneral.getpHistoriaClinica().getFamiliar(indice) == null ? "" : pGeneral.getpHistoriaClinica().getFamiliar(indice).getNombreFamiliar());
+        setInputText(txtFld_direccionFamiliar, pGeneral.getpHistoriaClinica().getFamiliar(indice)  == null ? "" : pGeneral.getpHistoriaClinica().getFamiliar(indice).getDireccionFamiliar());
+        setInputText(txtFld_telefonoFamiliar, pGeneral.getpHistoriaClinica().getFamiliar(indice)  == null ? "" : pGeneral.getpHistoriaClinica().getFamiliar(indice).getTelefonoFamiliar());
+        setInputTextAr(txtAr_antecedentes, pGeneral.getpHistoriaClinica().getFamiliar(indice)  == null ? "" : pGeneral.getpHistoriaClinica().getFamiliar(indice).getAntecedentesPatologicos());
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -380,6 +437,7 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
 
         cmbBx_parentesco.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbBx_parentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Padre", "Madre", "Hermano" }));
+        cmbBx_parentesco.setActionCommand("Parentesco");
         cmbBx_parentesco.setPreferredSize(new java.awt.Dimension(120, 30));
         add(cmbBx_parentesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 275, -1, -1));
 
@@ -501,6 +559,4 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
     private javax.swing.JTextField txtFld_telefono;
     private javax.swing.JTextField txtFld_telefonoFamiliar;
     // End of variables declaration//GEN-END:variables
-
-    
 }

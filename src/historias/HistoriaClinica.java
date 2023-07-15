@@ -52,6 +52,10 @@ public class HistoriaClinica {
     public void agregarAntecedentePatologico(Enfermedad enfermedad) {
         antecedentesPatologicos.add(enfermedad);
     }
+    
+    public void agregarAntecedentesPatologicos(ArrayList<Enfermedad> enfermedades) {
+        antecedentesPatologicos.addAll(enfermedades);
+    }
 
     @Override
     public String toString() {

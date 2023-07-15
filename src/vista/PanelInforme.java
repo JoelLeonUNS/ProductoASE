@@ -122,7 +122,18 @@ public class PanelInforme extends javax.swing.JPanel implements ActionListener {
 
         Pnl_tipoInforme.setBackground(new java.awt.Color(204, 204, 204));
         Pnl_tipoInforme.setPreferredSize(new java.awt.Dimension(766, 500));
-        Pnl_tipoInforme.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        javax.swing.GroupLayout Pnl_tipoInformeLayout = new javax.swing.GroupLayout(Pnl_tipoInforme);
+        Pnl_tipoInforme.setLayout(Pnl_tipoInformeLayout);
+        Pnl_tipoInformeLayout.setHorizontalGroup(
+            Pnl_tipoInformeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 766, Short.MAX_VALUE)
+        );
+        Pnl_tipoInformeLayout.setVerticalGroup(
+            Pnl_tipoInformeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+
         add(Pnl_tipoInforme, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 95, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 

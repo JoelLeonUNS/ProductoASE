@@ -415,6 +415,7 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
                 }
             }
             case "Añadir consulta"->{
+                pGeneral.getpExamen().getModeloConsulta().setConsulta(new ConsultaMedica());
                 limpiarCasillas();
                 setTxtFldsEditable(true);
                 this.jButtonGuardar.setEnabled(true);
@@ -451,7 +452,7 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
     @Override
     public void valueChanged(ListSelectionEvent e) {
         if (!e.getValueIsAdjusting()) {
-             if (e.getSource() == jTableHistorias) {
+             if (e.getSource() == jTableHistorias.getSelectionModel()) {
                 this.jButtonGuardar.setEnabled(false);
                 int selectedRow = jTableHistorias.getSelectedRow();
                 if (selectedRow != -1) {
@@ -459,11 +460,11 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
                     //String dni = jTableHistorias.getValueAt(selectedRow, 0).toString();
                     mostrarConsultas(pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getConsultasMedicas());
                 }
-             }else if(e.getSource() == jTableConsultas){
+             }else if(e.getSource() == jTableConsultas.getSelectionModel()){
                 this.jButtonGuardar.setEnabled(false);
                 int selectedRow = jTableConsultas.getSelectedRow();
                 if (selectedRow != -1){
-                    int numConsulta = Integer.parseInt((String) jTableConsultas.getValueAt(selectedRow, 0));
+                    int numConsulta = (Integer) jTableConsultas.getValueAt(selectedRow, 0);
                     pGeneral.getpExamen().getModeloConsulta().setConsulta(pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getConsultasMedicas().get(numConsulta-1));
                     mostrarDatosConsulta();
                 }

@@ -1,5 +1,7 @@
 package App;
 
+import java.util.HashMap;
+import java.util.Map;
 import modelo.ModeloConsulta;
 import modelo.ModeloExamen;
 import modelo.ModeloHistoriaClinica;
@@ -40,7 +42,6 @@ public class GestionHistorial {
         
         VistaLogin vLogin = new VistaLogin(PresentadorGeneral.getInstancia()); 
         vLogin.iniciar();
-
     }
 //
 //    private static void cargarValoresPorDefecto() {

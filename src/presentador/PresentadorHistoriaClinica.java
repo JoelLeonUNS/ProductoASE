@@ -85,20 +85,38 @@ public class PresentadorHistoriaClinica {
         }
     }
     
-    public void agregarFamiliar(Familiar familiar) {
+    public void setDatosFamiliar(String nombreFamiliar, String parentesco, String direccionFamiliar, String telefonoFamiliar, String antecedentesPatologicos) {
+        modeloHistoriaClinica.setFamiliar(nombreFamiliar, parentesco, direccionFamiliar, telefonoFamiliar, antecedentesPatologicos);
+    }
+    
+    public void agregarFamiliar(int indice) {
         switch (tipoHistoria) {
             case "ESTUDIANTE" -> {
-                modeloHistoriaClinica.agregarFamiliarEstudiante(familiar);
+                modeloHistoriaClinica.addFamiliaresEstudiante(indice, modeloHistoriaClinica.getFamiliar());
             }
             case "TRABAJADOR" -> {
-                modeloHistoriaClinica.agregarFamiliarTrabajador(familiar);
+                modeloHistoriaClinica.addFamiliaresTrabajador(indice, modeloHistoriaClinica.getFamiliar());
             }   
         }
+    }
+    
+    public Familiar getFamiliar(int indice) {
+        switch (tipoHistoria) {
+            case "ESTUDIANTE" -> {
+                return modeloHistoriaClinica.getFamiliaresEstudiante(indice);
+            }
+            case "TRABAJADOR" -> {
+                return modeloHistoriaClinica.getFamiliaresTrabajador(indice);
+            }   
+        }
+        return null;
     }
     
     public void agregarEnfermedad(Enfermedad enfermedad) {
         modeloHistoriaClinica.agregarAntecedentePatologico(enfermedad);
     }
     
-    
+    public void limpiarAntecedentesPatologicos() {
+        modeloHistoriaClinica.limpiarAntecedentesPatologicos();
+    }
 }

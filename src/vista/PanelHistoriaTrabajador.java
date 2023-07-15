@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import modelo.Enfermedad;
 import presentador.PresentadorGeneral;
@@ -21,11 +23,30 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel implements Actio
         checkBoxes = arrayCheckBox();
         pGeneral.getpHistoriaClinica().setTipoHistoria("TRABAJADOR");
         pGeneral.getpHistoriaClinica().setHistoriaEditable(false);
+
+        cmbBx_parentesco.addActionListener(this);
+        bttn_guardarFamiliar.addActionListener(this);
         setEnableBotones();
     }
-
+    
     public String getInputText(JTextField txtFld) {
         return txtFld.getText();
+    }
+
+    public void setInputText(JTextField txtFld, String cadena) {
+        txtFld.setText(cadena);
+    }
+
+    public String getInputTextAr(JTextArea txtAr) {
+        return txtAr.getText();
+    }
+
+    public void setInputTextAr(JTextArea txtAr, String cadena) {
+        txtAr.setText(cadena);
+    }
+
+    public String getComboBoxText(JComboBox cmbBx) {
+        return (String) cmbBx.getSelectedItem();
     }
     
     private JCheckBox[] arrayCheckBox() {
@@ -66,7 +87,7 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel implements Actio
         bttn_guardarFamiliar.setEnabled(pGeneral.getpHistoriaClinica().isHistoriaEditable());
     }
     
-    public void agregarEnfermedades() {
+    public void guardarEnfermedades() {
         int i = 0;
         for (JCheckBox checkBox : checkBoxes) {
             if (checkBox.isSelected()) {
@@ -74,11 +95,59 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel implements Actio
             }
             i++;
         }
+        pGeneral.getpHistoriaClinica().limpiarAntecedentesPatologicos();
+    }
+    
+    public void guardarPaciente() {
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getTrabajador().setApellido(getInputText(txtFld_apellidos));
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getTrabajador().setNombre(getInputText(txtFld_nombres));
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getTrabajador().setFechaNac(getInputText(txtFld_fechaNac));
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getTrabajador().setLugarNac(getInputText(txtFld_lugarNac));
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getTrabajador().setDistrito(getInputText(txtFld_distrito));
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getTrabajador().setDepartamento(getInputText(txtFld_departamento));
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getTrabajador().setDireccion(getInputText(txtFld_direccion));
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getTrabajador().setAreaTrabajo(getInputText(txtFld_areaTrabajo));
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        int intParentesco = cmbBx_parentesco.getSelectedIndex();
+        switch (e.getActionCommand()) {
+            case "Guardar" -> {
+                pGeneral.getpHistoriaClinica().setDatosFamiliar(getInputText(txtFld_nombreFamiliar), getComboBoxText(cmbBx_parentesco), getInputText(txtFld_direccionFamiliar), getInputText(txtFld_telefonoFamiliar), getInputTextAr(txtAr_antecedentes));
+                switch (intParentesco) {
+                    case 0 -> { // Padre
+                        pGeneral.getpHistoriaClinica().agregarFamiliar(0);
+                    }
+                    case 1 -> { // Madre
+                        pGeneral.getpHistoriaClinica().agregarFamiliar(1);
+                    }
+                    case 2 -> { // Hermano(a)
+                        pGeneral.getpHistoriaClinica().agregarFamiliar(2);
+                    }
+                }
+            }
+            case "Parentesco" -> {
+                switch (intParentesco) {
+                    case 0 -> { // Padre
+                        mostrarFamiliar(0);
+                    }
+                    case 1 -> { // Madre
+                        mostrarFamiliar(1);
+                    }
+                    case 2 -> { // Hermano(a)
+                        mostrarFamiliar(2);
+                    }
+                }
+            }
+        }
+    }
+    
+    public void mostrarFamiliar(int indice) {
+        setInputText(txtFld_nombreFamiliar, pGeneral.getpHistoriaClinica().getFamiliar(indice) == null ? "" : pGeneral.getpHistoriaClinica().getFamiliar(indice).getNombreFamiliar());
+        setInputText(txtFld_direccionFamiliar, pGeneral.getpHistoriaClinica().getFamiliar(indice)  == null ? "" : pGeneral.getpHistoriaClinica().getFamiliar(indice).getDireccionFamiliar());
+        setInputText(txtFld_telefonoFamiliar, pGeneral.getpHistoriaClinica().getFamiliar(indice)  == null ? "" : pGeneral.getpHistoriaClinica().getFamiliar(indice).getTelefonoFamiliar());
+        setInputTextAr(txtAr_antecedentes, pGeneral.getpHistoriaClinica().getFamiliar(indice)  == null ? "" : pGeneral.getpHistoriaClinica().getFamiliar(indice).getAntecedentesPatologicos());
     }
 
     @SuppressWarnings("unchecked")

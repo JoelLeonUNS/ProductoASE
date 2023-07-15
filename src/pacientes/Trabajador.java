@@ -14,7 +14,7 @@ public class Trabajador extends Paciente {
     
     public Trabajador() {
     }
-    
+
     public String getAreaTrabajo() {
         return areaTrabajo;
     }
@@ -30,6 +30,8 @@ public class Trabajador extends Paciente {
     public void setDocente(boolean docente) {
         this.docente = docente;
     }
+    
+    
 
     @Override
     public String toString() {
