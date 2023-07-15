@@ -2,6 +2,8 @@ package vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -14,6 +16,7 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
 
     private final PresentadorGeneral pGeneral;
     private JCheckBox[] checkBoxes;
+    ButtonGroup buttonGroupSexo = new ButtonGroup();
     private DefaultComboBoxModel comboBoxEstaoCivil = new DefaultComboBoxModel();
     private DefaultComboBoxModel comboBoxParentesco = new DefaultComboBoxModel();
 
@@ -21,6 +24,8 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
         initComponents();
         this.pGeneral = pGeneral;
         checkBoxes = arrayCheckBox();
+        buttonGroupSexo.add(rdBttn_m);
+        buttonGroupSexo.add(rdBttn_f);
         pGeneral.getpHistoriaClinica().setTipoHistoria("ESTUDIANTE");
         pGeneral.getpHistoriaClinica().setHistoriaEditable(false);
 
@@ -48,7 +53,12 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
     public String getComboBoxText(JComboBox cmbBx) {
         return (String) cmbBx.getSelectedItem();
     }
-
+    
+    public String getRadioButtonSexo() {
+        
+        return ((ButtonModel) buttonGroupSexo.getSelection()).getActionCommand();
+    }
+    
     private JCheckBox[] arrayCheckBox() {
         JCheckBox[] chckBxs = {
             jCheckBox1, jCheckBox2, jCheckBox3, jCheckBox4, jCheckBox5, jCheckBox6,
@@ -62,9 +72,8 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
     public void setEnableBotones() {
         txtFld_apellidos.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
         txtFld_nombres.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
-        txtFld_edad.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
-        chckBx_m.setEnabled(pGeneral.getpHistoriaClinica().isHistoriaEditable());
-        chckBx_f.setEnabled(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+        rdBttn_m.setEnabled(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+        rdBttn_f.setEnabled(pGeneral.getpHistoriaClinica().isHistoriaEditable());
         txtFld_fechaNac.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
         txtFld_lugarNac.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
         txtFld_distrito.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
@@ -85,7 +94,7 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
         bttn_guardarFamiliar.setEnabled(pGeneral.getpHistoriaClinica().isHistoriaEditable());
     }
 
-    public void agregarEnfermedades() {
+    public void guardarEnfermedades() {
         int i = 0;
         for (JCheckBox checkBox : checkBoxes) {
             if (checkBox.isSelected()) {
@@ -93,7 +102,22 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
             }
             i++;
         }
-        pGeneral.getpHistoriaClinica().limpiarAntecedentesPatologicos();
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaClinicaEstudiante().setOtrosAntecedentesPatologicos(getInputText(txtFld_otros));
+    }
+    
+    public void guardarPaciente() {
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getEstudiante().setDNI(getInputText(txtFld_dni));
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getEstudiante().setApellido(getInputText(txtFld_apellidos));
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getEstudiante().setNombre(getInputText(txtFld_nombres));
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getEstudiante().setTelefono(getInputText(txtFld_telefono));
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getEstudiante().setSexo(getRadioButtonSexo());
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getEstudiante().setFechaNac(getInputText(txtFld_fechaNac));
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getEstudiante().setLugarNac(getInputText(txtFld_lugarNac));
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getEstudiante().setDistrito(getInputText(txtFld_distrito));
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getEstudiante().setDepartamento(getInputText(txtFld_departamento));
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getEstudiante().setDireccion(getInputText(txtFld_direccion));
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getEstudiante().setEscuela(getInputText(txtFld_escuela));
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getEstudiante().setEstadoCivil(getComboBoxText(cmbBx_estadoCivil));
     }
 
     @Override
@@ -112,7 +136,6 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
                     case 2 -> { // Hermano(a)
                         pGeneral.getpHistoriaClinica().agregarFamiliar(2);
                     }
-
                 }
             }
             case "Parentesco" -> {
@@ -145,7 +168,6 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
         lbl_nroHistoriaClinica = new javax.swing.JLabel();
         lbl_condicionPaciente = new javax.swing.JLabel();
         lbl_sexo = new javax.swing.JLabel();
-        txtFld_apellidos = new javax.swing.JTextField();
         lbl_departamento = new javax.swing.JLabel();
         txtFld_fechaNac = new javax.swing.JTextField();
         lbl_estadoCivil = new javax.swing.JLabel();
@@ -161,13 +183,6 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
         jCheckBox8 = new javax.swing.JCheckBox();
         lbl_otros = new javax.swing.JLabel();
         txtFld_otros = new javax.swing.JTextField();
-        lbl_apellidos = new javax.swing.JLabel();
-        txtFld_nombres = new javax.swing.JTextField();
-        lbl_nombres = new javax.swing.JLabel();
-        txtFld_edad = new javax.swing.JTextField();
-        lbl_edad = new javax.swing.JLabel();
-        chckBx_f = new javax.swing.JCheckBox();
-        chckBx_m = new javax.swing.JCheckBox();
         lbl_fechaNac = new javax.swing.JLabel();
         txtFld_lugarNac = new javax.swing.JTextField();
         txtFld_distrito = new javax.swing.JTextField();
@@ -207,8 +222,16 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
         jScrollPane2 = new javax.swing.JScrollPane();
         txtAr_antecedentes = new javax.swing.JTextArea();
         bttn_guardarFamiliar = new javax.swing.JButton();
+        rdBttn_m = new javax.swing.JRadioButton();
+        rdBttn_f = new javax.swing.JRadioButton();
+        txtFld_apellidos = new javax.swing.JTextField();
+        lbl_apellidos = new javax.swing.JLabel();
+        txtFld_nombres = new javax.swing.JTextField();
+        lbl_nombres = new javax.swing.JLabel();
         txtFld_telefono = new javax.swing.JTextField();
         lbl_telefono = new javax.swing.JLabel();
+        txtFld_dni = new javax.swing.JTextField();
+        lbl_dni = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(217, 217, 217));
         setPreferredSize(new java.awt.Dimension(755, 495));
@@ -226,10 +249,6 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
         lbl_sexo.setText("Sexo");
         add(lbl_sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, -1, -1));
 
-        txtFld_apellidos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtFld_apellidos.setPreferredSize(new java.awt.Dimension(300, 30));
-        add(txtFld_apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 71, -1, -1));
-
         lbl_departamento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_departamento.setText("Departamento");
         add(lbl_departamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 105, -1, -1));
@@ -244,7 +263,7 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
 
         txtFld_direccion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtFld_direccion.setPreferredSize(new java.awt.Dimension(300, 30));
-        add(txtFld_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 180, 235, -1));
+        add(txtFld_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 180, 300, -1));
 
         lbl_antecedentesFamiliares.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl_antecedentesFamiliares.setText("Antecedentes Familiares");
@@ -290,34 +309,6 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
         txtFld_otros.setPreferredSize(new java.awt.Dimension(315, 30));
         add(txtFld_otros, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, -1, -1));
 
-        lbl_apellidos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl_apellidos.setText("Apellidos");
-        add(lbl_apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 50, -1, -1));
-
-        txtFld_nombres.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtFld_nombres.setPreferredSize(new java.awt.Dimension(230, 30));
-        add(txtFld_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 71, -1, -1));
-
-        lbl_nombres.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl_nombres.setText("Nombres");
-        add(lbl_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 50, -1, -1));
-
-        txtFld_edad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtFld_edad.setPreferredSize(new java.awt.Dimension(90, 30));
-        add(txtFld_edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 70, -1, -1));
-
-        lbl_edad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbl_edad.setText("Edad");
-        add(lbl_edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 50, -1, -1));
-
-        chckBx_f.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chckBx_f.setText("F");
-        add(chckBx_f, new org.netbeans.lib.awtextra.AbsoluteConstraints(705, 72, -1, -1));
-
-        chckBx_m.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chckBx_m.setText("M");
-        add(chckBx_m, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 72, -1, -1));
-
         lbl_fechaNac.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_fechaNac.setText("Fecha nac.");
         add(lbl_fechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 105, -1, -1));
@@ -344,7 +335,7 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
 
         txtFld_escuela.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtFld_escuela.setPreferredSize(new java.awt.Dimension(270, 30));
-        add(txtFld_escuela, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 195, -1));
+        add(txtFld_escuela, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 180, 270, -1));
 
         cmbBx_estadoCivil.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbBx_estadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltero", "Casado", "Viudo", "Divorciado" }));
@@ -357,7 +348,7 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
 
         lbl_escuela.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_escuela.setText("E.A.P.");
-        add(lbl_escuela, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
+        add(lbl_escuela, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 160, -1, -1));
 
         jCheckBox9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jCheckBox9.setText("Faringitis");
@@ -480,20 +471,48 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
         bttn_guardarFamiliar.setPreferredSize(new java.awt.Dimension(130, 30));
         add(bttn_guardarFamiliar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 440, -1, -1));
 
+        rdBttn_m.setText("M");
+        add(rdBttn_m, new org.netbeans.lib.awtextra.AbsoluteConstraints(665, 75, -1, -1));
+
+        rdBttn_f.setText("F");
+        add(rdBttn_f, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 75, -1, -1));
+
+        txtFld_apellidos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtFld_apellidos.setPreferredSize(new java.awt.Dimension(300, 30));
+        add(txtFld_apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 71, 210, -1));
+
+        lbl_apellidos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_apellidos.setText("Apellidos");
+        add(lbl_apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 50, -1, -1));
+
+        txtFld_nombres.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtFld_nombres.setPreferredSize(new java.awt.Dimension(230, 30));
+        add(txtFld_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 71, 180, -1));
+
+        lbl_nombres.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_nombres.setText("Nombres");
+        add(lbl_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 50, -1, -1));
+
         txtFld_telefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtFld_telefono.setPreferredSize(new java.awt.Dimension(270, 30));
-        add(txtFld_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 180, 130, -1));
+        txtFld_telefono.setPreferredSize(new java.awt.Dimension(195, 30));
+        add(txtFld_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 70, 110, -1));
 
         lbl_telefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_telefono.setText("Teléfono");
-        add(lbl_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 160, -1, -1));
+        add(lbl_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 50, -1, -1));
+
+        txtFld_dni.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtFld_dni.setPreferredSize(new java.awt.Dimension(195, 30));
+        add(txtFld_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 70, 110, -1));
+
+        lbl_dni.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_dni.setText("DNI");
+        add(lbl_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 50, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttn_guardarFamiliar;
-    private javax.swing.JCheckBox chckBx_f;
-    private javax.swing.JCheckBox chckBx_m;
     private javax.swing.JComboBox<String> cmbBx_estadoCivil;
     private javax.swing.JComboBox<String> cmbBx_parentesco;
     private javax.swing.JCheckBox jCheckBox1;
@@ -530,7 +549,7 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
     private javax.swing.JLabel lbl_direccion;
     private javax.swing.JLabel lbl_direccionFamiliar;
     private javax.swing.JLabel lbl_distrito;
-    private javax.swing.JLabel lbl_edad;
+    private javax.swing.JLabel lbl_dni;
     private javax.swing.JLabel lbl_escuela;
     private javax.swing.JLabel lbl_estadoCivil;
     private javax.swing.JLabel lbl_fechaNac;
@@ -543,13 +562,15 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
     private javax.swing.JLabel lbl_sexo;
     private javax.swing.JLabel lbl_telefono;
     private javax.swing.JLabel lbl_telefonoFamiliar;
+    private javax.swing.JRadioButton rdBttn_f;
+    private javax.swing.JRadioButton rdBttn_m;
     private javax.swing.JTextArea txtAr_antecedentes;
     private javax.swing.JTextField txtFld_apellidos;
     private javax.swing.JTextField txtFld_departamento;
     private javax.swing.JTextField txtFld_direccion;
     private javax.swing.JTextField txtFld_direccionFamiliar;
     private javax.swing.JTextField txtFld_distrito;
-    private javax.swing.JTextField txtFld_edad;
+    private javax.swing.JTextField txtFld_dni;
     private javax.swing.JTextField txtFld_escuela;
     private javax.swing.JTextField txtFld_fechaNac;
     private javax.swing.JTextField txtFld_lugarNac;

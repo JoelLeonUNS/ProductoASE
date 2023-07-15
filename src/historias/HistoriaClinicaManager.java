@@ -48,7 +48,7 @@ public abstract class HistoriaClinicaManager {
         System.out.print("Estado civil: ");
         historia.getPaciente().setEstadoCivil(input.next());
         System.out.print("Telefono: ");
-        historia.getPaciente().setTelefono(input.nextInt());
+        historia.getPaciente().setTelefono(input.next());
         System.out.print("Nombre de familiar: ");
         input.nextLine();
         ////historia.getPaciente().getFamiliar().setNombreFamiliar(input.nextLine());
@@ -72,7 +72,7 @@ public abstract class HistoriaClinicaManager {
             }
             case 2 -> {
                 System.out.print("Ingrese nuevo teléfono del paciente: ");
-                historia.getPaciente().setTelefono(input.nextInt());
+                historia.getPaciente().setTelefono(input.next());
             }
             case 3 -> {
                 System.out.print("Ingrese nueva estado civil: ");

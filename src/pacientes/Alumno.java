@@ -7,7 +7,7 @@ public class Alumno extends Paciente {
     
     
     // Solo para valores por defecto.
-    public Alumno(String escuela, String DNI, String nombre, String apellido, String sexo, String fechaNac, String lugarNac, String distrito, String departamento, String direccion, int telefono, String estadoCivil) {
+    public Alumno(String escuela, String DNI, String nombre, String apellido, String sexo, String fechaNac, String lugarNac, String distrito, String departamento, String direccion, String telefono, String estadoCivil) {
         super(DNI, nombre, apellido, sexo, fechaNac, lugarNac, distrito, departamento, direccion, telefono, estadoCivil);
         this.escuela = escuela;
     }

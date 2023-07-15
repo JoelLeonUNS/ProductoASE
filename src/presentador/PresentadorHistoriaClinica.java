@@ -11,6 +11,7 @@ import pacientes.Familiar;
 public class PresentadorHistoriaClinica {
     private ModeloHistoriaClinica modeloHistoriaClinica;
     private String tipoHistoria;
+    private String tipoGuardado;
     private boolean historiaEstudianteEditable = false;
     private boolean historiaTrabajadorEditable = false;
     
@@ -72,6 +73,14 @@ public class PresentadorHistoriaClinica {
 
     public void setTipoHistoria(String tipoHistoria) {
         this.tipoHistoria = tipoHistoria;
+    }
+
+    public String getTipoGuardado() {
+        return tipoGuardado;
+    }
+
+    public void setTipoGuardado(String tipoGuardado) {
+        this.tipoGuardado = tipoGuardado;
     }
     
     public void registrarHistoriaClinica() {

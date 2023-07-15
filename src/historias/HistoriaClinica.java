@@ -9,6 +9,7 @@ public class HistoriaClinica {
 
     private int numeroHistoriaClinica;
     private Paciente paciente;
+    private String otrosAntecedentesPatologicos;
     private ArrayList<Enfermedad> antecedentesPatologicos = new ArrayList<>();
     private ArrayList<ConsultaMedica> consultasMedicas = new ArrayList<>();
 
@@ -16,9 +17,10 @@ public class HistoriaClinica {
     }
 
     // solo para los valores por defecto.
-    public HistoriaClinica(int numeroHistoriaClinica, Paciente paciente) {
+    public HistoriaClinica(int numeroHistoriaClinica, Paciente paciente, String otrosAntecedentesPatologicos) {
         this.numeroHistoriaClinica = numeroHistoriaClinica;
         this.paciente = paciente;
+        this.otrosAntecedentesPatologicos = otrosAntecedentesPatologicos;
     }
 
     public int getNumeroHistoriaClinica() {
@@ -37,6 +39,14 @@ public class HistoriaClinica {
         this.paciente = paciente;
     }
 
+    public String getOtrosAntecedentesPatologicos() {
+        return otrosAntecedentesPatologicos;
+    }
+
+    public void setOtrosAntecedentesPatologicos(String otrosAntecedentesPatologicos) {
+        this.otrosAntecedentesPatologicos = otrosAntecedentesPatologicos;
+    }
+
     public ArrayList<ConsultaMedica> getConsultasMedicas() {
         return consultasMedicas;
     }
@@ -48,30 +58,17 @@ public class HistoriaClinica {
     public void agregarConsulta(ConsultaMedica consultaMedica) {
         consultasMedicas.add(consultaMedica);
     }
-    
+
     public void agregarAntecedentePatologico(Enfermedad enfermedad) {
         antecedentesPatologicos.add(enfermedad);
     }
-    
+
     public void agregarAntecedentesPatologicos(ArrayList<Enfermedad> enfermedades) {
         antecedentesPatologicos.addAll(enfermedades);
     }
 
     @Override
     public String toString() {
-//        return "\nNro. Historia Clinica: " + numeroHistoriaClinica + "\n__________________________________" + paciente + "\nAntecedentes Patologicos: " + antecedentesPatologicos + "\nAntecedentes Familiares: " + antecedentesFamiliares + listarConsultas();
         return this.paciente.getDNI();
     }
-
-//    private String listarConsultas() {
-//        String lista = "";
-//        if (!consultasMedicas.isEmpty()) {
-//            lista = "\n__________________________________";
-//            for (ConsultaMedica consulta : consultasMedicas) {
-//                lista += consulta;
-//            }
-//        }
-//        return lista;
-//    }
-
 }

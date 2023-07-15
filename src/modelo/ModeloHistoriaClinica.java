@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Map;
 import pacientes.Alumno;
 import pacientes.Familiar;
-import pacientes.Paciente;
 import pacientes.Trabajador;
 
 public class ModeloHistoriaClinica {
@@ -31,6 +30,7 @@ public class ModeloHistoriaClinica {
         this.familiar = new Familiar();
         this.familiaresEstudiante = new HashMap<>();
         this.familiaresTrabajador = new HashMap<>();
+        this.antecedentesPatologicos = new ArrayList<>();
     }
     
     public HistoriaClinica buscarHistoriaClinicaDNI(String dni){
@@ -69,6 +69,7 @@ public class ModeloHistoriaClinica {
         historiaClinicaEstudiante.setPaciente(estudiante);
         historiaClinicaEstudiante.agregarAntecedentesPatologicos(antecedentesPatologicos);
         hcDAO.create(historiaClinicaEstudiante);
+        System.out.println("Hola");
     }
     
     public void editarHistoriaEstudiante() {

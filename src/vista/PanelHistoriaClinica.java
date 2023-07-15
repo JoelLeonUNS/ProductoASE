@@ -33,10 +33,10 @@ public class PanelHistoriaClinica extends javax.swing.JPanel implements ActionLi
         bttn_editarHistoria.addActionListener(this);
         bttn_guardar.addActionListener(this);
         tbl_busquedaHistoria.getSelectionModel().addListSelectionListener(this);
-        
+
         bttn_guardar.setEnabled(false);
         bttn_editarHistoria.setEnabled(false);
-        
+
         mostrarTablaBuscarHistoria(pGeneral.getpHistoriaClinica().buscarHistoriaClinicaCoincidente(getInputText(txtFld_valorBuscado)));
     }
 
@@ -107,6 +107,9 @@ public class PanelHistoriaClinica extends javax.swing.JPanel implements ActionLi
             }
             case "Nueva Historia" -> {
                 bttn_guardar.setEnabled(true);
+                pGeneral.getpHistoriaClinica().setHistoriaEditable(true);
+                setEnableBotones();
+                pGeneral.getpHistoriaClinica().setTipoGuardado("NUEVO");
                 String tipoHistoria = (String) cmbBx_nuevaHistoria.getSelectedItem();
                 switch (tipoHistoria) {
                     case "Nueva Historia" -> {
@@ -125,15 +128,39 @@ public class PanelHistoriaClinica extends javax.swing.JPanel implements ActionLi
                 }
             }
             case "Editar Historia" -> {
-                pGeneral.getpHistoriaClinica().setHistoriaEditable(true);
                 bttn_guardar.setEnabled(true);
+                pGeneral.getpHistoriaClinica().setHistoriaEditable(true);
                 setEnableBotones();
+                pGeneral.getpHistoriaClinica().setTipoGuardado("EDITAR");
             }
             case "Guardar Historia" -> {
+                guardarDatosPacienteEnfermedades();
+                switch (pGeneral.getpHistoriaClinica().getTipoGuardado()) {
+                    case "NUEVO" -> {
+                        pGeneral.getpHistoriaClinica().registrarHistoriaClinica();
+                    }
+                    case "EDITAR" -> {
+                        //
+                    }
+                }
+                pGeneral.getpHistoriaClinica().limpiarAntecedentesPatologicos();
                 pGeneral.getpHistoriaClinica().setHistoriaEditable(false);
                 bttn_guardar.setEnabled(false);
                 bttn_editarHistoria.setEnabled(false);
                 setEnableBotones();
+            }
+        }
+    }
+
+    public void guardarDatosPacienteEnfermedades() {
+        switch (pGeneral.getpHistoriaClinica().getTipoHistoria()) {
+            case "ESTUDIANTE" -> {
+                pHistoriaEstudiante.guardarEnfermedades();
+                pHistoriaEstudiante.guardarPaciente();
+            }
+            case "TRABAJADOR" -> {
+                pHistoriaTrabajador.guardarEnfermedades();
+                pHistoriaTrabajador.guardarPaciente();
             }
         }
     }
@@ -149,10 +176,9 @@ public class PanelHistoriaClinica extends javax.swing.JPanel implements ActionLi
             }
         }
     }
-    
-    
+
     public void mostrarHistoriaClinica() {
-        
+
     }
 
     @SuppressWarnings("unchecked")

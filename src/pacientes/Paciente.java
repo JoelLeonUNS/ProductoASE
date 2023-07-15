@@ -16,14 +16,14 @@ public class Paciente {
     private String distrito;
     private String departamento;
     private String direccion;
-    private int telefono;
+    private String telefono;
     private String estadoCivil;
     private ArrayList<Familiar> familiares = new  ArrayList<>();
 
     public Paciente() {
     }
 
-    public Paciente(String DNI, String nombre, String apellido, String sexo, String fechaNac, String lugarNac, String distrito, String departamento, String direccion, int telefono, String estadoCivil) {
+    public Paciente(String DNI, String nombre, String apellido, String sexo, String fechaNac, String lugarNac, String distrito, String departamento, String direccion, String telefono, String estadoCivil) {
         this.DNI = DNI;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -109,11 +109,11 @@ public class Paciente {
         this.direccion = direccion;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
