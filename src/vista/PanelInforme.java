@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package vista;
 
 import java.awt.event.ActionEvent;
@@ -10,22 +6,26 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import presentador.PresentadorGeneral;
 
-/**
- *
- * @author PC1
- */
 public class PanelInforme extends javax.swing.JPanel implements ActionListener {
 
     private PresentadorGeneral pGeneral;
     private PanelInforme1 pInforme1;
+    private PanelInforme2 pInforme2;
+    private PanelInforme3 pInforme3;
+    private PanelInforme4 pInforme4;
+    private PanelInforme5 pInforme5;
 
     private DefaultTableModel modelTablaInforme = new DefaultTableModel();
     private DefaultComboBoxModel comboBoxTipoInforme = new DefaultComboBoxModel();
 
     public PanelInforme(PresentadorGeneral p) {
         initComponents();
-        this.pGeneral = pGeneral;
+        this.pGeneral = p;
         pInforme1 = new PanelInforme1(pGeneral);
+        pInforme2 = new PanelInforme2();
+        pInforme3 = new PanelInforme3();
+        pInforme4 = new PanelInforme4();
+        pInforme5 = new PanelInforme5();
         llenarComboBoxTipoInforme();
         CmbBx_tipoInforme.addActionListener(this);
     }
@@ -50,15 +50,19 @@ public class PanelInforme extends javax.swing.JPanel implements ActionListener {
                 String tipoInforme = (String) CmbBx_tipoInforme.getSelectedItem();
                 switch (tipoInforme) {
                     case "Atenciones Realizadas" -> {
-                        
+                        pGeneral.getpInforme().cambiarPanel(Pnl_tipoInforme, pInforme1);
                     }
                     case "Alumnos de Pregraso segun escuela" -> {
+                        pGeneral.getpInforme().cambiarPanel(Pnl_tipoInforme, pInforme2);
                     }
                     case "Pacientes segun el sexo" -> {
+                        pGeneral.getpInforme().cambiarPanel(Pnl_tipoInforme, pInforme3);
                     }
                     case "Triaje de signos vitales de los pacientes"-> {
+                        pGeneral.getpInforme().cambiarPanel(Pnl_tipoInforme, pInforme4);
                     }
                     case "Triaje de medida de los pacientes" -> {
+                        pGeneral.getpInforme().cambiarPanel(Pnl_tipoInforme, pInforme5);
                     }
                     default -> {
                     }
@@ -146,7 +150,7 @@ public class PanelInforme extends javax.swing.JPanel implements ActionListener {
             .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        add(Pnl_tipoInforme, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 95, -1, -1));
+        add(Pnl_tipoInforme, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 95, 766, 500));
     }// </editor-fold>//GEN-END:initComponents
 
 

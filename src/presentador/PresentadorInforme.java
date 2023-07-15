@@ -1,6 +1,8 @@
 package presentador;
 
+import java.awt.BorderLayout;
 import java.util.ArrayList;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import modelo.ModeloInforme1;
 import modelo.ModeloInforme2;
@@ -56,4 +58,13 @@ public class PresentadorInforme {
     public void setPanelInforme2(PanelInforme2 panelInforme2) {
         this.panelInforme2 = panelInforme2;
     }
+    
+     public void cambiarPanel(JPanel base, JPanel siguiente) {
+        siguiente.setSize(766, 500);
+        siguiente.setLocation(0, 0);
+        base.removeAll();
+        base.add(siguiente, BorderLayout.CENTER);
+        base.revalidate();
+        base.repaint();
+    }  
 }
