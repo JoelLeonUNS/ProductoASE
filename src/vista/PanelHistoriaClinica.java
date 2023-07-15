@@ -185,6 +185,7 @@ public class PanelHistoriaClinica extends javax.swing.JPanel implements ActionLi
         tbl_busquedaHistoria.setBackground(new java.awt.Color(217, 217, 217));
         tbl_busquedaHistoria.setModel(modelTablaBuscarHistoria);
         tbl_busquedaHistoria.setPreferredSize(new java.awt.Dimension(400, 495));
+        tbl_busquedaHistoria.getTableHeader().setReorderingAllowed(false);
         scrll_tablaBusqueda.setViewportView(tbl_busquedaHistoria);
 
         add(scrll_tablaBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 95, 400, 495));

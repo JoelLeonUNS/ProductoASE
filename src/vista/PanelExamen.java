@@ -122,6 +122,7 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
 
         jTableHistorias.setModel(modelTablaBuscarHistoria);
         jTableHistorias.setPreferredSize(new java.awt.Dimension(404, 250));
+        jTableHistorias.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTableHistorias);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 95, 404, 250));
@@ -251,6 +252,7 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
 
         jTableConsultas.setModel(modelTablaConsultas);
         jTableConsultas.setPreferredSize(new java.awt.Dimension(404, 230));
+        jTableConsultas.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(jTableConsultas);
 
         add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 404, 230));
