@@ -435,6 +435,9 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
                 //limpiarCasillas();
                 //setTxtFldsEditable(true);
                 this.jButtonGuardar.setEnabled(true);
+                pExamenMedico.jButtonGuardarExamMedico.setEnabled(true);
+                pExamenFisico.jButtonGuardarExamFisico.setEnabled(true);
+                pExamenClinico.jButtonGuardarExamClinico.setEnabled(true);
             }
             case "Guardar"->{
                 setDatosConsulta();
@@ -452,6 +455,7 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
                 pGeneral.getpExamen().añadirExamenAConsulta();
                 showMsg("Examen añadido");
                 pExamenMedico.setEditableFlds(false);
+                pExamenMedico.jButtonGuardarExamMedico.setEnabled(false);
                 //resetearPanelMedico();
             }
             case "Guardar Examen Fisico"->{
@@ -460,6 +464,7 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
                 pGeneral.getpExamen().añadirExamenAConsulta();
                 showMsg("Examen añadido");
                 pExamenFisico.setEditableFlds(false);
+                pExamenFisico.jButtonGuardarExamFisico.setEnabled(false);
                 //resetearPanelFisico();
             }
             case "Guardar Examen Clinico"->{
@@ -468,6 +473,7 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
                 pGeneral.getpExamen().añadirExamenAConsulta();
                 showMsg("Examen añadido");
                 pExamenClinico.setEditableFlds(false);
+                pExamenClinico.jButtonGuardarExamClinico.setEnabled(false);
                 //resetearPanelClinico();
             }
         }
