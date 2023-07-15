@@ -1,5 +1,8 @@
 package pacientes;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Paciente {
@@ -135,5 +138,11 @@ public class Paciente {
         return "\nDNI: " + DNI + "\nNombre: " + nombre + "\nApellido: " + apellido + "\nSexo: " + sexo + "\nFecha de Nac.: " + fechaNac + "\nLugar de Nac.: " + lugarNac + "\nDistrito: " + distrito + "\nDepartamento: " + departamento + "\nDireccion: " + direccion + "\nTelefono: " + telefono + "\nEstado Civil: " + estadoCivil + "\nNombre Familiar: ";
     }
     
-    
+        
+        public int calcularEdad() {
+        LocalDate fechaNacimiento = LocalDate.parse(this.fechaNac, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        LocalDate fechaActual = LocalDate.now();
+        Period periodo = Period.between(fechaNacimiento, fechaActual);
+        return periodo.getYears();
+    }
 }

@@ -4,6 +4,7 @@
  */
 package vista;
 
+import javax.swing.JTable;
 import presentador.PresentadorGeneral;
 
 /**
@@ -21,6 +22,11 @@ public class PanelInforme1 extends javax.swing.JPanel {
         initComponents();
         this.pGeneral = pGeneral;
     }
+    
+    public JTable getTablaInformes1() {
+    return jTable1;
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.

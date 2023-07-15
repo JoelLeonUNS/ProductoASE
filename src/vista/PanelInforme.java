@@ -31,12 +31,13 @@ public class PanelInforme extends javax.swing.JPanel implements ActionListener {
     }
 
     private void llenarComboBoxTipoInforme() {
+        comboBoxTipoInforme.removeAllElements();
         comboBoxTipoInforme.addElement("Atenciones Realizadas");
         comboBoxTipoInforme.addElement("Alumnos de Pregraso segun escuela");
         comboBoxTipoInforme.addElement("Pacientes segun el sexo");
         comboBoxTipoInforme.addElement("Triaje de signos vitales de los pacientes");
         comboBoxTipoInforme.addElement("Triaje de medida de los pacientes");
- 
+
     }
 
     @Override
@@ -46,15 +47,17 @@ public class PanelInforme extends javax.swing.JPanel implements ActionListener {
 
             }
             case "Generar Informe" -> {
-                if (CmbBx_tipoInforme.getSelectedIndex()==1) {
-//                    pGeneral.
+                if (CmbBx_tipoInforme.getSelectedIndex() == 1) {
+                    Pnl_tipoInforme.add(pInforme1);
+                    Pnl_tipoInforme.revalidate();
+                    Pnl_tipoInforme.repaint();
                 }
             }
-            case "Ultimas 24 horas" -> {
-                
+            case "Filtrar Tiempo" -> {
+
             }
             case "Descargar PDF" -> {
-                
+
             }
         }
     }
@@ -70,7 +73,7 @@ public class PanelInforme extends javax.swing.JPanel implements ActionListener {
         CmbBx_tipoInforme = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        Pnl_tipoInforme = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1280, 620));
@@ -101,12 +104,14 @@ public class PanelInforme extends javax.swing.JPanel implements ActionListener {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 95, -1, -1));
 
         CmbBx_tipoInforme.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        CmbBx_tipoInforme.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Generar Informe", "informe1", "informe2", "informe3", "informe4", "informe5" }));
+        CmbBx_tipoInforme.setModel(comboBoxTipoInforme);
+        CmbBx_tipoInforme.setActionCommand("Generar Informe");
         CmbBx_tipoInforme.setPreferredSize(new java.awt.Dimension(215, 35));
         add(CmbBx_tipoInforme, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 30, -1, -1));
 
         jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ultimas 24 horas", "Último mes", "Último semestre", "Último año", "Personalizado" }));
+        jComboBox2.setActionCommand("Filtrar Tiempo");
         jComboBox2.setPreferredSize(new java.awt.Dimension(215, 35));
         add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(729, 30, -1, -1));
 
@@ -115,19 +120,19 @@ public class PanelInforme extends javax.swing.JPanel implements ActionListener {
         jButton2.setPreferredSize(new java.awt.Dimension(133, 35));
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1117, 30, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel2.setPreferredSize(new java.awt.Dimension(766, 500));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 95, -1, -1));
+        Pnl_tipoInforme.setBackground(new java.awt.Color(204, 204, 204));
+        Pnl_tipoInforme.setPreferredSize(new java.awt.Dimension(766, 500));
+        Pnl_tipoInforme.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(Pnl_tipoInforme, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 95, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CmbBx_tipoInforme;
+    private javax.swing.JPanel Pnl_tipoInforme;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;

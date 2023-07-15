@@ -4,6 +4,8 @@
  */
 package vista;
 
+import javax.swing.JTable;
+
 /**
  *
  * @author PC1
@@ -15,6 +17,10 @@ public class PanelInforme2 extends javax.swing.JPanel {
      */
     public PanelInforme2() {
         initComponents();
+    }
+
+    public JTable getTablaInformes() {
+        return jTable1;
     }
 
     /**
