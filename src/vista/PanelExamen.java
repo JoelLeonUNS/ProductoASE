@@ -45,6 +45,9 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
         this.jTableConsultas.getSelectionModel().addListSelectionListener(this);
         
         this.jButtonGuardar.setEnabled(false);
+        pExamenMedico.jButtonGuardarExamMedico.setEnabled(false);
+        pExamenFisico.jButtonGuardarExamFisico.setEnabled(false);
+        pExamenClinico.jButtonGuardarExamClinico.setEnabled(false);
         setTxtFldsEditable(false);
         
         llenarComboBoxTipoExamen();
