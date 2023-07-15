@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -39,6 +40,9 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
         this.pExamenMedico.jButtonGuardarExamMedico.addActionListener(this);
         this.pExamenFisico.jButtonGuardarExamFisico.addActionListener(this);
         this.pExamenClinico.jButtonGuardarExamClinico.addActionListener(this);
+        
+        this.jTableHistorias.getSelectionModel().addListSelectionListener(this);
+        this.jTableConsultas.getSelectionModel().addListSelectionListener(this);
         
         this.jButtonGuardar.setEnabled(false);
         setTxtFldsEditable(false);
@@ -417,7 +421,7 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
-        System.out.println("Se eligio una fila");
+        JOptionPane.showMessageDialog(null, "Hola");
         this.jButtonGuardar.setEnabled(false);
         int selectedRow = jTableHistorias.getSelectedRow();
         if(selectedRow != -1){

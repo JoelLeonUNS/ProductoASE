@@ -36,6 +36,8 @@ public class VistaInterfazAdmin extends javax.swing.JFrame implements ActionList
         this.jButton4.setEnabled(false);
         this.jButton5.setEnabled(false);
         
+        this.jTable1.getSelectionModel().addListSelectionListener(this);
+        
         setTxtFldsEditable(false);
     }
     
@@ -166,22 +168,16 @@ public class VistaInterfazAdmin extends javax.swing.JFrame implements ActionList
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setText("Cuenta de usuario");
 
-        jTextField2.setEditable(false);
         jTextField2.setPreferredSize(new java.awt.Dimension(350, 30));
 
-        jTextField3.setEditable(false);
         jTextField3.setPreferredSize(new java.awt.Dimension(350, 30));
 
-        jTextField4.setEditable(false);
         jTextField4.setPreferredSize(new java.awt.Dimension(350, 30));
 
-        jTextField5.setEditable(false);
         jTextField5.setPreferredSize(new java.awt.Dimension(350, 30));
 
-        jTextField6.setEditable(false);
         jTextField6.setPreferredSize(new java.awt.Dimension(350, 30));
 
-        jTextField7.setEditable(false);
         jTextField7.setPreferredSize(new java.awt.Dimension(350, 30));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -389,18 +385,21 @@ public class VistaInterfazAdmin extends javax.swing.JFrame implements ActionList
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
-        this.jButton3.setEnabled(true);
-        this.jButton4.setEnabled(true);
-        int selectedRow = jTable1.getSelectedRow();
-        if(selectedRow != -1){
-            String dni = jTable1.getValueAt(selectedRow, 0).toString();
-            jTextField2.setText(pGeneral.getpInterfazAdmin().buscarMedicoDNI(dni).getDNI());
-            jTextField3.setText(pGeneral.getpInterfazAdmin().buscarMedicoDNI(dni).getNombreMedico());
-            jTextField4.setText(pGeneral.getpInterfazAdmin().buscarMedicoDNI(dni).getApellidoMedico());
-            jTextField5.setText(pGeneral.getpInterfazAdmin().buscarMedicoDNI(dni).getTelefonoMedico());
-            jTextField6.setText(pGeneral.getpInterfazAdmin().buscarMedicoDNI(dni).getUsuario().getUsuario());
-            jTextField7.setText(pGeneral.getpInterfazAdmin().buscarMedicoDNI(dni).getUsuario().getClave());
-            
+        if (!e.getValueIsAdjusting()) {
+            System.out.println("HOLA");
+            this.jButton3.setEnabled(true);
+            this.jButton4.setEnabled(true);
+            int selectedRow = jTable1.getSelectedRow();
+            if(selectedRow != -1){
+                String dni = jTable1.getValueAt(selectedRow, 0).toString();
+                jTextField2.setText(pGeneral.getpInterfazAdmin().buscarMedicoDNI(dni).getDNI());
+                jTextField3.setText(pGeneral.getpInterfazAdmin().buscarMedicoDNI(dni).getNombreMedico());
+                jTextField4.setText(pGeneral.getpInterfazAdmin().buscarMedicoDNI(dni).getApellidoMedico());
+                jTextField5.setText(pGeneral.getpInterfazAdmin().buscarMedicoDNI(dni).getTelefonoMedico());
+                jTextField6.setText(pGeneral.getpInterfazAdmin().buscarMedicoDNI(dni).getUsuario().getUsuario());
+                jTextField7.setText(pGeneral.getpInterfazAdmin().buscarMedicoDNI(dni).getUsuario().getClave());
+            }
         }
+        
     }
 }
