@@ -1,5 +1,6 @@
 package presentador;
 
+import examenes.Examen;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import modelo.ModeloConsulta;
@@ -71,5 +72,8 @@ public class PresentadorExamen {
         modeloConsulta.getConsulta().agregarExamen(modeloExamen.getExamen());
     }
     
+    public void iniciarExamen(){
+        modeloExamen.setExamen(new Examen());
+    }
     
 }

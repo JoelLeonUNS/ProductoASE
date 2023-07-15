@@ -447,6 +447,7 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
             }
             
             case "Guardar Examen Medico"->{
+                //pGeneral.getpExamen().iniciarExamen();
                 setDatosExamenMedico();
                 pGeneral.getpExamen().añadirExamenAConsulta();
                 showMsg("Examen añadido");
@@ -454,6 +455,7 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
                 //resetearPanelMedico();
             }
             case "Guardar Examen Fisico"->{
+                //pGeneral.getpExamen().iniciarExamen();
                 setDatosExamenFisico();
                 pGeneral.getpExamen().añadirExamenAConsulta();
                 showMsg("Examen añadido");
@@ -461,6 +463,7 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
                 //resetearPanelFisico();
             }
             case "Guardar Examen Clinico"->{
+                //pGeneral.getpExamen().iniciarExamen();
                 setDatosExamenClinico();
                 pGeneral.getpExamen().añadirExamenAConsulta();
                 showMsg("Examen añadido");
@@ -485,6 +488,7 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
                 this.jButtonGuardar.setEnabled(false);
                 int selectedRow = jTableConsultas.getSelectedRow();
                 if (selectedRow != -1){
+                    limpiarPanelCompleto();
                     int numConsulta = (Integer) jTableConsultas.getValueAt(selectedRow, 0);
                     pGeneral.getpExamen().getModeloConsulta().setConsulta(pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getConsultasMedicas().get(numConsulta-1));
                     mostrarDatosConsulta();
