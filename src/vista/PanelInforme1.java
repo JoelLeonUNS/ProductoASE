@@ -4,6 +4,7 @@
  */
 package vista;
 
+import javax.swing.JFrame;
 import javax.swing.JTable;
 import presentador.PresentadorGeneral;
 
@@ -27,6 +28,7 @@ public class PanelInforme1 extends javax.swing.JPanel {
     return jTable1;
 }
 
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,6 +87,7 @@ public class PanelInforme1 extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 105, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -94,4 +97,5 @@ public class PanelInforme1 extends javax.swing.JPanel {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
 }

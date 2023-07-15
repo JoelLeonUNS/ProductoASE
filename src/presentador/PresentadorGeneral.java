@@ -16,15 +16,17 @@ public class PresentadorGeneral {
     private PresentadorInterfazMedico pInterfazMedico;
         private PresentadorHistoriaClinica pHistoriaClinica;
         private PresentadorExamen pExamen;
+        private PresentadorInforme pInforme;
         
     private static PresentadorGeneral pGeneral;
 
-    private PresentadorGeneral() {
+    public PresentadorGeneral() {
         pLogin = new PresentadorLogin();
         pInterfazAdmin = new PresentadorInterfazAdmin();
         pInterfazMedico = new PresentadorInterfazMedico();
         pHistoriaClinica = new PresentadorHistoriaClinica();
         pExamen = new PresentadorExamen();
+        pInforme= new PresentadorInforme();
     }
     
     public static PresentadorGeneral getInstancia() {
@@ -97,6 +99,9 @@ public class PresentadorGeneral {
     public void setpExamen(PresentadorExamen pExamen) {
         this.pExamen = pExamen;
     }
-    
+
+    public PresentadorInforme getpInforme() {
+        return pInforme;
+    }
     
 }

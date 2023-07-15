@@ -47,11 +47,23 @@ public class PanelInforme extends javax.swing.JPanel implements ActionListener {
 
             }
             case "Generar Informe" -> {
-                if (CmbBx_tipoInforme.getSelectedIndex() == 1) {
-                    Pnl_tipoInforme.add(pInforme1);
-                    Pnl_tipoInforme.revalidate();
-                    Pnl_tipoInforme.repaint();
+                String tipoInforme = (String) CmbBx_tipoInforme.getSelectedItem();
+                switch (tipoInforme) {
+                    case "Atenciones Realizadas" -> {
+                        
+                    }
+                    case "Alumnos de Pregraso segun escuela" -> {
+                    }
+                    case "Pacientes segun el sexo" -> {
+                    }
+                    case "Triaje de signos vitales de los pacientes"-> {
+                    }
+                    case "Triaje de medida de los pacientes" -> {
+                    }
+                    default -> {
+                    }
                 }
+
             }
             case "Filtrar Tiempo" -> {
 

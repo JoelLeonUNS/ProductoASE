@@ -1,101 +1,59 @@
 package presentador;
 
-import BaseDeDatos.HistoriaClinicaDAO;
-import consultas.ConsultaMedica;
-import examenes.*;
-import examenesMedico.ExamenMedico;
-import historias.HistoriaClinica;
 import java.util.ArrayList;
-import java.util.HashMap;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import modelo.ModeloHistoriaClinica;
-import pacientes.Alumno;
+import modelo.ModeloInforme1;
+import modelo.ModeloInforme2;
 import vista.PanelInforme1;
 import vista.PanelInforme2;
 
 public class PresentadorInforme {
 
-    private ModeloHistoriaClinica modeloHistoriaClinica;
+    private ModeloInforme1 modeloInforme1;
+    private ModeloInforme2 modeloInforme2;
     private PanelInforme1 panelInforme1;
     private PanelInforme2 panelInforme2;
 
     public PresentadorInforme() {
+        modeloInforme1 = new ModeloInforme1();
+        modeloInforme2 = new ModeloInforme2();
     }
 
     public void mostrarInforme1() {
-        HistoriaClinicaDAO historiaClinicaDAO = new HistoriaClinicaDAO();
-
-        ArrayList<HistoriaClinica> historiasClinicas = historiaClinicaDAO.obtenerHistoriasClinicas();
         DefaultTableModel model = (DefaultTableModel) panelInforme1.getTablaInformes1().getModel();
         model.setRowCount(0);
 
-        for (HistoriaClinica historiaClinica : historiasClinicas) {
-            for (ConsultaMedica consultaMedica : historiaClinica.getConsultasMedicas()) {
-                for (Examen examen : consultaMedica.getExamenes()) {
-                    if (examen instanceof ExamenMedico) {
-                        ExamenMedico examenMedico = (ExamenMedico) examen;
-                        Object[] rowData = {
-                            consultaMedica.getFecha(),
-                            historiaClinica.getPaciente().getNombre(),
-                            historiaClinica.getPaciente().calcularEdad(),
-                            historiaClinica.getPaciente().getSexo(),
-                            examenMedico.getDiagnostico()
-                        };
-                        model.addRow(rowData);
-                    }
-                }
-            }
+        ArrayList<Object[]> datosInforme = modeloInforme1.obtenerDatosInforme();
+
+        for (Object[] rowData : datosInforme) {
+            model.addRow(rowData);
         }
 
         panelInforme1.getTablaInformes1().repaint();
     }
 
     public void mostrarInforme2() {
-        ArrayList<HistoriaClinica> historiasCoincidentes = modeloHistoriaClinica.getHistoriasCoincidentesBD();
-
-        // Obtener la tabla de informes desde el PanelInforme2
-        JTable tablaInformes = panelInforme2.getTablaInformes();
-
-        DefaultTableModel model = (DefaultTableModel) tablaInformes.getModel();
-
+        DefaultTableModel model = (DefaultTableModel) panelInforme2.getTablaInformes().getModel();
         model.setRowCount(0);
 
-        int totalAlumnos = 0;
-        HashMap<String, Integer> contadorCarreras = new HashMap<>();
+        ArrayList<Object[]> datosInforme = modeloInforme2.obtenerDatosInforme();
 
-        for (HistoriaClinica historiaClinica : historiasCoincidentes) {
-            // Verificar si el paciente es un alumno
-            if (historiaClinica.getPaciente() instanceof Alumno) {
-                Alumno alumno = (Alumno) historiaClinica.getPaciente();
-
-                String carrera = alumno.getEscuela();
-                String sexo = alumno.getSexo();
-
-                contadorCarreras.put(carrera, contadorCarreras.getOrDefault(carrera, 0) + 1);
-
-                // Incrementar el total de alumnos
-                totalAlumnos++;
-            }
-        }
-
-        for (String carrera : contadorCarreras.keySet()) {
-            int cantidad = contadorCarreras.get(carrera);
-            double porcentaje = (cantidad / (double) totalAlumnos) * 100;
-
-            Object[] rowData = {
-                carrera,
-                "Alumno",
-                cantidad,
-                String.format("%.2f%%", porcentaje)
-            };
+        for (Object[] rowData : datosInforme) {
             model.addRow(rowData);
         }
 
-        tablaInformes.repaint();
+        panelInforme2.getTablaInformes().repaint();
     }
 
     public void mostrarInforme3() {
 
+    }
+
+    public void setPanelInforme1(PanelInforme1 panelInforme1) {
+        this.panelInforme1 = panelInforme1;
+    }
+
+    public void setPanelInforme2(PanelInforme2 panelInforme2) {
+        this.panelInforme2 = panelInforme2;
     }
 }
