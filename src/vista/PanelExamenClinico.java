@@ -95,5 +95,9 @@ public class PanelExamenClinico extends javax.swing.JPanel {
         this.jCheckBoxAPresp.setSelected(false);
     }
 
-    
+    public void setEditableFlds(boolean b){
+        this.txtFldObservacion.setEditable(b);
+        this.jCheckBoxAPcard.setEnabled(b);
+        this.jCheckBoxAPresp.setEnabled(b);
+    }
 }

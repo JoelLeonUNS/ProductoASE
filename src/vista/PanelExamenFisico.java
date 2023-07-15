@@ -249,4 +249,17 @@ public class PanelExamenFisico extends javax.swing.JPanel {
         this.txtFldTemperatura.setText("");
     }
     
+    public void setEditableFlds(boolean b){
+        this.txtFldFC.setEditable(b);
+        this.txtFldFR.setEditable(b);
+        this.txtFldIMC.setEditable(b);
+        this.txtFldObservacion.setEditable(b);
+        this.txtFldPA.setEditable(b);
+        this.txtFldPerAbdom.setEditable(b);
+        this.txtFldPeso.setEditable(b);
+        this.txtFldSPO2.setEditable(b);
+        this.txtFldTalla.setEditable(b);
+        this.txtFldTemperatura.setEditable(b);
+    }
+    
 }

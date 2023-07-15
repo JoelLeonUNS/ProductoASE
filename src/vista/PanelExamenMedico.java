@@ -136,4 +136,11 @@ public class PanelExamenMedico extends javax.swing.JPanel {
         this.txtFldExamAux.setText("");
         this.txtFldObservacion.setText("");
     }
+    
+    public void setEditableFlds(boolean b){
+        this.txtFldDiagnostico.setEditable(b);
+        this.txtFldTratamiento.setEditable(b);
+        this.txtFldExamAux.setEditable(b);
+        this.txtFldObservacion.setEditable(b);
+    }
 }

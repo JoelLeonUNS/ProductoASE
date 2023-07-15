@@ -379,6 +379,20 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
         pExamenClinico.limpiarCasillas();
     }
     
+    public void limpiarPanelCompleto(){
+        limpiarCasillas();
+        resetearPanelMedico();
+        resetearPanelFisico();
+        resetearPanelClinico();
+    }
+    
+    public void setEditablePanel(boolean b){
+        setTxtFldsEditable(b);
+        pExamenMedico.setEditableFlds(b);
+        pExamenFisico.setEditableFlds(b);
+        pExamenClinico.setEditableFlds(b);
+    }
+    
     public void showMsg(String s){
         JOptionPane.showMessageDialog(null, s);
     }
@@ -416,15 +430,19 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
             }
             case "Añadir consulta"->{
                 pGeneral.getpExamen().getModeloConsulta().setConsulta(new ConsultaMedica());
-                limpiarCasillas();
-                setTxtFldsEditable(true);
+                limpiarPanelCompleto();
+                setEditablePanel(true);
+                //limpiarCasillas();
+                //setTxtFldsEditable(true);
                 this.jButtonGuardar.setEnabled(true);
             }
             case "Guardar"->{
                 setDatosConsulta();
                 añadirConsultaAHistoria();
                 showMsg("Consulta añadida");
-                limpiarCasillas();
+                limpiarPanelCompleto();
+                setEditablePanel(false);
+                //limpiarCasillas();
                 this.jButtonGuardar.setEnabled(false);
             }
             
@@ -432,19 +450,22 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
                 setDatosExamenMedico();
                 pGeneral.getpExamen().añadirExamenAConsulta();
                 showMsg("Examen añadido");
-                resetearPanelMedico();
+                pExamenMedico.setEditableFlds(false);
+                //resetearPanelMedico();
             }
             case "Guardar Examen Fisico"->{
                 setDatosExamenFisico();
                 pGeneral.getpExamen().añadirExamenAConsulta();
                 showMsg("Examen añadido");
-                resetearPanelFisico();
+                pExamenFisico.setEditableFlds(false);
+                //resetearPanelFisico();
             }
             case "Guardar Examen Clinico"->{
                 setDatosExamenClinico();
                 pGeneral.getpExamen().añadirExamenAConsulta();
                 showMsg("Examen añadido");
-                resetearPanelClinico();
+                pExamenClinico.setEditableFlds(false);
+                //resetearPanelClinico();
             }
         }
     }
