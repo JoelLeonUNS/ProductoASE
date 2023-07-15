@@ -488,6 +488,7 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
                     int numConsulta = (Integer) jTableConsultas.getValueAt(selectedRow, 0);
                     pGeneral.getpExamen().getModeloConsulta().setConsulta(pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getConsultasMedicas().get(numConsulta-1));
                     mostrarDatosConsulta();
+                    mostrarDatosExamenes(pGeneral.getpExamen().getModeloConsulta().getConsulta());
                 }
              }
             
@@ -523,7 +524,43 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
         txtFldMotivo.setText(pGeneral.getpExamen().getModeloConsulta().getConsulta().getMotivo());
     }
     
-    public void mostrarDatosExamenMedico(){
+    public void mostrarDatosExamenes(ConsultaMedica consulta){
         //pExamenMedico.settxtFldDiagnostico(pGeneral.getpExamen().getModeloConsulta().getConsulta().getExamenes().);
+        for (int i = 0; i < consulta.getExamenes().size(); i++) {
+            pGeneral.getpExamen().getModeloExamen().getTipoExamen(consulta.getExamenes().get(i));
+            if(pGeneral.getpExamen().getModeloExamen().getExamenTmp().equals("MEDICO")){
+                mostrarExamenMedico();
+            }else if(pGeneral.getpExamen().getModeloExamen().getExamenTmp().equals("FISICO")){
+                mostrarExamenFisico();
+            }else if(pGeneral.getpExamen().getModeloExamen().getExamenTmp().equals("CLINICO")){
+                mostrarExamenClinico();
+            }
+        }
+    }
+    
+    public void mostrarExamenMedico(){
+       pExamenMedico.settxtFldDiagnostico(pGeneral.getpExamen().getModeloExamen().getExamenMedicoTmp().getDiagnostico());
+       pExamenMedico.settxtFldTratamiento(pGeneral.getpExamen().getModeloExamen().getExamenMedicoTmp().getTratamiento());
+       pExamenMedico.settxtFldExamAux(pGeneral.getpExamen().getModeloExamen().getExamenMedicoTmp().getExamenesAux());
+       pExamenMedico.settxtFldObservacion(pGeneral.getpExamen().getModeloExamen().getExamenMedicoTmp().getObservacion());
+    }
+    
+    public void mostrarExamenFisico(){
+        pExamenFisico.settxtFldFC(pGeneral.getpExamen().getModeloExamen().getExamenFisicoTmp().getFC());
+        pExamenFisico.settxtFldFR(pGeneral.getpExamen().getModeloExamen().getExamenFisicoTmp().getFR());
+        pExamenFisico.settxtFldIMC(pGeneral.getpExamen().getModeloExamen().getExamenFisicoTmp().getIMC());
+        pExamenFisico.settxtFldObservacion(pGeneral.getpExamen().getModeloExamen().getExamenFisicoTmp().getObservacion());
+        pExamenFisico.settxtFldPA(String.valueOf(pGeneral.getpExamen().getModeloExamen().getExamenFisicoTmp().getPA()));
+        pExamenFisico.settxtFldPerAbdom(pGeneral.getpExamen().getModeloExamen().getExamenFisicoTmp().getPerimetroAbdominal());
+        pExamenFisico.settxtFldPeso(pGeneral.getpExamen().getModeloExamen().getExamenFisicoTmp().getPeso());
+        pExamenFisico.settxtFldSPO2(pGeneral.getpExamen().getModeloExamen().getExamenFisicoTmp().getSPO2());
+        pExamenFisico.settxtFldTalla(pGeneral.getpExamen().getModeloExamen().getExamenFisicoTmp().getTalla());
+        pExamenFisico.settxtFldTemperatura(pGeneral.getpExamen().getModeloExamen().getExamenFisicoTmp().getTemperatura());
+    }
+    
+    public void mostrarExamenClinico(){
+        pExamenClinico.settxtFldObservacion(pGeneral.getpExamen().getModeloExamen().getExamenClinicoTmp().getObservacion());
+        pExamenClinico.setjCheckBoxAPcard(pGeneral.getpExamen().getModeloExamen().getExamenClinicoTmp().isAPCardiovascular());
+        pExamenClinico.setjCheckBoxAPresp(pGeneral.getpExamen().getModeloExamen().getExamenClinicoTmp().isAPRespiratorio());
     }
 }

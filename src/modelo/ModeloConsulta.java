@@ -39,6 +39,8 @@ public class ModeloConsulta {
         this.idConsulta = idConsulta;
     }
     
-    
+    public void tipoExamen(ConsultaMedica consulta){
+        
+    }
 
 }

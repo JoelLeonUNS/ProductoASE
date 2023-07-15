@@ -220,12 +220,12 @@ public class PanelExamenFisico extends javax.swing.JPanel {
         this.txtFldIMC.setText(String.valueOf(jTextField7));
     }
 
-    public double gettxtFldObservacion() {
-        return Double.parseDouble(txtFldObservacion.getText());
+    public String gettxtFldObservacion() {
+        return txtFldObservacion.getText();
     }
 
-    public void settxtFldObservacion(double jTextField8) {
-        this.txtFldObservacion.setText(String.valueOf(jTextField8));
+    public void settxtFldObservacion(String jTextField8) {
+        this.txtFldObservacion.setText(jTextField8);
     }
 
     public double gettxtFldFC() {
