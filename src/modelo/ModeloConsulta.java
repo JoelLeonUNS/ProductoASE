@@ -11,7 +11,7 @@ public class ModeloConsulta {
         this.consulta = new ConsultaMedica();
     }
 
-    private void setDatosConsulta(String fecha, String hora, int edad, int tiempoEnfermedad, String apetito, String sueño, String sed, String estadoAnimo, String motivo) {
+    public void setDatosConsulta(String fecha, String hora, int edad, int tiempoEnfermedad, String apetito, String sueño, String sed, String estadoAnimo, String motivo) {
         consulta.setFecha(fecha);
         consulta.setHora(hora);
         consulta.setEdad(edad);
@@ -22,5 +22,23 @@ public class ModeloConsulta {
         consulta.setSed(sed);
         consulta.setMotivo(motivo);
     }
+
+    public ConsultaMedica getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(ConsultaMedica consulta) {
+        this.consulta = consulta;
+    }
+
+    public int getIdConsulta() {
+        return idConsulta;
+    }
+
+    public void setIdConsulta(int idConsulta) {
+        this.idConsulta = idConsulta;
+    }
+    
+    
 
 }

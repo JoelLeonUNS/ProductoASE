@@ -11,11 +11,12 @@ public class ExamenClinicoManager extends ExamenManager {
         return new ExamenClinico();
     }
 
-    public void setDatos(Examen exa, String observacion, boolean apCardio, boolean apRespiratorio) {
+    public ExamenClinico setDatos(Examen exa, String observacion, boolean apCardio, boolean apRespiratorio) {
         ExamenClinico examen = (ExamenClinico) exa;
         examen.setAPCardiovascular(apCardio);
         examen.setAPRespiratorio(apRespiratorio);
         examen.setObservacion(observacion);
         
+        return examen;
     }
 }

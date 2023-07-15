@@ -12,11 +12,11 @@ public class PanelExamenClinico extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBoxAPcard = new javax.swing.JCheckBox();
+        jCheckBoxAPresp = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtFldObservacion = new javax.swing.JTextArea();
         jButtonGuardarExamClinico = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(217, 217, 217));
@@ -27,13 +27,13 @@ public class PanelExamenClinico extends javax.swing.JPanel {
         jLabel1.setText("Examen Clínico");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 10, -1, -1));
 
-        jCheckBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox1.setText("AP Cardiovascular");
-        add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        jCheckBoxAPcard.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jCheckBoxAPcard.setText("AP Cardiovascular");
+        add(jCheckBoxAPcard, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
-        jCheckBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox2.setText("AP Respiratorio");
-        add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, -1));
+        jCheckBoxAPresp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jCheckBoxAPresp.setText("AP Respiratorio");
+        add(jCheckBoxAPresp, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Observación");
@@ -41,9 +41,9 @@ public class PanelExamenClinico extends javax.swing.JPanel {
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(280, 86));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtFldObservacion.setColumns(20);
+        txtFldObservacion.setRows(5);
+        jScrollPane1.setViewportView(txtFldObservacion);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
@@ -57,36 +57,42 @@ public class PanelExamenClinico extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButtonGuardarExamClinico;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBoxAPcard;
+    private javax.swing.JCheckBox jCheckBoxAPresp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea txtFldObservacion;
     // End of variables declaration//GEN-END:variables
 
-    public boolean getjCheckBox1() {
-        return jCheckBox1.isSelected();
+    public boolean getjCheckBoxAPcard() {
+        return jCheckBoxAPcard.isSelected();
     }
 
-    public void setjCheckBox1(boolean jCheckBox1) {
-        this.jCheckBox1.setSelected(jCheckBox1);
+    public void setjCheckBoxAPcard(boolean jCheckBox1) {
+        this.jCheckBoxAPcard.setSelected(jCheckBox1);
     }
 
-    public boolean getjCheckBox2() {
-        return jCheckBox2.isSelected();
+    public boolean getjCheckBoxAPresp() {
+        return jCheckBoxAPresp.isSelected();
     }
 
-    public void setjCheckBox2(boolean jCheckBox2) {
-        this.jCheckBox2.setSelected(jCheckBox2);
+    public void setjCheckBoxAPresp(boolean jCheckBox2) {
+        this.jCheckBoxAPresp.setSelected(jCheckBox2);
     }
 
-    public String getjTextArea1() {
-        return jTextArea1.getText();
+    public String gettxtFldObservacion() {
+        return txtFldObservacion.getText();
     }
 
-    public void setjTextArea1(String jTextArea1) {
-        this.jTextArea1.setText(jTextArea1);
+    public void settxtFldObservacion(String jTextArea1) {
+        this.txtFldObservacion.setText(jTextArea1);
+    }
+    
+    public void limpiarCasillas(){
+        this.txtFldObservacion.setText("");
+        this.jCheckBoxAPcard.setSelected(false);
+        this.jCheckBoxAPresp.setSelected(false);
     }
 
     

@@ -19,6 +19,14 @@ public class ModeloExamen {
     public ModeloExamen() {
         //this.examen = new Examen();
     }
+
+    public Examen getExamen() {
+        return examen;
+    }
+
+    public void setExamen(Examen examen) {
+        this.examen = examen;
+    }    
     
     public void setTipoExamen(String tipoExamen){
         switch(tipoExamen){
@@ -36,15 +44,15 @@ public class ModeloExamen {
     }
     
     public void setDatosExamenMedico(String diagnostico, String tratamiento, String examAux, String observacion){
-        ((ExamenMedicoManager) examenManager).setDatos(examen, diagnostico, tratamiento, examAux, observacion);
+        this.examen = ((ExamenMedicoManager) examenManager).setDatos(examen, diagnostico, tratamiento, examAux, observacion);
     }
     
-    public void setDatosExamenClinico(Examen exa, String observacion, boolean apCardio, boolean apRespiratorio){
-        ((ExamenClinicoManager) examenManager).setDatos(exa, observacion, apCardio, apRespiratorio);
+    public void setDatosExamenClinico(String observacion, boolean apCardio, boolean apRespiratorio){
+        this.examen = ((ExamenClinicoManager) examenManager).setDatos(examen, observacion, apCardio, apRespiratorio);
     }
     
-    public void setDatosExamenFisico(Examen exa, double temp, String PA, double FR, double SPO2, double peso, double talla, double IMC, double FC, double perAbdominal){
-        ((ExamenFisicoManager) examenManager).setDatos(exa, temp, PA, FR, SPO2, peso, talla, IMC, FC, perAbdominal);
+    public void setDatosExamenFisico(double temp, String PA, double FR, double SPO2, double peso, double talla, double IMC, double FC, double perAbdominal){
+        this. examen = ((ExamenFisicoManager) examenManager).setDatos(examen, temp, PA, FR, SPO2, peso, talla, IMC, FC, perAbdominal);
     }
     
 }

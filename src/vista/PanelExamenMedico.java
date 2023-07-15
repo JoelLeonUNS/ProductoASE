@@ -13,14 +13,14 @@ public class PanelExamenMedico extends javax.swing.JPanel {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        txtFldExamAux = new javax.swing.JTextField();
+        txtFldObservacion = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtFldDiagnostico = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txtFldTratamiento = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jButtonGuardarExamMedico = new javax.swing.JButton();
 
@@ -37,13 +37,13 @@ public class PanelExamenMedico extends javax.swing.JPanel {
         jLabel4.setText("Tratamiento");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 45, -1, -1));
 
-        jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField6.setPreferredSize(new java.awt.Dimension(260, 30));
-        add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 195, -1, -1));
+        txtFldExamAux.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtFldExamAux.setPreferredSize(new java.awt.Dimension(260, 30));
+        add(txtFldExamAux, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 195, -1, -1));
 
-        jTextField8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField8.setPreferredSize(new java.awt.Dimension(260, 30));
-        add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 195, -1, -1));
+        txtFldObservacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtFldObservacion.setPreferredSize(new java.awt.Dimension(260, 30));
+        add(txtFldObservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 195, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Examenes Auxiliares");
@@ -55,19 +55,19 @@ public class PanelExamenMedico extends javax.swing.JPanel {
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(331, 90));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setPreferredSize(new java.awt.Dimension(331, 80));
-        jScrollPane1.setViewportView(jTextArea1);
+        txtFldDiagnostico.setColumns(20);
+        txtFldDiagnostico.setRows(5);
+        txtFldDiagnostico.setPreferredSize(new java.awt.Dimension(331, 80));
+        jScrollPane1.setViewportView(txtFldDiagnostico);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         jScrollPane2.setPreferredSize(new java.awt.Dimension(331, 90));
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jTextArea2.setPreferredSize(new java.awt.Dimension(331, 75));
-        jScrollPane2.setViewportView(jTextArea2);
+        txtFldTratamiento.setColumns(20);
+        txtFldTratamiento.setRows(5);
+        txtFldTratamiento.setPreferredSize(new java.awt.Dimension(331, 75));
+        jScrollPane2.setViewportView(txtFldTratamiento);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, -1, -1));
 
@@ -92,41 +92,48 @@ public class PanelExamenMedico extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextArea txtFldDiagnostico;
+    private javax.swing.JTextField txtFldExamAux;
+    private javax.swing.JTextField txtFldObservacion;
+    private javax.swing.JTextArea txtFldTratamiento;
     // End of variables declaration//GEN-END:variables
 
-    public String getjTextArea1() {
-        return jTextArea1.getText();
+    public String gettxtFldDiagnostico() {
+        return txtFldDiagnostico.getText();
     }
 
-    public void setjTextArea1(String jTextArea1) {
-        this.jTextArea1.setText(jTextArea1);
+    public void settxtFldDiagnostico(String jTextArea1) {
+        this.txtFldDiagnostico.setText(jTextArea1);
     }
 
-    public String getjTextArea2() {
-        return jTextArea2.getText();
+    public String gettxtFldTratamiento() {
+        return txtFldTratamiento.getText();
     }
 
-    public void setjTextArea2(String jTextArea2) {
-        this.jTextArea2.setText(jTextArea2);
+    public void settxtFldTratamiento(String jTextArea2) {
+        this.txtFldTratamiento.setText(jTextArea2);
     }
 
-    public String getjTextField6() {
-        return jTextField6.getText();
+    public String gettxtFldExamAux() {
+        return txtFldExamAux.getText();
     }
 
-    public void setjTextField6(String jTextField6) {
-        this.jTextField6.setText(jTextField6);
+    public void settxtFldExamAux(String jTextField6) {
+        this.txtFldExamAux.setText(jTextField6);
     }
 
-    public String getjTextField8() {
-        return jTextField8.getText();
+    public String gettxtFldObservacion() {
+        return txtFldObservacion.getText();
     }
 
-    public void setjTextField8(String jTextField8) {
-        this.jTextField8.setText(jTextField8);
+    public void settxtFldObservacion(String jTextField8) {
+        this.txtFldObservacion.setText(jTextField8);
     }    
+    
+    public void limpiarCasillas(){
+        this.txtFldDiagnostico.setText("");
+        this.txtFldTratamiento.setText("");
+        this.txtFldExamAux.setText("");
+        this.txtFldObservacion.setText("");
+    }
 }

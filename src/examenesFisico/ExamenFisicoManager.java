@@ -13,7 +13,7 @@ public class ExamenFisicoManager extends ExamenManager {
         return new ExamenFisico();
     }
 
-    public void setDatos(Examen exa, double temp, String PA, double FR, double SPO2, double peso, double talla, double IMC, double FC, double perAbdominal) {
+    public ExamenFisico setDatos(Examen exa, double temp, String PA, double FR, double SPO2, double peso, double talla, double IMC, double FC, double perAbdominal) {
         ExamenFisico examen = (ExamenFisico) exa;
         examen.setTemperatura(temp);
         examen.setPA(PA);
@@ -24,6 +24,8 @@ public class ExamenFisicoManager extends ExamenManager {
         examen.setIMC(IMC);
         examen.setFC(FC);
         examen.setPerimetroAbdominal(perAbdominal);
+        
+        return examen;
     }
 
 }

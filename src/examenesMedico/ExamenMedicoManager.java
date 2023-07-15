@@ -12,12 +12,14 @@ public class ExamenMedicoManager extends ExamenManager {
         return new ExamenMedico();
     }
 
-    public void setDatos(Examen exa, String diagnostico, String tratamiento, String examAux, String observacion) {
+    public ExamenMedico setDatos(Examen exa, String diagnostico, String tratamiento, String examAux, String observacion) {
         ExamenMedico examen = (ExamenMedico) exa;
         examen.setDiagnostico(diagnostico);
         examen.setTratamiento(tratamiento);
         examen.setExamenesAux(examAux);
         examen.setObservacion(observacion);
+        
+        return examen;
     }
     
 }

@@ -291,7 +291,27 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
     }
     
     public void setDatosExamenMedico(){
-        
+        pGeneral.getpExamen().setDatosExamenMedico(pExamenMedico.gettxtFldDiagnostico(), pExamenMedico.gettxtFldTratamiento(), pExamenMedico.gettxtFldExamAux(), pExamenMedico.gettxtFldObservacion());
+    }
+    
+    public void setDatosExamenClinico(){
+        pGeneral.getpExamen().setDatosExamenClinico(pExamenClinico.gettxtFldObservacion(), pExamenClinico.getjCheckBoxAPcard(), pExamenClinico.getjCheckBoxAPresp());
+    }
+    
+    public void setDatosExamenFisico(){
+        pGeneral.getpExamen().setDatosExamenFisico(pExamenFisico.gettxtFldTemperatura(), pExamenFisico.gettxtFldPA(), pExamenFisico.gettxtFldFR(), pExamenFisico.gettxtFldSPO2(), pExamenFisico.gettxtFldPeso(), pExamenFisico.gettxtFldTalla(), pExamenFisico.gettxtFldIMC(), pExamenFisico.gettxtFldFC(), pExamenFisico.gettxtFldPerAbdom());
+    }
+
+    public void resetearPanelMedico(){
+        pExamenMedico.limpiarCasillas();
+    }
+    
+    public void resetearPanelFisico(){
+        pExamenFisico.limpiarCasillas();
+    }
+    
+    public void resetearPanelClinico(){
+        pExamenClinico.limpiarCasillas();
     }
     
     @Override
@@ -326,13 +346,19 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener {
             }
             
             case "Guardar Examen Medico"->{
-                
+                setDatosExamenMedico();
+                pGeneral.getpExamen().añadirExamenAConsulta();
+                resetearPanelMedico();
             }
             case "Guardar Examen Fisico"->{
-                
+                setDatosExamenFisico();
+                pGeneral.getpExamen().añadirExamenAConsulta();
+                resetearPanelFisico();
             }
             case "Guardar Examen Clinico"->{
-                
+                setDatosExamenClinico();
+                pGeneral.getpExamen().añadirExamenAConsulta();
+                resetearPanelClinico();
             }
         }
     }

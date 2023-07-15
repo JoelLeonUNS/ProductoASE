@@ -51,10 +51,24 @@ public class PresentadorExamen {
         modeloExamen.setTipoExamen(tipoExamen);
     }
     
-    public void setDatosExamenMedico(){
-        
+    public void setDatosExamenMedico(String diagnostico, String tratamiento, String examAux, String observacion){
+        modeloExamen.setDatosExamenMedico(diagnostico, tratamiento, examAux, observacion);
     }
     
+    public void setDatosExamenClinico(String observacion, boolean apCardio, boolean apRespiratorio){
+        modeloExamen.setDatosExamenClinico(observacion, apCardio, apRespiratorio);
+    }
     
+    public void setDatosExamenFisico(double temp, String PA, double FR, double SPO2, double peso, double talla, double IMC, double FC, double perAbdominal){
+        modeloExamen.setDatosExamenFisico(temp, PA, FR, SPO2, peso, talla, IMC, FC, perAbdominal);
+    }
+    
+    public void setDatosConculta(String fecha, String hora, int edad, int tiempoEnfermedad, String apetito, String sueño, String sed, String estadoAnimo, String motivo){
+        modeloConsulta.setDatosConsulta(fecha, hora, edad, tiempoEnfermedad, apetito, sueño, sed, estadoAnimo, motivo);
+    }
+    
+    public void añadirExamenAConsulta(){
+        modeloConsulta.getConsulta().agregarExamen(modeloExamen.getExamen());
+    }
     
 }
