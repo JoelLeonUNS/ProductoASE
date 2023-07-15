@@ -1,14 +1,10 @@
 package App;
 
-import BaseDeDatos.HistoriaClinicaDAO;
-import historias.HistoriaClinica;
 import modelo.ModeloConsulta;
 import modelo.ModeloExamen;
 import modelo.ModeloHistoriaClinica;
 import modelo.ModeloMedico;
 import modelo.ModeloUsuario;
-import pacientes.Alumno;
-import pacientes.Familiar;
 import presentador.PresentadorGeneral;
 import valoresPorDefecto.ConsultasPorDefecto;
 import valoresPorDefecto.ExamenesPorDefecto;

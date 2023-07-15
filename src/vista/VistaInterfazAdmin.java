@@ -45,6 +45,7 @@ public class VistaInterfazAdmin extends javax.swing.JFrame implements ActionList
         pack();
         setLocationRelativeTo(null);
         setResizable(false);
+        setSize(1280, 720);
         setVisible(true);// visualiza la ventana
     }
 
@@ -83,6 +84,7 @@ public class VistaInterfazAdmin extends javax.swing.JFrame implements ActionList
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnl_header.setBackground(new java.awt.Color(255, 255, 255));
@@ -386,7 +388,6 @@ public class VistaInterfazAdmin extends javax.swing.JFrame implements ActionList
     @Override
     public void valueChanged(ListSelectionEvent e) {
         if (!e.getValueIsAdjusting()) {
-            System.out.println("HOLA");
             this.jButton3.setEnabled(true);
             this.jButton4.setEnabled(true);
             int selectedRow = jTable1.getSelectedRow();

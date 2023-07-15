@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -119,13 +118,13 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
         jButtonBuscar.setPreferredSize(new java.awt.Dimension(150, 35));
         add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 30, -1, -1));
 
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(404, 500));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(404, 250));
 
         jTableHistorias.setModel(modelTablaBuscarHistoria);
         jTableHistorias.setPreferredSize(new java.awt.Dimension(404, 250));
         jScrollPane1.setViewportView(jTableHistorias);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 95, -1, 250));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 95, 404, 250));
 
         jButtonAñadirConsulta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonAñadirConsulta.setText("Añadir consulta");
@@ -254,7 +253,7 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
         jTableConsultas.setPreferredSize(new java.awt.Dimension(404, 230));
         jScrollPane3.setViewportView(jTableConsultas);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, 230));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 404, 230));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -421,12 +420,13 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
-        JOptionPane.showMessageDialog(null, "Hola");
-        this.jButtonGuardar.setEnabled(false);
-        int selectedRow = jTableHistorias.getSelectedRow();
-        if(selectedRow != -1){
-            String dni = jTableHistorias.getValueAt(selectedRow, 0).toString();
-            mostrarConsultas(pGeneral.getpHistoriaClinica().buscarHistoriaClinicaDNI(dni).getConsultasMedicas());
+        if (!e.getValueIsAdjusting()) {
+            this.jButtonGuardar.setEnabled(false);
+            int selectedRow = jTableHistorias.getSelectedRow();
+            if (selectedRow != -1) {
+                String dni = jTableHistorias.getValueAt(selectedRow, 0).toString();
+                mostrarConsultas(pGeneral.getpHistoriaClinica().buscarHistoriaClinicaDNI(dni).getConsultasMedicas());
+            }
         }
     }
     
@@ -437,9 +437,9 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
         }
     }
     
-    private void addConsultaMedica(ConsultaMedica consulta, int i) {
+    private void addConsultaMedica(ConsultaMedica consulta, int i) {  
         if(consulta!=null){
-            modelTablaBuscarHistoria.addRow(new Object[]{
+            modelTablaConsultas.addRow(new Object[]{
             i,
             consulta.getFecha(),
             consulta.getMotivo(),   

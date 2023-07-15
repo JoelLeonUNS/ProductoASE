@@ -60,7 +60,7 @@
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <Properties>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[404, 500]"/>
+          <Dimension value="[404, 250]"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -68,7 +68,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="30" y="95" width="-1" height="250"/>
+          <AbsoluteConstraints x="30" y="95" width="404" height="250"/>
         </Constraint>
       </Constraints>
 
@@ -505,7 +505,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="30" y="360" width="-1" height="230"/>
+          <AbsoluteConstraints x="30" y="360" width="404" height="230"/>
         </Constraint>
       </Constraints>
 
