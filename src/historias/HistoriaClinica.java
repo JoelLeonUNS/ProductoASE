@@ -2,24 +2,23 @@ package historias;
 
 import consultas.ConsultaMedica;
 import java.util.ArrayList;
+import modelo.Enfermedad;
 import pacientes.Paciente;
 
 public class HistoriaClinica {
 
     private int numeroHistoriaClinica;
     private Paciente paciente;
-    private String antecedentesPatologicos;
-    private ArrayList<String> antecedentesFamiliares = new ArrayList<>();
+    private ArrayList<Enfermedad> antecedentesPatologicos = new ArrayList<>();
     private ArrayList<ConsultaMedica> consultasMedicas = new ArrayList<>();
 
     public HistoriaClinica() {
     }
 
     // solo para los valores por defecto.
-    public HistoriaClinica(int numeroHistoriaClinica, Paciente paciente, String antecedentesPatologicos) {
+    public HistoriaClinica(int numeroHistoriaClinica, Paciente paciente) {
         this.numeroHistoriaClinica = numeroHistoriaClinica;
         this.paciente = paciente;
-        this.antecedentesPatologicos = antecedentesPatologicos;
     }
 
     public int getNumeroHistoriaClinica() {
@@ -38,26 +37,6 @@ public class HistoriaClinica {
         this.paciente = paciente;
     }
 
-    public String getAntecedentesPatologicos() {
-        return antecedentesPatologicos;
-    }
-
-    public void setAntecedentesPatologicos(String antecedentesPatologicos) {
-        this.antecedentesPatologicos = antecedentesPatologicos;
-    }
-
-    public ArrayList<String> getAntecedentesFamiliares() {
-        return antecedentesFamiliares;
-    }
-
-    public void agregarAntecedenteFamiliar(String antecedente) {
-        antecedentesFamiliares.add(antecedente);
-    }
-
-    public void setAntecedentesFamiliares(ArrayList<String> antecedentesFamiliares) {
-        this.antecedentesFamiliares = antecedentesFamiliares;
-    }
-
     public ArrayList<ConsultaMedica> getConsultasMedicas() {
         return consultasMedicas;
     }
@@ -68,6 +47,10 @@ public class HistoriaClinica {
 
     public void agregarConsulta(ConsultaMedica consultaMedica) {
         consultasMedicas.add(consultaMedica);
+    }
+    
+    public void agregarAntecedentePatologico(Enfermedad enfermedad) {
+        antecedentesPatologicos.add(enfermedad);
     }
 
     @Override

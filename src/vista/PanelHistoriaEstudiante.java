@@ -16,7 +16,9 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel {
         initComponents();
         this.pGeneral = pGeneral;
         checkBoxes = arrayCheckBox();
-        setEnableBotones(false);
+        pGeneral.getpHistoriaClinica().setTipoHistoria("ESTUDIANTE");
+        pGeneral.getpHistoriaClinica().setHistoriaEditable(false);
+        setEnableBotones();
     }
     
     public String getInputText(JTextField txtFld) {
@@ -33,32 +35,35 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel {
         return chckBxs;
     }
     
-    public void setEnableBotones(boolean b) {
-        txtFld_apellidos.setEditable(b);
-        txtFld_nombres.setEditable(b);
-        txtFld_edad.setEditable(b);
-        chckBx_m.setEnabled(b);
-        chckBx_f.setEnabled(b);
-        txtFld_fechaNac.setEditable(b);
-        txtFld_lugarNac.setEditable(b);
-        txtFld_distrito.setEditable(b);
-        txtFld_departamento.setEditable(b);
-        txtFld_direccion.setEditable(b);
-        txtFld_escuela.setEditable(b);
-        txtFld_telefono.setEditable(b);
-        cmbBx_estadoCivil.setEnabled(b);
-        jCheckBox1.setEnabled(b);
+    public void setEnableBotones() {
+        txtFld_apellidos.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+        txtFld_nombres.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+        txtFld_edad.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+        chckBx_m.setEnabled(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+        chckBx_f.setEnabled(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+        txtFld_fechaNac.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+        txtFld_lugarNac.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+        txtFld_distrito.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+        txtFld_departamento.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+        txtFld_direccion.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+        txtFld_escuela.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+        txtFld_telefono.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+        cmbBx_estadoCivil.setEnabled(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+        jCheckBox1.setEnabled(pGeneral.getpHistoriaClinica().isHistoriaEditable());
         for (JCheckBox checkBox : checkBoxes) {
-            checkBox.setEnabled(b);
+            checkBox.setEnabled(pGeneral.getpHistoriaClinica().isHistoriaEditable());
         }
-        cmbBx_parentesco.setEnabled(b);
-        txtFld_nombreFamiliar.setEditable(b);
-        txtFld_direccionFamiliar.setEditable(b);
-        txtAr_antecedentes.setEditable(b);
-        txtFld_telefonoFamiliar.setEditable(b);
-        bttn_guardarFamiliar.setEnabled(b);
+        cmbBx_parentesco.setEnabled(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+        txtFld_nombreFamiliar.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+        txtFld_direccionFamiliar.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+        txtAr_antecedentes.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+        txtFld_telefonoFamiliar.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+        bttn_guardarFamiliar.setEnabled(pGeneral.getpHistoriaClinica().isHistoriaEditable());
     }
     
+    public void mostrarHistoriaClinicaEstudiante() {
+        
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

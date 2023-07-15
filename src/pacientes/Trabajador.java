@@ -6,8 +6,8 @@ public class Trabajador extends Paciente {
     private boolean docente;
     
     // Solo para valores por defecto.
-    public Trabajador(String areaTrabajo, boolean docente, String DNI, String nombre, String apellido, String sexo, String fechaNac, String lugarNac, String distrito, String departamento, String direccion, int telefono, String estadoCivil, Familiar familiar) {
-        super(DNI, nombre, apellido, sexo, fechaNac, lugarNac, distrito, departamento, direccion, telefono, estadoCivil, familiar);
+    public Trabajador(String areaTrabajo, boolean docente, String DNI, String nombre, String apellido, String sexo, String fechaNac, String lugarNac, String distrito, String departamento, String direccion, int telefono, String estadoCivil) {
+        super(DNI, nombre, apellido, sexo, fechaNac, lugarNac, distrito, departamento, direccion, telefono, estadoCivil);
         this.areaTrabajo = areaTrabajo;
         this.docente = docente;
     }

@@ -14,6 +14,10 @@ public class PresentadorHistoriaClinica {
     
     public PresentadorHistoriaClinica() {    
     }
+
+    public ModeloHistoriaClinica getModeloHistoriaClinica() {
+        return modeloHistoriaClinica;
+    }
     
     public void setModelo(ModeloHistoriaClinica mHistoriaClinica) {
         this.modeloHistoriaClinica = mHistoriaClinica;
@@ -67,4 +71,6 @@ public class PresentadorHistoriaClinica {
     public void setTipoHistoria(String tipoHistoria) {
         this.tipoHistoria = tipoHistoria;
     }
+    
+    
 }

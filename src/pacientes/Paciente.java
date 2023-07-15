@@ -1,5 +1,7 @@
 package pacientes;
 
+import java.util.ArrayList;
+
 public class Paciente {
 
     private String DNI;
@@ -13,12 +15,12 @@ public class Paciente {
     private String direccion;
     private int telefono;
     private String estadoCivil;
-    private Familiar familiar;
+    private ArrayList<Familiar> familiares = new  ArrayList<>();
 
     public Paciente() {
     }
 
-    public Paciente(String DNI, String nombre, String apellido, String sexo, String fechaNac, String lugarNac, String distrito, String departamento, String direccion, int telefono, String estadoCivil, Familiar familiar) {
+    public Paciente(String DNI, String nombre, String apellido, String sexo, String fechaNac, String lugarNac, String distrito, String departamento, String direccion, int telefono, String estadoCivil) {
         this.DNI = DNI;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -30,7 +32,6 @@ public class Paciente {
         this.direccion = direccion;
         this.telefono = telefono;
         this.estadoCivil = estadoCivil;
-        this.familiar = familiar;
     }
 
     public String getDNI() {
@@ -120,18 +121,14 @@ public class Paciente {
     public void setEstadoCivil(String estadoCivil) {
         this.estadoCivil = estadoCivil;
     }
-
-    public Familiar getFamiliar() {
-        return familiar;
-    }
-
-    public void setFamiliar(Familiar familiar) {
-        this.familiar = familiar;
+    
+    public void agregarFamiliar(Familiar familiar) {
+        familiares.add(familiar);
     }
     
     @Override
     public String toString() {
-        return "\nDNI: " + DNI + "\nNombre: " + nombre + "\nApellido: " + apellido + "\nSexo: " + sexo + "\nFecha de Nac.: " + fechaNac + "\nLugar de Nac.: " + lugarNac + "\nDistrito: " + distrito + "\nDepartamento: " + departamento + "\nDireccion: " + direccion + "\nTelefono: " + telefono + "\nEstado Civil: " + estadoCivil + "\nNombre Familiar: " + familiar.getNombreFamiliar() + "\nParentesco Familiar: " + familiar.getParentesco() + "\nDireccionFamiliar: " + familiar.getDireccionFamiliar() + "\nTelefono Familiar: " + familiar.getTelefonoFamiliar();
+        return "\nDNI: " + DNI + "\nNombre: " + nombre + "\nApellido: " + apellido + "\nSexo: " + sexo + "\nFecha de Nac.: " + fechaNac + "\nLugar de Nac.: " + lugarNac + "\nDistrito: " + distrito + "\nDepartamento: " + departamento + "\nDireccion: " + direccion + "\nTelefono: " + telefono + "\nEstado Civil: " + estadoCivil + "\nNombre Familiar: ";
     }
     
     

@@ -32,13 +32,7 @@ public class GestionHistorial {
         MedicosPorDefecto.poblar();
         ExamenesPorDefecto.poblar();
         ConsultasPorDefecto.poblar();
-        
-        HistoriaClinicaDAO hcDAO = new HistoriaClinicaDAO();
-        HistoriaClinica historia = new HistoriaClinica(4, new Alumno("Sistemas", "98563274", "Luka", "Modric", "M", "14/06/2000", "Lima", "Chimbote", "Ancash", "Trapecio", 976805287, "Soltero", new Familiar("Karim", "Hermano", "Los Héroes", "976802405", "")), "");
-        hcDAO.create(historia);
-        HistoriaClinica historia1 = new HistoriaClinica(4, new Alumno("Sistemas", "98563274", "Lucas", "Modric", "M", "14/06/2000", "Lima", "Chimbote", "Ancash", "Trapecio", 976805287, "Soltero", new Familiar("Karim", "Padre", "Los Héroes", "976802405", "")), "");
-        hcDAO.create(historia1);
-        
+                
         ModeloHistoriaClinica mHistoriaClinica = new ModeloHistoriaClinica();
         
         PresentadorGeneral.getInstancia().setModeloPresentadorLogin(new ModeloUsuario());
