@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -172,7 +173,7 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
         pnl_consultaExamenes.add(txtFldEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 55, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Tipo de enfermedad");
+        jLabel1.setText("Tiempo de enfermedad");
         pnl_consultaExamenes.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 30, -1, -1));
 
         txtFldTiempoEferm.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -342,6 +343,18 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
         this.txtFldMotivo.setText("");
     }
     
+    public void setDatosConsulta(){
+        pGeneral.getpExamen().getModeloConsulta().getConsulta().setFecha(txtFldFecha.getText());
+        pGeneral.getpExamen().getModeloConsulta().getConsulta().setHora(txtFldHora.getText());
+        pGeneral.getpExamen().getModeloConsulta().getConsulta().setEdad(Integer.parseInt(txtFldEdad.getText()));
+        pGeneral.getpExamen().getModeloConsulta().getConsulta().setTiempoEnfermedad(Integer.parseInt(txtFldTiempoEferm.getText()));
+        pGeneral.getpExamen().getModeloConsulta().getConsulta().setApetito(txtFldApetito.getText());
+        pGeneral.getpExamen().getModeloConsulta().getConsulta().setSueño(txtFldSueño.getText());
+        pGeneral.getpExamen().getModeloConsulta().getConsulta().setEstadoAnimo(txtFldEstadoAnimo.getText());
+        pGeneral.getpExamen().getModeloConsulta().getConsulta().setSed(txtFldSed.getText());
+        pGeneral.getpExamen().getModeloConsulta().getConsulta().setMotivo(txtFldMotivo.getText());
+    }
+    
     public void setDatosExamenMedico(){
         pGeneral.getpExamen().setDatosExamenMedico(pExamenMedico.gettxtFldDiagnostico(), pExamenMedico.gettxtFldTratamiento(), pExamenMedico.gettxtFldExamAux(), pExamenMedico.gettxtFldObservacion());
     }
@@ -364,6 +377,14 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
     
     public void resetearPanelClinico(){
         pExamenClinico.limpiarCasillas();
+    }
+    
+    public void showMsg(String s){
+        JOptionPane.showMessageDialog(null, s);
+    }
+    
+    public void añadirConsultaAHistoria(){
+        pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().agregarConsulta(pGeneral.getpExamen().getModeloConsulta().getConsulta());
     }
     
     @Override
@@ -399,22 +420,29 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
                 this.jButtonGuardar.setEnabled(true);
             }
             case "Guardar"->{
-                
+                setDatosConsulta();
+                añadirConsultaAHistoria();
+                showMsg("Consulta añadida");
+                limpiarCasillas();
+                this.jButtonGuardar.setEnabled(false);
             }
             
             case "Guardar Examen Medico"->{
                 setDatosExamenMedico();
                 pGeneral.getpExamen().añadirExamenAConsulta();
+                showMsg("Examen añadido");
                 resetearPanelMedico();
             }
             case "Guardar Examen Fisico"->{
                 setDatosExamenFisico();
                 pGeneral.getpExamen().añadirExamenAConsulta();
+                showMsg("Examen añadido");
                 resetearPanelFisico();
             }
             case "Guardar Examen Clinico"->{
                 setDatosExamenClinico();
                 pGeneral.getpExamen().añadirExamenAConsulta();
+                showMsg("Examen añadido");
                 resetearPanelClinico();
             }
         }
@@ -423,12 +451,24 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
     @Override
     public void valueChanged(ListSelectionEvent e) {
         if (!e.getValueIsAdjusting()) {
-            this.jButtonGuardar.setEnabled(false);
-            int selectedRow = jTableHistorias.getSelectedRow();
-            if (selectedRow != -1) {
-                String dni = jTableHistorias.getValueAt(selectedRow, 0).toString();
-                mostrarConsultas(pGeneral.getpHistoriaClinica().buscarHistoriaClinicaDNI(dni).getConsultasMedicas());
-            }
+             if (e.getSource() == jTableHistorias) {
+                this.jButtonGuardar.setEnabled(false);
+                int selectedRow = jTableHistorias.getSelectedRow();
+                if (selectedRow != -1) {
+                    pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().setHistoriaSeleccionada((HistoriaClinica) jTableHistorias.getValueAt(selectedRow, 0));
+                    //String dni = jTableHistorias.getValueAt(selectedRow, 0).toString();
+                    mostrarConsultas(pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getConsultasMedicas());
+                }
+             }else if(e.getSource() == jTableConsultas){
+                this.jButtonGuardar.setEnabled(false);
+                int selectedRow = jTableConsultas.getSelectedRow();
+                if (selectedRow != -1){
+                    int numConsulta = Integer.parseInt((String) jTableConsultas.getValueAt(selectedRow, 0));
+                    pGeneral.getpExamen().getModeloConsulta().setConsulta(pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getConsultasMedicas().get(numConsulta-1));
+                    mostrarDatosConsulta();
+                }
+             }
+            
         }
     }
     
@@ -447,5 +487,21 @@ public class PanelExamen extends javax.swing.JPanel implements ActionListener, L
             consulta.getMotivo(),   
             });
         }
+    }
+    
+    public void mostrarDatosConsulta(){
+        txtFldFecha.setText(pGeneral.getpExamen().getModeloConsulta().getConsulta().getFecha());
+        txtFldHora.setText(pGeneral.getpExamen().getModeloConsulta().getConsulta().getHora());
+        txtFldEdad.setText(String.valueOf(pGeneral.getpExamen().getModeloConsulta().getConsulta().getEdad()));
+        txtFldTiempoEferm.setText(String.valueOf(pGeneral.getpExamen().getModeloConsulta().getConsulta().getTiempoEnfermedad()));
+        txtFldApetito.setText(pGeneral.getpExamen().getModeloConsulta().getConsulta().getApetito());
+        txtFldSueño.setText(pGeneral.getpExamen().getModeloConsulta().getConsulta().getSueño());
+        txtFldEstadoAnimo.setText(pGeneral.getpExamen().getModeloConsulta().getConsulta().getEstadoAnimo());
+        txtFldSed.setText(pGeneral.getpExamen().getModeloConsulta().getConsulta().getSed());
+        txtFldMotivo.setText(pGeneral.getpExamen().getModeloConsulta().getConsulta().getMotivo());
+    }
+    
+    public void mostrarDatosExamenMedico(){
+        //pExamenMedico.settxtFldDiagnostico(pGeneral.getpExamen().getModeloConsulta().getConsulta().getExamenes().);
     }
 }
