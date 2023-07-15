@@ -16,16 +16,17 @@ public class ModeloHistoriaClinica {
     private HistoriaClinica historiaClinicaTrabajador;
     private Paciente estudiante;
     private Paciente trabajador;
-    private Familiar familiarEstudiante;
-    private Familiar familiarTrabajador;
+    private ArrayList<Familiar> familiaresEstudiante;
+    private ArrayList<Familiar> familiaresTrabajador;
+    private ArrayList<Enfermedad> antecedentesPatologicos;
 
     public ModeloHistoriaClinica() {
         this.historiaClinicaEstudiante = new HistoriaClinica();
         this.historiaClinicaTrabajador = new HistoriaClinica();
         this.estudiante = new Alumno();
         this.trabajador = new Trabajador();
-        this.familiarEstudiante = new Familiar();
-        this.familiarTrabajador = new Familiar();
+        this.familiaresEstudiante = new ArrayList<>();
+        this.familiaresTrabajador = new ArrayList<>();
     }
     
     public HistoriaClinica buscarHistoriaClinicaDNI(String dni){
@@ -60,7 +61,7 @@ public class ModeloHistoriaClinica {
 
     public void registrarHistoriaEstudiante() {
         HistoriaClinicaDAO hcDAO = new HistoriaClinicaDAO();
-        //estudiante.setFamiliar(familiarEstudiante);
+        estudiante.setFamiliares(familiaresEstudiante);
         historiaClinicaEstudiante.setPaciente(estudiante);
         hcDAO.create(historiaClinicaEstudiante);
     }
@@ -71,7 +72,7 @@ public class ModeloHistoriaClinica {
     
     public void registrarHistoriaTrabajador() {
         HistoriaClinicaDAO hcDAO = new HistoriaClinicaDAO();
-        //trabajador.setFamiliar(familiarTrabajador);
+        trabajador.setFamiliares(familiaresTrabajador);
         historiaClinicaTrabajador.setPaciente(trabajador);
         hcDAO.create(historiaClinicaTrabajador);
     }
@@ -120,22 +121,23 @@ public class ModeloHistoriaClinica {
         this.trabajador = trabajador;
     }
 
-    public Familiar getFamiliarEstudiante() {
-        return familiarEstudiante;
+    public ArrayList<Familiar> getFamiliaresEstudiante() {
+        return familiaresEstudiante;
     }
 
-    public void setFamiliarEstudiante(Familiar familiarEstudiante) {
-        this.familiarEstudiante = familiarEstudiante;
+    public void agregarFamiliarEstudiante(Familiar familiarEstudiante) {
+        this.familiaresEstudiante.add(familiarEstudiante);
     }
 
-    public Familiar getFamiliarTrabajador() {
-        return familiarTrabajador;
+    public ArrayList<Familiar> getFamiliaresTrabajador() {
+        return familiaresTrabajador;
     }
 
-    public void setFamiliarTrabajador(Familiar familiarTrabajador) {
-        this.familiarTrabajador = familiarTrabajador;
+    public void agregarFamiliarTrabajador(Familiar familiarTrabajador) {
+        this.familiaresTrabajador.add(familiarTrabajador);
     }
     
-    
-    
+    public void agregarAntecedentePatologico(Enfermedad enfermedad) {
+        this.antecedentesPatologicos.add(enfermedad);
+    }  
 }

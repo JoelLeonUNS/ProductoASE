@@ -121,11 +121,15 @@ public class Paciente {
     public void setEstadoCivil(String estadoCivil) {
         this.estadoCivil = estadoCivil;
     }
-    
+
     public void agregarFamiliar(Familiar familiar) {
         familiares.add(familiar);
     }
-    
+
+    public void setFamiliares(ArrayList<Familiar> familiares) {
+        this.familiares = familiares;
+    }
+
     @Override
     public String toString() {
         return "\nDNI: " + DNI + "\nNombre: " + nombre + "\nApellido: " + apellido + "\nSexo: " + sexo + "\nFecha de Nac.: " + fechaNac + "\nLugar de Nac.: " + lugarNac + "\nDistrito: " + distrito + "\nDepartamento: " + departamento + "\nDireccion: " + direccion + "\nTelefono: " + telefono + "\nEstado Civil: " + estadoCivil + "\nNombre Familiar: ";

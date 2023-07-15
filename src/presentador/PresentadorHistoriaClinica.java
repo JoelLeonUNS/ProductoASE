@@ -4,7 +4,9 @@ import historias.HistoriaClinica;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JPanel;
+import modelo.Enfermedad;
 import modelo.ModeloHistoriaClinica;
+import pacientes.Familiar;
 
 public class PresentadorHistoriaClinica {
     private ModeloHistoriaClinica modeloHistoriaClinica;
@@ -70,6 +72,32 @@ public class PresentadorHistoriaClinica {
 
     public void setTipoHistoria(String tipoHistoria) {
         this.tipoHistoria = tipoHistoria;
+    }
+    
+    public void registrarHistoriaClinica() {
+        switch (tipoHistoria) {
+            case "ESTUDIANTE" -> {
+                modeloHistoriaClinica.registrarHistoriaEstudiante();
+            }
+            case "TRABAJADOR" -> {
+                modeloHistoriaClinica.registrarHistoriaTrabajador();
+            }   
+        }
+    }
+    
+    public void agregarFamiliar(Familiar familiar) {
+        switch (tipoHistoria) {
+            case "ESTUDIANTE" -> {
+                modeloHistoriaClinica.agregarFamiliarEstudiante(familiar);
+            }
+            case "TRABAJADOR" -> {
+                modeloHistoriaClinica.agregarFamiliarTrabajador(familiar);
+            }   
+        }
+    }
+    
+    public void agregarEnfermedad(Enfermedad enfermedad) {
+        modeloHistoriaClinica.agregarAntecedentePatologico(enfermedad);
     }
     
     

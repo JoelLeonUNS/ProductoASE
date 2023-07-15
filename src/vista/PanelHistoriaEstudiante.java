@@ -1,11 +1,14 @@
 package vista;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
+import modelo.Enfermedad;
 import presentador.PresentadorGeneral;
 
-public class PanelHistoriaEstudiante extends javax.swing.JPanel {
+public class PanelHistoriaEstudiante extends javax.swing.JPanel implements ActionListener{
     
     private PresentadorGeneral pGeneral;
     private JCheckBox[] checkBoxes;
@@ -61,7 +64,20 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel {
         bttn_guardarFamiliar.setEnabled(pGeneral.getpHistoriaClinica().isHistoriaEditable());
     }
     
-    public void mostrarHistoriaClinicaEstudiante() {
+    
+    
+    public void agregarEnfermedades() {
+        int i = 0;
+        for (JCheckBox checkBox : checkBoxes) {
+            if (checkBox.isSelected()) {
+                pGeneral.getpHistoriaClinica().agregarEnfermedad(Enfermedad.values()[i]);
+            }
+            i++;
+        }
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
         
     }
     
@@ -485,4 +501,6 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel {
     private javax.swing.JTextField txtFld_telefono;
     private javax.swing.JTextField txtFld_telefonoFamiliar;
     // End of variables declaration//GEN-END:variables
+
+    
 }

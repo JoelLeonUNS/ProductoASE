@@ -1,11 +1,14 @@
 package vista;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
+import modelo.Enfermedad;
 import presentador.PresentadorGeneral;
 
-public class PanelHistoriaTrabajador extends javax.swing.JPanel {
+public class PanelHistoriaTrabajador extends javax.swing.JPanel implements ActionListener{
 
     private PresentadorGeneral pGeneral;   
     private JCheckBox[] checkBoxes;
@@ -61,6 +64,21 @@ public class PanelHistoriaTrabajador extends javax.swing.JPanel {
         txtAr_antecedentes.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
         txtFld_telefonoFamiliar.setEditable(pGeneral.getpHistoriaClinica().isHistoriaEditable());
         bttn_guardarFamiliar.setEnabled(pGeneral.getpHistoriaClinica().isHistoriaEditable());
+    }
+    
+    public void agregarEnfermedades() {
+        int i = 0;
+        for (JCheckBox checkBox : checkBoxes) {
+            if (checkBox.isSelected()) {
+                pGeneral.getpHistoriaClinica().agregarEnfermedad(Enfermedad.values()[i]);
+            }
+            i++;
+        }
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
     }
 
     @SuppressWarnings("unchecked")
