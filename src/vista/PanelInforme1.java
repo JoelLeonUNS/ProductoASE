@@ -4,17 +4,22 @@
  */
 package vista;
 
+import presentador.PresentadorGeneral;
+
 /**
  *
  * @author PC1
  */
 public class PanelInforme1 extends javax.swing.JPanel {
 
+    private PresentadorGeneral pGeneral;
+
     /**
      * Creates new form PanelInforme1
      */
-    public PanelInforme1() {
+    public PanelInforme1(PresentadorGeneral pGeneral) {
         initComponents();
+        this.pGeneral = pGeneral;
     }
 
     /**

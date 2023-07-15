@@ -12,6 +12,7 @@ import pacientes.Familiar;
 import presentador.PresentadorGeneral;
 import valoresPorDefecto.ConsultasPorDefecto;
 import valoresPorDefecto.ExamenesPorDefecto;
+import valoresPorDefecto.HistoriasPorDefecto;
 import valoresPorDefecto.MedicosPorDefecto;
 import vista.VistaLogin;
 
@@ -32,6 +33,7 @@ public class GestionHistorial {
         MedicosPorDefecto.poblar();
         ExamenesPorDefecto.poblar();
         ConsultasPorDefecto.poblar();
+        HistoriasPorDefecto.poblar();
                 
         ModeloHistoriaClinica mHistoriaClinica = new ModeloHistoriaClinica();
         

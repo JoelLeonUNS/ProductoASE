@@ -8,6 +8,7 @@ import consultas.ConsultaMedica;
 import examenesClinico.ExamenClinico;
 import examenesFisico.ExamenFisico;
 import historias.HistoriaClinica;
+import modelo.Enfermedad;
 import pacientes.*;
 
 /**
@@ -62,59 +63,7 @@ public class ConsultasPorDefecto {
         consulta17.agregarExamen(eDAO.read(16));
         consulta18.agregarExamen(eDAO.read(17));
         consulta19.agregarExamen(eDAO.read(18));
-        consulta20.agregarExamen(eDAO.read(19));
-        
-        // descomentar 
-
-//        HistoriaClinica historia1 = new HistoriaClinica(1, new Alumno("Sistemas", "12345678", "Juan", "Pérez", "M", "01/01/2000", "Lima", "Lima", "Lima", "Av. Principal 123", 987654321, "Soltero", new Familiar("María", "Madre", "Av. Los Álamos 456", "987654321", "")), "");
-//        HistoriaClinica historia2 = new HistoriaClinica(2, new Alumno("Derecho", "87654321", "Ana", "García", "F", "15/05/1998", "Arequipa", "Arequipa", "Arequipa", "Calle Pizarro 789", 987654321, "Soltera", new Familiar("Pedro", "Padre", "Jr. Las Rosas 789", "987654321", "")), "");
-//        HistoriaClinica historia3 = new HistoriaClinica(3, new Alumno("Medicina", "45678912", "Luis", "Torres", "M", "10/10/1999", "Trujillo", "La Libertad", "La Libertad", "Av. Los Pinos 456", 987654321, "Soltero", new Familiar("Laura", "Hermana", "Calle Principal 456", "987654321", "")), "");
-//        HistoriaClinica historia4 = new HistoriaClinica(4, new Alumno("Sistemas", "98765432", "Carla", "López", "F", "20/03/1997", "Lima", "Lima", "Lima", "Jr. Los Olivos 123", 987654321, "Soltera", new Familiar("Carlos", "Padre", "Av. Los Cerezos 123", "987654321", "")), "");
-//        HistoriaClinica historia5 = new HistoriaClinica(5, new Alumno("Enfermeria", "23456789", "Pedro", "Gómez", "M", "05/09/1996", "Cusco", "Cusco", "Cusco", "Av. Los Jazmines 789", 987654321, "Soltero", new Familiar("Martha", "Madre", "Jr. Las Flores 789", "987654321", "")), "");
-//        HistoriaClinica historia6 = new HistoriaClinica(6, new Alumno("Derecho", "56789123", "Lucía", "Hernández", "F", "12/12/1995", "Piura", "Piura", "Piura", "Calle Principal 789", 987654321, "Soltera", new Familiar("Juan", "Padre", "Av. Las Palmeras 789", "987654321", "")), "");
-//        HistoriaClinica historia7 = new HistoriaClinica(7, new Alumno("Enfermeria", "89123456", "María", "Rodríguez", "F", "25/07/1999", "Lima", "Lima", "Lima", "Jr. Los Lirios 123", 987654321, "Soltera", new Familiar("Luis", "Hermano", "Calle Los Pinos 123", "987654321", "")), "");
-//        HistoriaClinica historia8 = new HistoriaClinica(8, new Alumno("Sistemas", "34567891", "Diego", "Martínez", "M", "08/08/1997", "Chiclayo", "Lambayeque", "Lambayeque", "Av. Los Cipreses 456", 987654321, "Soltero", new Familiar("Rosa", "Madre", "Jr. Las Orquídeas 456", "987654321", "")), "");
-//        HistoriaClinica historia9 = new HistoriaClinica(9, new Alumno("Medicina", "67891234", "Laura", "Sánchez", "F", "03/04/1996", "Lima", "Lima", "Lima", "Calle Los Girasoles 789", 987654321, "Soltera", new Familiar("Miguel", "Padre", "Av. Las Violetas 789", "987654321", "")), "");
-//        HistoriaClinica historia10 = new HistoriaClinica(10, new Alumno("Enfermeria", "91234567", "Martín", "Rojas", "M", "17/09/1998", "Arequipa", "Arequipa", "Arequipa", "Jr. Los Narcisos 123", 987654321, "Soltero", new Familiar("Sandra", "Madre", "Calle Los Lirios 123", "987654321", "")), "");
-//        HistoriaClinica historia11 = new HistoriaClinica(11, new Trabajador("Administracion", false, "123456789", "Mariana", "López", "F", "15/08/2001", "Lima", "Lima", "Lima", "Av. Principal 456", 987654321, "Soltera", new Familiar("Juan", "Padre", "Av. Los Álamos 456", "987654321", "")), "");
-//        HistoriaClinica historia12 = new HistoriaClinica(12, new Trabajador("Sistemas", true, "234567890", "Carlos", "Vega", "M", "20/12/1999", "Arequipa", "Arequipa", "Arequipa", "Calle Pizarro 789", 987654321, "Soltero", new Familiar("Laura", "Madre", "Jr. Las Rosas 789", "987654321", "")), "");
-//        HistoriaClinica historia13 = new HistoriaClinica(13, new Trabajador("Recursos Humanos", false, "345678901", "Julia", "Mendoza", "F", "05/06/1998", "Trujillo", "La Libertad", "La Libertad", "Av. Los Pinos 456", 987654321, "Soltera", new Familiar("Pedro", "Hermano", "Calle Principal 456", "987654321", "")), "");
-//        HistoriaClinica historia14 = new HistoriaClinica(14, new Trabajador("Civil", true, "456789012", "Diego", "Ramírez", "M", "10/10/1997", "Lima", "Lima", "Lima", "Jr. Los Olivos 123", 987654321, "Soltero", new Familiar("Rosa", "Madre", "Av. Los Cerezos 123", "987654321", "")), "");
-//        HistoriaClinica historia15 = new HistoriaClinica(15, new Trabajador("Recursos Humanos", false, "567890123", "Ana", "Gómez", "F", "25/09/1996", "Cusco", "Cusco", "Cusco", "Av. Los Jazmines 789", 987654321, "Soltera", new Familiar("Martha", "Madre", "Jr. Las Flores 789", "987654321", "")), "");
-//        HistoriaClinica historia16 = new HistoriaClinica(16, new Trabajador("Medicina", true, "678901234", "Luis", "Herrera", "M", "12/12/1995", "Piura", "Piura", "Piura", "Calle Principal 789", 987654321, "Soltero", new Familiar("Juan", "Padre", "Av. Las Palmeras 789", "987654321", "")), "");
-//        HistoriaClinica historia17 = new HistoriaClinica(17, new Trabajador("Recursos Humanos", false, "789012345", "María", "Pérez", "F", "20/07/1999", "Lima", "Lima", "Lima", "Jr. Los Lirios 123", 987654321, "Soltera", new Familiar("Luis", "Hermano", "Calle Los Pinos 123", "987654321", "")), "");
-//        HistoriaClinica historia18 = new HistoriaClinica(18, new Trabajador("Sistemas", true, "890123456", "Pedro", "Pulido", "M", "08/08/1997", "Chiclayo", "Lambayeque", "Lambayeque", "Av. Los Cipreses 456", 987654321, "Soltero", new Familiar("Rosa", "Madre", "Jr. Las Orquídeas 456", "987654321", "")), "");
-//        HistoriaClinica historia19 = new HistoriaClinica(19, new Trabajador("Administración", false, "901234567", "Laura", "Torres", "F", "03/04/1996", "Lima", "Lima", "Lima", "Calle Los Girasoles 789", 987654321, "Soltera", new Familiar("Miguel", "Padre", "Av. Las Violetas 789", "987654321", "")), "");
-//        HistoriaClinica historia20 = new HistoriaClinica(20, new Trabajador("Sistemas", true, "012345678", "Carlos", "Corpus", "M", "17/09/1998", "Arequipa", "Arequipa", "Arequipa", "Jr. Los Narcisos 123", 987654321, "Soltero", new Familiar("Sandra", "Madre", "Calle Los Lirios 123", "987654321", "")), "");
-//        
-        // AGREGAR ANTECEDENTES PATOLOGICOS (ENFERMEDADES)
-        
-        
-        // AGREGAR FAMILIARES
-        
-        
-        // AGREGAR CONSULTAS
-//        historia1.agregarConsulta(consulta1);
-//        historia2.agregarConsulta(consulta2);
-//        historia3.agregarConsulta(consulta3);
-//        historia4.agregarConsulta(consulta4);
-//        historia5.agregarConsulta(consulta5);
-//        historia6.agregarConsulta(consulta6);
-//        historia7.agregarConsulta(consulta7);
-//        historia8.agregarConsulta(consulta8);
-//        historia9.agregarConsulta(consulta9);
-//        historia10.agregarConsulta(consulta10);
-//        historia11.agregarConsulta(consulta11);
-//        historia12.agregarConsulta(consulta12);
-//        historia13.agregarConsulta(consulta13);
-//        historia14.agregarConsulta(consulta14);
-//        historia15.agregarConsulta(consulta15);
-//        historia16.agregarConsulta(consulta16);
-//        historia17.agregarConsulta(consulta17);
-//        historia18.agregarConsulta(consulta18);
-//        historia19.agregarConsulta(consulta19);
-//        historia20.agregarConsulta(consulta20);
-
+        consulta20.agregarExamen(eDAO.read(19)); 
         //CREAR CONSULTAS
         cDAO.create(consulta1);
         cDAO.create(consulta2);
@@ -136,26 +85,6 @@ public class ConsultasPorDefecto {
         cDAO.create(consulta18);
         cDAO.create(consulta19);
         cDAO.create(consulta20);
-        //CREAR HISTORIAS
-//        hDAO.create(historia1);
-//        hDAO.create(historia2);
-//        hDAO.create(historia3);
-//        hDAO.create(historia4);
-//        hDAO.create(historia5);
-//        hDAO.create(historia6);
-//        hDAO.create(historia7);
-//        hDAO.create(historia8);
-//        hDAO.create(historia9);
-//        hDAO.create(historia10);
-//        hDAO.create(historia11);
-//        hDAO.create(historia12);
-//        hDAO.create(historia13);
-//        hDAO.create(historia14);
-//        hDAO.create(historia15);
-//        hDAO.create(historia16);
-//        hDAO.create(historia17);
-//        hDAO.create(historia18);
-//        hDAO.create(historia19);
-//        hDAO.create(historia20);
+
     }
 }
