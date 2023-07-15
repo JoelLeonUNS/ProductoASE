@@ -68,6 +68,10 @@ public class HistoriaClinica {
         consultasMedicas.add(consultaMedica);
     }
 
+    public ArrayList<Enfermedad> getAntecedentesPatologicos() {
+        return antecedentesPatologicos;
+    }
+   
     public void agregarAntecedentePatologico(Enfermedad enfermedad) {
         antecedentesPatologicos.add(enfermedad);
     }

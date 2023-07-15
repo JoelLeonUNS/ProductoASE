@@ -3,13 +3,13 @@ package vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import modelo.Enfermedad;
+import pacientes.Alumno;
 import presentador.PresentadorGeneral;
 
 public class PanelHistoriaEstudiante extends javax.swing.JPanel implements ActionListener {
@@ -159,7 +159,39 @@ public class PanelHistoriaEstudiante extends javax.swing.JPanel implements Actio
         setInputText(txtFld_telefonoFamiliar, pGeneral.getpHistoriaClinica().getFamiliar(indice)  == null ? "" : pGeneral.getpHistoriaClinica().getFamiliar(indice).getTelefonoFamiliar());
         setInputTextAr(txtAr_antecedentes, pGeneral.getpHistoriaClinica().getFamiliar(indice)  == null ? "" : pGeneral.getpHistoriaClinica().getFamiliar(indice).getAntecedentesPatologicos());
     }
-
+    
+    public void mostrarHistoriaClinicaEstudiante() {
+        int indiceCheck = 0;
+        int indiceEnf = 0;
+        lbl_nroHistoriaClinica.setText("Historia Clínica: N° " + pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getNumeroHistoriaClinica());
+        setInputText(txtFld_dni, pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getPaciente().getDNI());
+        setInputText(txtFld_apellidos, pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getPaciente().getApellido());
+        setInputText(txtFld_nombres, pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getPaciente().getNombre());
+        setInputText(txtFld_telefono, pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getPaciente().getTelefono());
+        rdBttn_m.setSelected(pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getPaciente().getSexo().equals("M"));
+        rdBttn_f.setSelected(pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getPaciente().getSexo().equals("M"));
+        setInputText(txtFld_fechaNac, pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getPaciente().getFechaNac());
+        setInputText(txtFld_lugarNac, pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getPaciente().getLugarNac());
+        setInputText(txtFld_distrito, pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getPaciente().getDistrito());
+        setInputText(txtFld_departamento, pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getPaciente().getDepartamento());
+        setInputText(txtFld_direccion, pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getPaciente().getDireccion());
+        setInputText(txtFld_escuela, ((Alumno) pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getPaciente()).getEscuela());
+        cmbBx_estadoCivil.setSelectedItem(pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getPaciente().getEstadoCivil());
+        
+        
+        try {
+            for (JCheckBox checkBox : checkBoxes) {
+            checkBox.setSelected((pGeneral.getpHistoriaClinica().getModeloHistoriaClinica().getHistoriaSeleccionada().getAntecedentesPatologicos().get(indiceEnf).getIdEnfermedad() -1) == indiceCheck);
+            if (checkBox.isSelected()) {
+                indiceEnf++;
+            }
+            indiceCheck++;
+        }
+        } catch (Exception e) {
+        }
+    }
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
