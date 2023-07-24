@@ -9,6 +9,7 @@ public class Medico {
     private Usuario usuario;
 
     public Medico() {
+        usuario = new Usuario();
     }
 
     public Medico(String apellidoMedico, String nombreMedico, String telefonoMedico, String DNI, Usuario usuario) {

@@ -2,6 +2,7 @@
 package modelo;
 
 import BaseDeDatos.MedicoDAO;
+import BaseDeDatos.UsuarioDAO;
 import java.util.ArrayList;
 import medicos.Medico;
 import medicos.Usuario;
@@ -29,7 +30,11 @@ public class ModeloMedico {
         medico.getUsuario().setEstado(true);
         medico.getUsuario().setRol("Medico");
     }
-    
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+ 
     public Medico buscarMedicoDNI(String dni){
         MedicoDAO medicoDao = new MedicoDAO();
         for (int i = 0; i < medicoDao.count(); i++) {
@@ -62,7 +67,9 @@ public class ModeloMedico {
     
     public void registrar(){
         MedicoDAO medicoDao = new MedicoDAO();
+        UsuarioDAO uDAO = new UsuarioDAO();
         medicoDao.create(medico);
+        uDAO.create(medico.getUsuario());
     }
     
     public void editar(){

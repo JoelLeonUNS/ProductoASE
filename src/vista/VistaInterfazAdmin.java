@@ -367,7 +367,9 @@ public class VistaInterfazAdmin extends javax.swing.JFrame implements ActionList
                 pGeneral.getpInterfazAdmin().setDatosUsuario(getInput(jTextField6), getInput(jTextField7));   
                 if(pGeneral.getpInterfazAdmin().getTipoGuardado().equals("CREAR")){
                     if(camposllenos()){
+                        //pGeneral.getpInterfazAdmin().nuevoMedico();
                         pGeneral.getpInterfazAdmin().registrar();
+                        JOptionPane.showMessageDialog(null, "Usuario creado con exito..");
                     }else{
                         JOptionPane.showMessageDialog(null, "Debe completar todos los campos.");
                     }

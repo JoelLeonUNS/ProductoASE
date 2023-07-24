@@ -24,8 +24,6 @@ public class PresentadorInterfazAdmin {
     public void setTipoGuardado(String tipoGuardado) {
         this.tipoGuardado = tipoGuardado;
     }
-        
-    
     
     public void setDatosMedico(String dni, String nombre, String apellidos, String telefono){
         modelo.setDatosMedico(dni, nombre, apellidos, telefono);
@@ -56,4 +54,8 @@ public class PresentadorInterfazAdmin {
         modelo.darDeBaja();
     }
     
+    
+    public void nuevoMedico() {
+        modelo.setMedico(new Medico());
+    }
 }
